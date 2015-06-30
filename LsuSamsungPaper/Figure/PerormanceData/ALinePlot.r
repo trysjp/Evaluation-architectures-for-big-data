@@ -1,5 +1,5 @@
 ##Where the file is saved
-pdf("/home/hadoop/rough/MyGITProjects/PGA_EvaluationArchitecturePaper/Evaluation-architectures-for-big-data/LsuSamsungPaper/Figure/PerormanceData/Plots/SSDHDDDiffNode.pdf", family="Times")
+pdf("/home/hadoop/rough/MyGITProjects/PGA_EvaluationArchitecturePaper/Evaluation-architectures-for-big-data/LsuSamsungPaper/Figure/PerormanceData/Plots/SSDHDDDiffNode.pdf")
 
 #Read data from CSV
 data <- read.csv(file="SSDHDDDiffNode.csv",head=TRUE,sep=",")
@@ -8,14 +8,15 @@ x <- 1:length(data$SSD)
 
 lt <- c(1,2)
 
-plot(x, data$SSD, type='l', col='blue', lwd=2, lty=lt[1], ann=FALSE)
+plot(x, data$SSD, type='l', col='blue', lwd=2, lty=lt[1], ann=FALSE, xaxt='n', xlab="Total number of DataNode : Number of Disks used per DataNode", ylab="Execution Time (s)", cex.lab=1.2)
 lines(x, data$HDD, col='black', lwd=2, lty=lt[2])
 
-title(xlab="Number of disks per datanode:total datanode in cluster")
-title(ylab="Execution Time (s)")
+#title(xlab="Total number of DataNode : Number of Disks used per DataNode", cex.lab=1.2)
+#title(ylab="Execution Time (s)", cex.lab=1.2)
 #title(main="IOPS Over Time")
+axis(1,at=c(1,2,3), labels=c("2-DN:\n7-Disks/DN", "7-DN:\n2-Disks/DN", "15-DN:\n1-Disk/DN"))
 
-legend("topright", c("SSD", "HDD"), col=c("blue","black"), lwd=c(2,2), lty=lt)
+legend("topright", c("SSD", "HDD"), col=c("blue","black"), lwd=c(2,2), lty=lt, cex=1.5)
 
 #print(data$V5)
 dev.off()

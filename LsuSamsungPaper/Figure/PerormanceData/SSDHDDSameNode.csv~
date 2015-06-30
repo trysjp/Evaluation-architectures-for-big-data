@@ -1,4 +1,4 @@
-Number and type of Disks per DataNode
+numDAS/DN
 1HDD/DataNode,5740
 2HDD/DataNode,4429
 4HDD/DataNode,3333
