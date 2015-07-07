@@ -353,23 +353,25 @@
 %
 % paper title
 % can use linebreaks \\ within to get better formatting as desired
-\title{Evaluating Different Distributed-Cyber-Infrastructure for Data and Compute-Intensive Genome-Assembly Workload}
+\title{Evaluating Different Distributed-Cyber-Infrastructure for Data and Compute Intensive Scientific Application}
 
 
 % author names and affiliations
 % use a multiple column layout for up to three different
 % affiliations
-\author{\IEEEauthorblockN{Arghya Kusum Das, Seung-Jong Park}
+\author{
+\IEEEauthorblockN{Arghya Kusum Das, Seung-Jong Park}
 \IEEEauthorblockA{School of Electrical Engineering and Computer Science\\
 Center for Computation and Technology\\
 Louisisna State University\\
 Baton Rouge, LA, 70801 \\
 Email: \{adas7, sjpark\} @lsu.edu}
-%\and
-%\IEEEauthorblockN{Homer Simpson}
-%\IEEEauthorblockA{Twentieth Century Fox\\
-%Springfield, USA\\
-%Email: homer@thesimpsons.com}
+\and
+\IEEEauthorblockN{Jaeki Hong, Wooseok Chang}
+\IEEEauthorblockA{Samsung Electronics Co., Ltd.\\
+Giheung-gu\\
+Yongin-si, Gyeonggi-do, 446711\\
+Email: \{jaeki.hong, wooseok\_chang\} @samsung.com}
 %\and
 %\IEEEauthorblockN{James Kirk\\ and Montgomery Scott}
 %\IEEEauthorblockA{Starfleet Academy\\
@@ -415,20 +417,25 @@ Email: \{adas7, sjpark\} @lsu.edu}
 
 \begin{abstract}
 %\input {abstract.tex}
+The enormous growth in the amount of data that the various experimental-devices generate is rapidly changing the computational model. Recently, data and compute intensive computation frameworks, such as Hadoop and Giraph, have emerged as bigdata analytic softwares. In particular, scientists are increasingly using these softwares to efficiently handle these bigdata, deviating from traditional MPI or grid-based technologies . However, there is limited understanding that how the different types of hardware-architectures impact the performance of these bigdata analytics softwares when applied to a real world data and compute intensive scientific workload.
+
+In this study, we evaluated the performance of the bigdata analytics softwares over different hardware architectures including HPC clusters (i.e., SuperMikeII) and two different types of private cloud infrastructures (e.g., SwatIII based on regular data center architecture and CeresII based on new microbrick architecture) using our own benchmark software package (i.e., Parallel Genome Assembler (PGA) developed atop Hadoop and Giraph) serving as a very good real world example of data as well as compute intensive workload.
+
+Comparing with the individual impact of different hardware components (e.g. network, storage and memory) over different clusters, we observed 70\% improvement in the Hadoop-workload and almost 35\% improvement in the Giraph-workload in the SwatIII cluster over SuperMikeII by using SSD (thus, increasing the disk-IO rate) and scaling it up in terms of memory (which increases the caching). Then, we provide significant insight on efficient and cost-effective organization of these hardware components in the entire compute clusters. In this part, the CeresII prototype-cluster is found to yield same level of performance as in SuperMikeII while yielding more than 2-times improvement in performance per dollar in the entire benchmark test.
 %The enormous growth of the bigdata produced by different experimental facilities is rapidly changing the model of computation in the domain of high performance computing (HPC).
 %Many HPC aficionados, in order to efficiently manage their data intensive workload started using the current state of the art bigdata analytics softwares like Hdoop, Giraph etc. devieting from the traditional parallel programming models like MPI, Grid etc.
 %However, there is very limited understanding on the performance characteristics of the underlying hardwares that these bigdata analytics softwares can obtain when applied for a data-intensive high-performance scientific workload.
 %Consequently, the traditional supercomputers, even with lots of processing power are found to provide suboptimal performance. 
 %In this paper, we pointed out several architectural imbalance in terms of number of cores, storage and memory infrastructure in a traditional Supercomputing environment, SuperMikeII, located in LSU, USA. 
-The enormous growth in the amount of data that the various experimental-devices generate is rapidly changing the computational model in high performance computing (HPC) domain. 
-Recently, various data intensive computation frameworks such as Hadoop and Giraph have emerged as bigdata analytic softwares. 
-Scientists are increasingly using these softwares to efficiently handle these bigdata, deviating from MPI or grid-based technologies . 
-However, there is limited understanding that how the different types of hardware-architectures affect the performance of these bigdata analytic softwares when applied to a real world data-intensive high-performance scientific workload.
+%%%The enormous growth in the amount of data that the various experimental-devices generate is rapidly changing the computational model in high performance computing (HPC) domain. 
+%%%Recently, various data intensive computation frameworks such as Hadoop and Giraph have emerged as bigdata analytic softwares. 
+%%%Scientists are increasingly using these softwares to efficiently handle these bigdata, deviating from MPI or grid-based technologies . 
+%%%However, there is limited understanding that how the different types of hardware-architectures affect the performance of these bigdata analytic softwares when applied to a real world data-intensive high-performance scientific workload.
 
-In this study, we evaluated the performance of a traditional supercomputer called SuperMikeII (located in LSU, USA) and two different types of private cloud infrastructure called SwatIII and CeresII (Located in Samsung, Korea) using our own benchmark large-scale Parallel Genome Assembler (PGA).
-Our assembly pipeline consists of a huge amount of short read analysis using Hadoop, followed by a large de Bruijn graph analysis using Giraph, thus serving as a very good real world example of data- as well as compute-intensive workload.
-In the first part of our study, we compare the individual impact of different hardware components (e.g. network, storage and memory) used in SuperMikeII and SwatIII. We observed a 70\% improvement in the Hadoop-workload and almost 35\% improvement in the Giraph-workload in the SwatIII cluster by using SSD (thus, increasing the disk-io rate)  and scaling it up in terms of memory (which increases the caching).
-Then, in the second part, we evaluate different ways of organizing these hardware components in a high performance cluster and their tradeoff in terms of performance and performance/\$. In this part, the MicroBrick-based CeresII architecture is found to yield almost 2-times improvement in terms of performance/\$ while yielding the same level of performance compared to SuperMikeII.
+%%%In this study, we evaluated the performance of a traditional supercomputer called SuperMikeII (located in LSU, USA) and two different types of private cloud infrastructure called SwatIII and CeresII (Located in Samsung, Korea) using our own benchmark large-scale Parallel Genome Assembler (PGA).
+%%%Our assembly pipeline consists of a huge amount of short read analysis using Hadoop, followed by a large de Bruijn graph analysis using Giraph, thus serving as a very good real world example of data- as well as compute-intensive workload.
+%%%In the first part of our study, we compare the individual impact of different hardware components (e.g. network, storage and memory) used in SuperMikeII and SwatIII. We observed a 70\% improvement in the Hadoop-workload and almost 35\% improvement in the Giraph-workload in the SwatIII cluster by using SSD (thus, increasing the disk-io rate)  and scaling it up in terms of memory (which increases the caching).
+%%%Then, in the second part, we evaluate different ways of organizing these hardware components in a high performance cluster and their tradeoff in terms of performance and performance/\$. In this part, the MicroBrick-based CeresII architecture is found to yield almost 2-times improvement in terms of performance/\$ while yielding the same level of performance compared to SuperMikeII.
 
 
 %In this paper we evaluated the performance of three different types of compute-cluster including a traditional supercomputer, called SuperMikeII located in LSU, USA and two private cloud infrastructure, called SwatIII and CeresII located in Samsung, Korea.
@@ -466,38 +473,34 @@ Then, in the second part, we evaluate different ways of organizing these hardwar
 Scientists in different fields are increasingly handling huge amount of bigdata produced by different experimental facilites which make the so called compute intensive scientific applications a severe data intensive endeavor. 
 Starting from the astronomical data analysis to the coastal simulation, from the social data analysis to the genome assembly, the huge volume of data poses several challneges to the scientific community starting from efficiently storing and managing to optimally processing it.
 The fundamental model of computation involved in the scientific applications is rapidly changing in order to address these challenges.
-Deviating from the decade old compute intensive programming paradigm like MPI, Grid etc. many HPC aficionados has started using the current state of the art big data analytics software like Hadoop, Giraph etc. for their data intensive scientific workloads.
+Deviating from the decade old compute intensive programming paradigm like MPI, Grid etc. many HPC aficionados have started using the current state of the art big data analytics software like Hadoop, Giraph etc. for their data intensive scientific workloads.
 
-Consequently, the traditional supercomputers, even with tera to peta FLOP scale processing power are found to yield suboptimal performance, especially because of the io- and memory-bound nature of the data intensive workloads.
-The cumulative impact of the CPU, storage, memory and network on the overall performance of the  HPC-applications makes the task of providing efficient yet cost-effective hardwares more challenging, however, opens new opportunities for the hardware-manufacturers.
-Furthermore, in the last few years, a growing number of data-intensive HPC applications started shifting towards the pay-as-you-go cloud infrastructure (eg. Amazon Web Service, Penguin, R-HPC etc.) especially because of the elasticity of resources and reduced setup-time and cost.
+Consequently, the traditional supercomputers, even with tera to peta FLOP scale processing power are found to yield suboptimal performance, especially because of the io- and memory-bound nature of the data intensive applications.
+As a result, providing efficient and cost-effective hardwares became more challenging, however, openning new opportunities for the hardware-manufacturers.
+Furthermore, in the last few years, an increasing number of data-intensive HPC applications started shifting towards the pay-as-you-go cloud infrastructure (eg. Amazon Web Service, Penguin, R-HPC etc.) especially because of the elasticity of resources and reduced setup-time and cost.
 %On the other hand, the huge improvement in the field of hardware and the corresponding drop in the price started changing the performance point.
 %Many cloud service providers such as Amazon etc. have already started offering SSDs as an elemental hardware feature in their cloud infrastructure. 
 %DRAM is also available in cheaper rate as before. Consequently, high-memory machines are now commonplace in many cloud infrastructures.
 
 As a consequence, there is a growing interest in all the three communities, including the HPC-Scientists, the hardware-manufacturers as well as the commercial cloud-service-providers to develop cost-effective, high-performance testbeds that will drive the next generation scientific research involving huge amount of bigdata.
-Also, millions of dollars are being spent in programs like NSFCloud for the same purpose where several academic organizations and manufacturing companies collaborated to enable the academic research community to develop and experiment with novel cloud architectures.
+Also, millions of dollars are being spent in programs like NSFCloud\footnote{https://www.chameleoncloud.org/nsf-cloud-workshop/} where several academic organizations and manufacturing companies collaborated to address the challenges involved in developing these novel distributed cyber infrastructures.
 
 Despite of this growing interest in both the scientific as well as the industrial community, there is very limited understanding of the performance characteristics of the underlying hardwares that the current state-of-the-art bigdata analytics softwares can obtain when applied for high performance data intensive scientific workloads.
 Thus, we found it extremely important to evaluate different types of distributed cyber infrastructure in the context of a real world data intensive high performance scientific workload.  
 
 In this work, we use the large scale de novo genome assembly as one of the most challenging and complex real world example of high performance computing workload that recently made its way to the forefront of bigdata challenges.
 De novo genome assembly reconstructs the entire genome from fragmented parts called short reads when no reference genome is available.
-The assembly pipeline consists of huge amount of short read analysis followed by a  complex analysis on a largescale graph, thus, serving as a very good example of both data- as well as compute-intensive scientific workload.
+The assembly pipeline consists of huge amount of short read analysis followed by a  complex largescale graph analysis, thus, serving as a very good example of both data- as well as compute-intensive workload.
 
-Specifically, in this paper, we juxtapose the performance of different distributed cyber infrastructure with our own benchmark large scale parallel genome assembler, called PGA, that we developed using Hadoop and Giraph.
-We present the performance result of PGA atop three different types of clusters including a traditional-supercomputer, called SuperMikeII located in LSU, USA and two private cloud infrastructure, called SwatIII and CeresII located in Samsung, S.Korea.
-
+Specifically, in this paper, we compre the performance of different distributed cyber infrastructure with our own benchmark large scale parallel genome assembler, called PGA, that we developed using Hadoop and Giraph.
+We present the performance result of PGA atop three different types of clusters as follows. 
+1) A traditional HPC cluster, called SuperMikeII, located in LSU, USA. 
+2) A regular data center architecture, called SwatIII, located in Samsung, Korea and 
+3) A new microbrick based prototype architecture, called CeresII, also located in Samsung, Korea.
 Our performance analysis is divided into two parts as follows:
 \begin{enumerate}
-\item In the first part, we study the impact of optimizing each hardware component individually (e.g. network, storage and memory). 
-We observed almost 60\% improvement in case of Hadoop when we use SSDs in SwatIII cloud infrasturcture instead of HDDs in SuperMikeII because of increased io reate.
-We also observe almost 35\% improvement in case of Giraph by scalingup the memory from 32GB to 256GB in SwatIII possibly because of caching effect.
-\item In the second part, we compare several different ways of organizing different hardware-components in order to optimize the performance as well as performance/\$. 
-Starting from a qualitative analysis of various organization, we moved to a semi-quantitative analysis which presents good insight on how to leverage DRAM and SSDs in a cost effective manner in a high performance computing cluster as well as cloud environment. 
-Finally, we evaluate the performance of the CeresII-cluster which is a novel prototype-cluster made for shared nothing paradigm, like Hadoop and Giraph. 
-Unlike existing scaledup and scaledout clusters, this MicroBrick-based architecture with high-density-servers represents scaledout-in-a-box. 
-Our evaluaion shows that CeresII yields more than twice improvement in performance/\$ while yielding the same level of performance as in SuperMikeII, a traditional supercomputer. 
+\item In the first part, comparing the individual impact of different hardware component over different clusters, we observe almost 70\% improvement in the Hadoop-based graph construction stage and 35\% improvement in the Giraph based graph-simplification stage in the SwatIII cluster over SuperMikeII by using SSD and scaling it up in terms of memory. SSD increases the disk-io rate, thus reducing the io-wait. Whereas, more memory increases the caching effect.
+\item Then, in the second part we provide significant insight on efficient and cost-effective organization of different hardware components. In this part we modified the underlying hardware organization of SwatIII (the regular datacenter architecture) in many different ways to better understand the impact of different architectural balance. In this part, we observe that after a certain threshold on the number of disks per node, SSD and HDD yields similar performance because of similar amount of disk-io rate. Where the threshold is determined by the number of cores. We also observed that the new microbrick based prototype architecture, CeresII is found to yield almost similar performance as SuperMikeII while yielding almost 2-times improvement in performance/\$. 
 \end{enumerate}
 
 The rest of the paper is organized as follows:
@@ -507,162 +510,6 @@ Section-\ref{TheWorkload} discusses the overview of our Parallel Genome Assemble
 Section-\ref{Evaluation Methodology} describes different types of cluster archetecture and the Hadoop configurations we used for our evaluation purpose.
 In section-\ref{IndividualHWEffect} we compare the impact of different network, storage and memory architecture individually with the CPU-utilization, and IO-patterns in details.
 Finally, in section-\ref{ComparingDifferentArchitecturalBalance} we compare different architectural balance in terms of both performance as well as performance/\$.
-%%%%%%%%%%%%%%%
-\begin{figure*}[htb]
-	\begin{subfigure}[b]{0.5\textwidth}
-                \includegraphics[width=\textwidth]{Figure/PerormanceData/Plots/Network.pdf}
-                \caption{Impact of network}
-                \label{fig:SuperMikeSwatBasic}
-        \end{subfigure}
- 	\begin{subfigure}[b]{0.5\textwidth}
-                \includegraphics[width=\textwidth]{Figure/PerormanceData/Plots/StorageMemory.pdf}
-                \caption{Impact of SSD and RAM}
-                \label{fig:SuperMikeSwatStorageMemory}
-   \end{subfigure}
-   \caption{Impact of each individual hardware component on different stages of the assembly pipeline (15 DataNodes used)}
-  \label{fig:SuperMikeSwat}
-\end{figure*}
-%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{figure*}[htb]
-\centering
-        \begin{subfigure}[b]{0.3\textwidth}
-                \includegraphics[width=\textwidth]{Figure/SystemData/Plots/BGCPUHDD.pdf}
-                \caption{Graph Construction in SwatIII-Basic}
-                \label{fig:BGCPUHDD}
-        \end{subfigure}
-		\begin{subfigure}[b]{0.3\textwidth}
-                \includegraphics[width=\textwidth]{Figure/SystemData/Plots/ECCPUHDD.pdf}
-                \caption{Graph Simplification in SwatIII-Basic}
-                \label{fig:ECCPUHDD}
-        \end{subfigure} 
-        \begin{subfigure}[b]{0.3\textwidth}
-                \includegraphics[width=\textwidth]{Figure/SystemData/Plots/SCFCPUHDD.pdf}
-                \caption{Scaffolding in SwatIII-Basic}
-                \label{fig:SCFCPUHDD}
-        \end{subfigure}       
-        
-        \begin{subfigure}[b]{0.3\textwidth}
-                \includegraphics[width=\textwidth]{Figure/SystemData/Plots/BGCPUSSD.pdf}
-                \caption{Graph Construction in SwatIII-Storage}
-                \label{fig:BGCPUSSD}
-        \end{subfigure}    
-        \begin{subfigure}[b]{0.3\textwidth}
-                \includegraphics[width=\textwidth]{Figure/SystemData/Plots/ECCPUSSD.pdf}
-                \caption{Graph Simplification in SwatIII-Storage}
-                \label{fig:ECCPUSSD}
-        \end{subfigure}
-        \begin{subfigure}[b]{0.3\textwidth}
-                \includegraphics[width=\textwidth]{Figure/SystemData/Plots/SCFCPUSSD.pdf}
-                \caption{Scaffolding in SwatIII-Storage}
-                \label{fig:SCFCPUSSD}
-        \end{subfigure}
-        \caption{CPU-Utilization and IO-Wait characteristics in SwatIII-Basic (1-HDD/node) and SwatIII-Storage(1-SSD/node)}\label{fig:HddSsdCPU}
-\end{figure*}
-
-\begin{figure*}[htb]
-        \centering
-        \begin{subfigure}[b]{0.3\textwidth}
-                \includegraphics[width=\textwidth]{Figure/SystemData/Plots/BGHddSsdRdIops.pdf}
-                \caption{Read-Iops in Graph Construction in SwatIII-Basic and SwatIII-Storage}
-                \label{fig:BGHddSsdRdIops}
-        \end{subfigure}
-        ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc.
-          %(or a blank line to force the subfigure onto a new line)
-        \begin{subfigure}[b]{0.3\textwidth}
-                \includegraphics[width=\textwidth]{Figure/SystemData/Plots/ECHddSsdRdIops.pdf}
-                \caption{Read-Iops in Graph Simplification in SwatIII-Basic and SwatIII-Storage}
-                \label{fig:ECHddSsdRdIops}
-        \end{subfigure}
-        ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc.
-          %(or a blank line to force the subfigure onto a new line)
-        \begin{subfigure}[b]{0.3\textwidth}
-                \includegraphics[width=\textwidth]{Figure/SystemData/Plots/SCFHddSsdRdIops.pdf}
-                \caption{Read-Iops in Scaffolding in SwatIII-Basic and SwatIII-Storage}
-                \label{fig:SCFHddSsdRdIops}
-        \end{subfigure}        
-        \begin{subfigure}[b]{0.3\textwidth}
-                \includegraphics[width=\textwidth]{Figure/SystemData/Plots/BGHddSsdWrIops.pdf}
-                \caption{Write-Iops in Graph Construction in SwatIII-Basic and SwatIII-Storage}
-                \label{fig:BGHddSsdWrIops}
-        \end{subfigure}
-        ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc.
-          %(or a blank line to force the subfigure onto a new line)
-        \begin{subfigure}[b]{0.3\textwidth}
-                \includegraphics[width=\textwidth]{Figure/SystemData/Plots/ECHddSsdWrIops.pdf}
-                \caption{Write-Iops in Graph Simplification in SwatIII-Basic and SwatIII-Storage}
-                \label{fig:ECHddSsdWrIops}
-        \end{subfigure}
-        ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc.
-          %(or a blank line to force the subfigure onto a new line)
-        \begin{subfigure}[b]{0.3\textwidth}
-                \includegraphics[width=\textwidth]{Figure/SystemData/Plots/SCFHddSsdWrIops.pdf}
-                \caption{Write-Iops in Scaffolding in SwatIII-Basic and SwatIII-Storage}
-                \label{fig:SCFHddSsdWrIops}
-        \end{subfigure}
-	\caption{Comparison of Total IOPS in one host in SwatIII-Basic (1-HDD/node) and SwatIII-Storage (1-SSD/node)} \label{fig:HddSsdRWiops}
-\end{figure*}
-
-\begin{figure*}[htb]
-        \centering
-        \begin{subfigure}[b]{0.3\textwidth}
-                \includegraphics[width=\textwidth]{Figure/SystemData/Plots/BGHddSsdHdfsRdIops.pdf}
-                \caption{HDFS-Read-Rate in Graph Construction in SwatIII-Basic and SwatIII-Storage}
-                \label{fig:BGHddSsdHdfsRdIops}
-        \end{subfigure}
-        ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc.
-          %(or a blank line to force the subfigure onto a new line)
-        \begin{subfigure}[b]{0.3\textwidth}
-                \includegraphics[width=\textwidth]{Figure/SystemData/Plots/ECHddSsdHdfsRdIops.pdf}
-                \caption{HDFS-Read-Rate in Graph Simplification in SwatIII-Basic and SwatIII-Storage}
-                \label{fig:ECHddSsdHdfsRdIops}
-        \end{subfigure}
-        ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc.
-          %(or a blank line to force the subfigure onto a new line)
-        \begin{subfigure}[b]{0.3\textwidth}
-                \includegraphics[width=\textwidth]{Figure/SystemData/Plots/SCFHddSsdHdfsRdIops.pdf}
-                \caption{HDFS-Read-Rate in Scaffolding phase in SwatIII-Basic and SwatIII-Storage}
-                \label{fig:SCFHddSsdHdfsRdIops}
-        \end{subfigure}        
-        \begin{subfigure}[b]{0.3\textwidth}
-                \includegraphics[width=\textwidth]{Figure/SystemData/Plots/BGHddSsdHdfsWrIops.pdf}
-                \caption{HDFS-Write-Rate in Graph Construction in SwatIII-Basic and SwatIII-Storage}
-                \label{fig:BGHddSsdHdfsWrIops}
-        \end{subfigure}
-        ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc.
-          %(or a blank line to force the subfigure onto a new line)
-        \begin{subfigure}[b]{0.3\textwidth}
-                \includegraphics[width=\textwidth]{Figure/SystemData/Plots/ECHddSsdHdfsWrIops.pdf}
-                \caption{HDFS-Write-Rate in Graph Simplification in SwatIII-Basic and SwatIII-Storage}
-                \label{fig:ECHddSsdHdfsWrIops}
-        \end{subfigure}
-        ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc.
-          %(or a blank line to force the subfigure onto a new line)
-        \begin{subfigure}[b]{0.3\textwidth}
-                \includegraphics[width=\textwidth]{Figure/SystemData/Plots/SCFHddSsdHdfsWrIops.pdf}
-                \caption{HDFS-Write-Rate in Scaffolding phase in SwatIII-Basic and SwatIII-Storage}
-                \label{fig:SCFHddSsdHdfsWrIops}
-        \end{subfigure}        
-        \caption{Comparison of HDFS read/write rate across all datanode SwatIII-Basic (1-HDD/node) and SwatIII-Storage (1-SSD/node)}\label{fig:HddSsdHdfsRWps}
-        
-\end{figure*}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{figure*}[htb]
-        \begin{subfigure}[b]{0.5\textwidth}
-                \includegraphics[width=\textwidth]{Figure/PerormanceData/Plots/PerfDiffArch.pdf}
-                \caption{Compare execution-time}
-                \label{fig:DifferentArchitecturesPerf}
-        \end{subfigure}
-        \begin{subfigure}[b]{0.5\textwidth}
-                \includegraphics[width=\textwidth]{Figure/PerormanceData/Plots/PerfPerDollarDiffArch.pdf}
-                \caption{Compare performance/\$}
-                \label{fig:DifferentArchitecturesPerfPerDollar}
-        \end{subfigure}
-        \caption{Compare different type of cluster architeture for Bumble bee genome assembly pipeline}
-  \label{fig:DifferentArchitectures}
-\end{figure*}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section {Related Work} \label{Related Work}
 %\input {relatedwork.tex}
@@ -697,13 +544,14 @@ There are several performance analysis study on using different types of hardwar
 Vienne \cite{ethib:vienne} evaluated the performance of Hadoop on different high speed interconnects such as 40GigE RoCE and Inifiniband FDR and found InfiniBand FDR yields the best performance for HPC as well as cloud computing applications.
 Similarly, Yu \cite{ethib:yu} found improvedperformance of Hadoop in traditional supercomputers due to high speed networks.
 
-Kang et al. [17] compared the execution time of sort, join, WordCount, Bayesian, and DFSIO workloads using SSD and HDD and obtained better performance using SSD.
+Kang \cite{ssdhdd:kang} compared the execution time of sort, join, WordCount, Bayesian, and DFSIO workloads using SSD and HDD and obtained better performance using SSD.
 Wu \cite{ssdhdd:wu} found that Hadoop performance can be increased almost linearly with the increasing fraction of SSDs in the storage system. They used the tera-sort benchmark for their study. Additionally, they also showed that in an SSD-dominant cluster Hadoop-performance is almost insensitive of different Hadoop performance parameter like block-size and buffer-size.
 Moon \cite{ssdhdd:moon}, showed a significant cost benefit by storing the intermediate Hadoop data in SSD, leaving the HDDs to store Hadoop Distributed File System (HDFS \cite{fw:hdfs}) source data. They also used the terasort benchmark in their study.
-Similarly, Li and Krish and both used the SSDs to serve temporary data to reduce disk contention and used HDDs to store the HDFS data. They all reached the same conclusion as \cite{ssdhdd:moon}.  
-Tan \cite{ssdhdd:tan} also reached the similar conclusion for two other different types of workloads including a Hive-workload and an HBase-workload.
+Similar result can be found in the study by Li \cite{ssdhdd:li} and Krish \cite{ssdhdd:krish} where SSDs are used to serve temporary data to reduce disk contention and used HDDs to store the HDFS data. They all reached the same conclusion as \cite{ssdhdd:moon}.  
+Tan \cite{ssdhdd:tan} also reached the similar conclusion for two other workloads including a Hive-workload and an HBase-workload.
 
-All of the above studies have been performed either with existing benchmarks like HiBench[] or for enterprise level analytics workloads, thus, unable to address the HPC aspect of Hadoop in terms of efficient hardware provisioning.
+All of the above studies have been performed either with existing benchmarks like HiBench \cite{bm:hibench} or for enterprise level analytics workloads, thus, unable to address the HPC aspect of Hadoop.
+
 Furthermore, very limited studies consider the in-memory graph processing frameworks like Giraph, although, graph analysis is a core part of many analytics workloads.
 
 %Ahn \cite{ssdhdd:ahn} identified in a virtual environment overhead of virtualization is minimized with SSDs.
@@ -771,7 +619,7 @@ Giaph, on the other hand, is an in-memory framework. It reads/writes the data fr
 In a traditional supercomputing environment, each node is normally attached with only one HDD. 
 This configuration puts a practical limitation in terms of total number of disk-io operations per second (IOPS).
 Some variations of Hadoop (eg. MyHadoop etc.) are capable to read/write the data from/to other parallel file system like Lustre or GPFS which are mounted on dadicated io-servers in an HPC environment. 
-Although these versions of Hadoop alleviate the problem of total IOPS by using more disks that are used for Luster or GPFS, there is a tradeoff between the total IOPS and the total network-traffic.
+Although these versions of Hadoop can be well optimized to take the advantage of huge amount of disk-IOPS availale through the dadicated io-servers (that are used to mount the Luster or GPFS), the performance can be severely constrained by the available network bandwidth which is shared among many users, consequently generating huge network-traffic.
 Furthermore, distributing the Shuffled data across dadicated io-servers needs complicated partitioning on the parallel file system which is hardly available in a traditional supercoputing environment.
 In this paper, we consider only HDFS to evaluate the underlying hardwares.
 
@@ -821,7 +669,7 @@ In the first phase, we use Hadoop in order to build de Bruijn graph from these s
 Once the graph is constructed we use Giraph in the subsequent phases to analyze the graph in order to construct appreciably long contigs and scaffolds.
 In this section we provide a brief overview of each stage of the assembler.
 
-\subsection {De Bruijn graph construction}
+\subsection {Hadoop-based De Bruijn graph construction}
 In our assembler we constructed the de Bruijn graph from the fastq short reads using two MapReduce jobs as follows. 
 
 \textbf{1) Fastq-preprocessing:} Each short-read (or, simply read) in a fastq file can be considered as a tuple and it consists of four different lines. The first line is a read-id. The second line is the actual read from the sequencing machine. The third line is an additional line containing some biological information. And the fourth line is a quality-score assigned to that read. 
@@ -837,7 +685,7 @@ Based upon the value of $k$ the Hadoop-mappers write a huge amount of data to th
 After the mappers complete, the shuffle phase partitions the intermidiate key-value pairs on the basis of key which effectively collects the edges of the graph emitted from the same source $k$-mer.
 Finally, the reduce function aggregates the edges (value-list) of each source $k$-mer and saves the graph structure in HDFS in adjacency list format.
 
-\subsection {Graph Simplification}
+\subsection {Giraph-based Graph Simplification}
 The graph produced in the graph construction stage works as the input to the graph simplification stage.
 In this stage PGA invokes a series of Giraph jobs to simplify the graph.
 Giraph reads the graph from HDFS in an adjacency list format.
@@ -863,7 +711,7 @@ In one superstep every node matching this criteria sends the cumulative frequenc
 In the next superstep successor nodes compute difference in frequency and delete all the nodes with lower frequency.
 Remember we calculated the frequency during the compression phase.
 
-\subsection {Scaffolding}
+\subsection {Scaffolding: Mix of Hadoop and Giraph job}
 %The first step of scaffolding determines which contigs are linked by matepairs, and their relative orientation and separation. By convention, mated reads have the same name except for their suffix (either 1 or 2). 
 %PGA therefore finds all mate-linked contigs using a single MapReduce cycle by emitting from the mapper mate messages consisting of the read name without the suffix as the key, and the contig name, read orientation, and read offset as the value.
 %Next, we developed a graph hop method to find the exact path between the linked nodes
@@ -883,96 +731,112 @@ routine merges the path of now non-branching contigs into a single contig. The s
 High throughput next generation DNA sequencing machines like Illumina Genome Analyzer produce huge amount of short read sequences typically in the scale of several GigaBytes to Terabytes.
 Furthermore, the size of the de Bruijn graph built from these vast amount of short reads may be another magnitude higher than the reads itself making the entire assembly pipe line severely data-intensive.
 
-In this paper, we use the bumble bee genome sequence as a representative data set.
-The bumble bee genome is available in Genome Assembly Gold-standard Evaluation (GAGE \cite{bio:gage}) website in fastq format.
-The data size is 90GB containing almost 1billion reads.
-The size of the de Bruijn graph produced by it is 95GB.
-Table-\ref{table:BumbleBeeData} shows the details of the entire bumble-bee genome assembly pipeline and the total amount of data read/written in its different stages.
+In this paper, we use two genome dataset, 1) a moderate size bumble bee genome data (90GB) and 2) a large scale human genome data (452GB).
+The corresponding graph size is 95GB and 3.2TB based upon the number of unique $k$-mers in the data set
+The bumble bee genome is available in Genome Assembly Gold-standard Evaluation (GAGE \cite{bio:gage}) website\footnote{http://gage.cbcb.umd.edu/} in fastq format.
+The Human genome is available in NCBI website with accession number SRA0016239.
+Table-\ref{table:BumbleBeeData} and \ref{table:HumanData} shows the details of the data size in the assembly pipeline for both the genomes.
+It is to be noted that, in SuperMikeII we could not run the scaffolding stage for the human genome data set because of lower number of maximum allowed open file descriptor ($ulimit -n$). Hence, we did not consider it in our comparison. The corresponding parameter was set to 1024 in SuperMikeII whereas it is quite common to make to set it to some higher value (eg. 64000).
 
-\begin{table*}
+\begin{table}
 \begin{center}
-    \begin{tabular}{ |p{1.3cm} | p{1.3cm} | p{1.3cm} | p{1.3cm} | p{1.3cm} | p{1.3cm} | p{1.3cm}|} \hline
-    & Nature of the jobs & Input size to the workflow & Final output size of the workflow & Number of jobs & Intermediate data read/written to local file system & Total data read/written to HDFS \\ \hline
-    Graph Construction & Hadoop & 90GB & 95GB & 2 & 2TB (shuffle intensive) & 136GB \\ \hline
+    \begin{tabular}{ |p{1.1cm} | p{0.8cm} | p{1.1cm} | p{0.8cm} | p{0.8cm} | p{0.8cm} | p{0.8cm}|} \hline
+    & Job Type & Input & Final output & \# jobs & Shuffled data & HDFS Data \\ \hline
+    Graph Construction & Hadoop & 90GB & 95GB & 2 & 2TB & 136GB \\ \hline
     Graph Simplification & Series of Giraph jobs & 95GB (71581898 vertices) & 24GB (4787619 vertices) & 15 & - & 966GB \\ \hline
-    Scaffolding & Small Hadoop/Giraph jobs & 24GB & 640MB & 100 & ???? & 1121GB \\ \hline    
+    Scaffolding & Small Hadoop/ Giraph & 24GB & 640MB & 100 & 600GB & 1121GB \\ \hline    
     \end{tabular}
     \caption{Bumble-bee genome assembly}
 	\label{table:BumbleBeeData}
 \end{center}
-\end{table*}
+\end{table}
+
+\begin{table}
+\begin{center}
+    \begin{tabular}{ |p{1.1cm} | p{0.8cm} | p{1.1cm} | p{0.8cm} | p{0.8cm} | p{0.8cm} | p{0.8cm}|} \hline
+    & Job Type & Input & Final output & \# jobs & Shuffled data & HDFS Data \\ \hline
+    Graph Construction & Hadoop & 452GB & 3TB & 2 & 9.9TB & 3.2TB \\ \hline
+    Graph Simplification & Series of Giraph jobs & 3.2TB (1483246722 vertices) & 24GB (16619505 vertices) & 15 & - & 4.1TB \\ \hline    
+    \end{tabular}
+    \caption{Human genome assembly}
+	\label{table:HumanData}
+\end{center}
+\end{table}
 
 \section {Evaluation Methodology} \label{Evaluation Methodology}
 %\input {evaluationmethodology.tex}
 \subsection {Experimental Testbeds}
 %\input {experimentaltestbeds.tex}
-Table-\ref{table:Experimentaltestbeds} shows the description of the experimental testbeds that we use in our study.
-We use the configuration of LSU supercomputing resource, SuperMikeII as the baseline and compare all the performance result of our private cloud infrastructures, SwatIII and CeresII to this baseline.
-Each node in any SwatIII variant has the same number of processors and cores as in SuperMikeII. 
-They only vary in terms of the number of disks per node, type of storage media and the amount of memory.
-The first three variant of SwatIII: SwatIII-Basic, SwatIII-Storage and SwatIII-Memory is used to evaluate the impact of each individual component of a compute cluster, i.e. network-interconnect, storage type and amount of memory per node.
-SwatIII-basic is similar in every aspect of SuperMikeII except it uses 10-Gbps Ethernet instead of 40-Gbps Infiniband as in SuperMikeII.
-SwatIII-Storage, as the name suggests, is storage-optimized and use one SSD per node instead of one HDD as in SuperMikeII.
-Whereas, SwatIII-Memory is both memory and storage optimized, i.e. it uses 1-SSD as well as 256GB memory per node instead of 32GB as in SuperMikeII.
-
-Unlike SuperMikeII or SwatIII-Basic/Storage/Memory which use only one DAS device per workstation, SwatIII-FullScaleup-HDD/SSD and SwatIII-Medium-HDD/SSD use more than one DAS device (Either HDD or SSD as the names suggest) per workstation.
-They also vary in terms of total amount of memory per node.
-However, the total amount of storage and memory space is almost same accross all these clusters.
-We use these clusters to mainly evaluate different types of architectural-balance in terms of raw execution time as well as performance/\$.
-Also, it provides significant insight on how to leverage SSDs in a cloud environment in a cost effective manner. 
-In these configurations we use JBOD (Just a Bunch Of Disks) configuration as per the genral recommendation by \cite{fw:hadoop}, Cloudera, Yahoo etc.
-Use of the JBOD configuration eliminates the limitation on disk-io speed which is constrained by the speed of the slowest disk in case of a RAID (Redundant Array of Independent Disk) configuration.
-As mentioned in \cite{fw:hadoop}, JBOD is found to perform 30\% better than RAID-0 in case of HDFS write throughput.
-
-The last one: CeresII is a MicroBrick-based prototype cluster made of High-density servers for shared nothing paradigm.
-Unlike SuperMikeII and different variants of SwatIII clusters, CeresII uses Intel Xeon E3 1220L V2 processor with only 2-cores per server (workstation). 
-It uses 10Gbps Virtual ethernet for the communication across the servers.
-All modules in a single chassis are connected to a common PCIe switch and can communicate to one another.
-
 \begin{table*}
 \begin{center}
-    \begin{tabular}{ |p{1.3cm} | p{1.3cm} | p{1.3cm} | p{1.3cm} | p{1.3cm} | p{1.3cm} | p{1.3cm}| p{1.3cm}|} \hline
+    \begin{tabular}{ |p{3.2cm} | p{1.6cm} | p{1.6cm} | p{1.6cm} | p{1.6cm} | p{1.6cm} | p{1.6cm}| p{1.6cm}|} \hline
     & Super MikeII & SwatIII-Basic & SwatIII-Storage & SwatIII-Memory & SwatIII-FullScaleup-HDD/SSD & SwatIII-Medium-HDD/SSD & CeresII \\ \hline
-    Processor & SandyBridge Xeon 64bit Ep series & SandyBridge Xeon 64bit Ep series & SandyBridge Xeon 64bit Ep series & SandyBridge Xeon 64bit Ep series & SandyBridge Xeon 64bit Ep series & SandyBridge Xeon 64bit Ep series &  Xeon E3-1220L V2 \\ \hline
-    Processor-speed (GHz) & 2.6 & 2.6 & 2.6 & 2.6 & 2.6 & 2.6 & 2.3 \\ \hline
-    \#Processor & 2 & 2 & 2 & 2 & 2 & 2 & 1 \\ \hline
-    \#V-Cores & 16 & 16 & 16 & 16 & 16 & 16 & 2 \\ \hline \hline
-    DRAM (GB) & 32 & 32 & 32 & 256 & 256 & 64 & 16  \\ \hline
-    DRAM-Speed (MHz) & 1600 & 1600  & 1600  & 1600  & 1600  & 1600 & 1600 \\ \hline \hline
-	Storage type & HDD & HDD & SSD & SSD & HDD/SSD & HDD/SSD & SSD \\ \hline    
-    \#Disk & 1 & 1 & 1 & 1 & 7 & 2 & 1 \\ \hline
-    Disk-Speed & 7200RPM & 10000 RPM & Random-Read/Write: 100000/90000-IOPS, Sequential-Read\/Write: 540/520 MBps &   &   & 10000 RPM &   \\ \hline \hline
-    Network & 40-Gbps QDR Infiniband (2:1 blocking) & 10-Gbps Ethernet & 10-Gbps Ethernet & 10-Gbps Ethernet & 10-Gbps Ethernet & 10-Gbps Ethernet & 10-Gbps Virtual Ethernet\\ \hline \hline
-    \#Nodes used for Bumble-bee genome assembly & 16 & 16 & 16 & 16 & 3 & 3 & 32 \\ \hline
-    \#Nodes used for human genome assembly & 128 & - & - & - & 16 & 16 & - \\ \hline
+    %Processor & SandyBridge Xeon 64bit Ep series & SandyBridge Xeon 64bit Ep series & SandyBridge Xeon 64bit Ep series & SandyBridge Xeon 64bit Ep series & SandyBridge Xeon 64bit Ep series & SandyBridge Xeon 64bit Ep series &  Xeon E3-1220L V2 \\ \hline
+    %Processor-speed (GHz) & 2.6 & 2.6 & 2.6 & 2.6 & 2.6 & 2.6 & 2.3 \\ \hline
+    \#Processor/workstation & 2 & 2 & 2 & 2 & 2 & 2 & 1 \\ \hline
+    \#Physical-Cores/workstation & 16 & 16 & 16 & 16 & 16 & 16 & 2 \\ \hline %\hline
+    DRAM(GB)/workstation & 32 & 32 & 32 & 256 & 256 & 64 & 16  \\ \hline
+    %DRAM-Speed (MHz) & 1600 & 1600  & 1600  & 1600  & 1600  & 1600 & 1600 \\ \hline \hline
+	%Storage type & HDD & HDD & SSD & SSD & HDD/SSD & HDD/SSD & SSD \\ \hline    
+    \#Disks(500GB each)/workstation & 1-HDD & 1-HDD & 1-SSD & 1-SSD & 7-HDD/SSD & 2-HDD/SSD & 1-SSD \\ \hline
+    %Disk-Speed & 7200RPM & 10000 RPM & Random-Read/Write: 100000/90000-IOPS, Sequential-Read\/Write: 540/520 MBps &   &   & 10000 RPM &   \\ \hline \hline
+    Network & 40-Gbps QDR Infiniband (2:1 blocking) & 10-Gbps Ethernet & 10-Gbps Ethernet & 10-Gbps Ethernet & 10-Gbps Ethernet & 10-Gbps Ethernet & 10-Gbps Virtual Ethernet\\ \hline %\hline
+    \#DataNodes used for bubmble bee genome (90GB) & 15 & 15 & 15 & 15 & 4 & 2 & 31 \\ \hline
+    \#DataNodes used for human genome (452GB)& 128 & - & - & - & 16 & - & - \\ \hline
     \end{tabular}
     \caption{Experimental Tetbeds}
 	\label{table:Experimentaltestbeds}
 \end{center}
 \end{table*}
+Table-\ref{table:Experimentaltestbeds} shows the overview of the experimental testbeds that we use in our study.
+We use the configuration of LSU supercomputing resource, SuperMikeII as the baseline and compare all the performance result of our private cloud infrastructures, SwatIII and CeresII to this baseline.
+Each node in any of the SwatIII variant has the same number of processors and cores as in SuperMikeII.
+In particular, each SuperMikeII- and SwatIII-node uses two Intel SandyBridge Xeon 64bit Ep series processor. Each of the processor has 8-cores, thus yielding 16 physical cores per node.
+The first three variant of SwatIII: SwatIII-Basic, SwatIII-Storage and SwatIII-Memory is used to evaluate the impact of each individual component of a compute cluster, i.e. network-interconnect, storage type and amount of memory per node.
+SwatIII-basic is similar in every aspect of SuperMikeII except it uses 10-Gbps Ethernet instead of 40-Gbps Infiniband as in SuperMikeII.
+SwatIII-Storage, as the name suggests, is storage-optimized and use one SSD per node instead of one HDD as in SuperMikeII.
+On the other hand, SwatIII-Memory is both memory and storage optimized, i.e. it uses 1-SSD as well as 256GB memory per node instead of 32GB as in SuperMikeII.
 
-\begin{table*}
-\begin{center}
-    \begin{tabular}{ |p{1.8cm} | p{1.3cm} | p{1.3cm} | p{1.3cm} | p{1.3cm} | p{1.3cm} | p{1.3cm}| p{1.3cm}|} \hline
-    & Super MikeII & SwatIII-Basic & SwatIII-Storage & SwatIII-Memory & SwatIII-FullScaleup-SSD & SwatIII-FullScaleup-HDD & CeresII \\ \hline
-    Processor (\$) & 3040 & 3040 & 3040 & 3040 & 3040 & 3040 & 389 \\ \hline
-    Memory (\$) & 279 & 279 & 279 & 279 & 279 & 279 & 232\\ \hline
-    Disk (\$) & 67 & 67 & 177 & 177 & 177 & 177 &  140\\ \hline
-    Total-Cost/ WorkStation (\$) & 3386 & 3386 & 3496 & 5449 & 6511 & 5741 & 761\\ \hline
-    Nodes used for Bumble-bee genome assembly & 15 & 15 & 15 & 15 & 2 & 2 & 32 \\ \hline
-    Cost of the cluster (\$) & 50790 & 50790 & 52240 & 81735 & 13022 & 11482 & 24352 \\ \hline
-	\end{tabular}
-    \caption{Cost of Different Clusters (the price of different components are collected from amazon.com)}
-	\label{table:PricePerWorkstation}
-\end{center}
-\end{table*}
+Unlike SuperMikeII or SwatIII-Basic/Storage/Memory which use only one DAS device per workstation, SwatIII-FullScaleup-HDD/SSD and SwatIII-Medium-HDD/SSD use more than one DAS device (Either HDD or SSD as the names suggest) per workstation.
+They also vary in terms of total amount of memory per worstation.
+However, the total amount of storage and memory space is almost same accross all these clusters.
+We use these clusters to mainly evaluate different types of hardware-organization and architectural-balance in terms of raw execution time as well as performance/\$.
+%Also, it provides significant insight on how to leverage SSDs in a cloud environment in a cost effective manner. 
+In either of SwatIII-FullScaleup and SwatIII-Medium, we use JBOD (Just a Bunch Of Disks) configuration as per the genral recommendation by \cite{fw:hadoop}, Cloudera, Yahoo etc.
+Use of the JBOD configuration eliminates the limitation on disk-io speed which is constrained by the speed of the slowest disk in case of a RAID (Redundant Array of Independent Disk) configuration.
+As mentioned in \cite{fw:hadoop}, JBOD is found to perform 30\% better than RAID-0 in case of HDFS write throughput.
+
+The last one: CeresII is an improvement over CeresI \cite{Cluster:ceres1} and is in prototype phase. 
+The architecture of CeresII is based on Samsung-MicroBricks.
+A single MicroBricks chassis consists of 21 computation- and storage-module.
+Each module consists of one intel Xeon E3-1220L V2 processor with two physical cores, 16GB DRAM module (Dell) and  one SATA-SSD (Samsung).
+Each module has several PCI-express (PCIe) ports.
+Unlike SuperMikeII (traditional supercomputer) and SwatIII (regular datacenter), all the CeresII-module in a single chassis are connected to a common PCIe switch to communicate with each other.
+The high density of compute-modules per chassis in CeresII yields 42 physical cores connected through PCIe comparing to 16 physical cores per node as in SuperMikeII and SwatIII, thus resulting in better performance.
+Furthermore, the use of SSD reduce the io-wait and 8GB RAM per physical cores improves the access parallelism.
+
+%\begin{table*}
+%\begin{center}
+%    \begin{tabular}{ |p{1.8cm} | p{1.3cm} | p{1.3cm} | p{1.3cm} | p{1.3cm} | p{1.3cm} | p{1.3cm}| p{1.3cm}|} \hline
+%    & Super MikeII & SwatIII-Basic & SwatIII-Storage & SwatIII-Memory & SwatIII-FullScaleup-SSD & SwatIII-FullScaleup-HDD & CeresII \\ \hline
+%    Processor (\$) & 3040 & 3040 & 3040 & 3040 & 3040 & 3040 & 389 \\ \hline
+%    Memory (\$) & 279 & 279 & 279 & 279 & 279 & 279 & 232\\ \hline
+%    Disk (\$) & 67 & 67 & 177 & 177 & 177 & 177 &  140\\ \hline
+%    Total-Cost/ WorkStation (\$) & 3386 & 3386 & 3496 & 5449 & 6511 & 5741 & 761\\ \hline
+%    Nodes used for Bumble-bee genome assembly & 15 & 15 & 15 & 15 & 2 & 2 & 32 \\ \hline
+%    Cost of the cluster (\$) & 50790 & 50790 & 52240 & 81735 & 13022 & 11482 & 24352 \\ \hline
+%	\end{tabular}
+%    \caption{Cost of Different Clusters (the price of different components are collected from amazon.com)}
+%	\label{table:PricePerWorkstation}
+%\end{center}
+%\end{table*}
 
 \subsection {Hadoop configurations and optimizations} \label{HadoopConfigurationsAndoptimizations}
-Since our goal is to evaluate the underlying hardwares and the balance among storage, memory and cpu-cores, we avoid any unnecessary change in the source code of Hadoop or Giraph. 
+Since our goal is to evaluate the underlying hardwares and the balance among different hardware components (i.e. network, cpu-cores, storage and memory) we avoid any unnecessary change in the source code of Hadoop or Giraph. 
 In order to evaluate the relative merits of different clusters we started with tuning and optimizing different Hadoop parameters to the baseline, that is a traditional supercomputing environment, SuperMikeII. Then, we further modified the parameters with change in the underlying harware infrastructure in SwatIII cluster to optimize the perfromance in each configuration.
 A brief description of the Hadoop-parameters that we changed are as follows.
   
-\textbf{Number of Yarn containers:} We use a modified version of Hortonworks formula to get number of concurrently running containers to get good performance especially for the clusters where each node is equipped with a single HDD. However, we validated the result of the modified formula by regorous testing by launching different number of containers concurrently.
+\textbf{Number of concurrent Yarn containers:} We performed regorous testing on any of the clusters by launching different number of containers concurrently and reported the most optimized result.
 
 \textbf{Amount of memory per container:} In each node in any cluster, we kept 10\% of the memory available per node both for system use and buffering during the completion of mappers. Rest of the memory is equally divided among the launched containers.
 
@@ -999,18 +863,161 @@ Since each node of SuperMikeII is equipped with only 1-HDD, there is a practical
 More the number of mappers (or reducers) running simultaneously, more is the parallel disk-io especially during the shuffle phase. 
 With only 1-HDD per node, the performance of Hadoop is advarsely affected because of huge amout of io-wait.
 As a consequence, even if each node of SuperMikeII has 16 processing cores we observed the best performance for our entire assembly pipeline by running only 8 yarn-containers concurrently in each node, i.e. only half of the number of cores per node.
+\begin{figure*}[htb]
+	\begin{subfigure}[b]{0.5\textwidth}
+                \includegraphics[width=\textwidth, height=.3\textheight]{Figure/PerormanceData/Plots/Network.pdf}
+                \caption{Impact of network}
+                \label{fig:SuperMikeSwatBasic}
+        \end{subfigure}
+ 	\begin{subfigure}[b]{0.5\textwidth}
+                \includegraphics[width=\textwidth, height=.3\textheight]{Figure/PerormanceData/Plots/StorageMemory.pdf}
+                \caption{Impact of SSD and RAM}
+                \label{fig:SuperMikeSwatStorageMemory}
+   \end{subfigure}
+   \caption{Impact of each individual hardware component on different stages of the assembly pipeline (15 DataNodes used)}
+  \label{fig:SuperMikeSwat}
+\end{figure*}
 
 
 \subsection {Effect of Network} \label{EffectOfNetwork}
 Figure-\ref{fig:SuperMikeSwatBasic} compares the impact of network interconnect on each stage of PGA's genome assembly pipeline while assembling a 90GB bumble bee genome. 
 The execution time is normalized to the SuperMikeII-baseline. That is, the execution time on SuperMikeII for different stages of the asembler always have the value 1.
 SuperMikeII uses a 40-Gbps QDR Infiniband whereas SwatIII-basic uses 10-Gbps ethernet. 
-Since the java-based APIs of Hadoop is not optimized to take the advantage of Infiniband, in our assembly pipeline we did not observe any visible performance (less than 2\%) difference between these two different types of network interconnect.
+However, we did not find any visible performance difference (less than 2\%) on any of the stages of our assembly pipeline due to change in the network.
+In order to investigate the reson in details, we measure the avaerage latency and the effective network-bandwith between two arbitrary compute nodes in SwatIII and SuperMikeII.
+Since SuperMikeII uses an Infiniband connection the average latency was found to be more than 10-times lower compare to SwatIII which uses ethernet.
+The avarage latency in SuperMikeII was found to be $.014$ms whereas in SwatIII, it is almost $0.2$ms.
+However, due to the resource sharing among many users, the average effective-bandwith of SuperMikeII was found to be almost 10-times lower than that of SwatIII: 949Mbit/s in SuperMikeII, whereas 9.1Gbit/s in SwatIII.
+Furthermore, the java-based APIs of Hadoop or Giraph is not optimized to take the advantage of Infiniband. 
+Hence, in any of the Hadoop or Giraph workloads in the moderate size bumble bee genome assembly pipeline we did not observe major performance difference using same number of nodes in SwatIII.
+ 
 
 %Although there was no visible difference in the execution-time for both the network in case of the best performance in our assembly, we experimented with the a varying number of concurrently running yarn-containers (i.e. number of mappers, reducers or Giraph-workers). 
 %In case of a Giraph job we observed an almost exponential increase in the number of TCP connections with increase in number of Giraph-workers. Figure-\ref{fig:GiraphTCP} shows the increase in number of TCP connections when we increase the number of Giraph workers from 115 to 220 as shown in the Figure-GiraphTcp.
 
 \subsection {Effect of SSD} \label{EffectOfSSD}
+\begin{figure*}[htb]
+\centering
+        \begin{subfigure}[b]{0.3\textwidth}
+                \includegraphics[width=\textwidth]{Figure/SystemData/Plots/BGCPUHDD.pdf}
+                \caption{Graph Construction in SwatIII-Basic}
+                \label{fig:BGCPUHDD}
+        \end{subfigure}
+		\begin{subfigure}[b]{0.3\textwidth}
+                \includegraphics[width=\textwidth]{Figure/SystemData/Plots/ECCPUHDD.pdf}
+                \caption{Graph Simplification in SwatIII-Basic}
+                \label{fig:ECCPUHDD}
+        \end{subfigure} 
+        \begin{subfigure}[b]{0.3\textwidth}
+                \includegraphics[width=\textwidth]{Figure/SystemData/Plots/SCFCPUHDD.pdf}
+                \caption{Scaffolding in SwatIII-Basic}
+                \label{fig:SCFCPUHDD}
+        \end{subfigure}       
+        
+        \begin{subfigure}[b]{0.3\textwidth}
+                \includegraphics[width=\textwidth]{Figure/SystemData/Plots/BGCPUSSD.pdf}
+                \caption{Graph Construction in SwatIII-Storage}
+                \label{fig:BGCPUSSD}
+        \end{subfigure}    
+        \begin{subfigure}[b]{0.3\textwidth}
+                \includegraphics[width=\textwidth]{Figure/SystemData/Plots/ECCPUSSD.pdf}
+                \caption{Graph Simplification in SwatIII-Storage}
+                \label{fig:ECCPUSSD}
+        \end{subfigure}
+        \begin{subfigure}[b]{0.3\textwidth}
+                \includegraphics[width=\textwidth]{Figure/SystemData/Plots/SCFCPUSSD.pdf}
+                \caption{Scaffolding in SwatIII-Storage}
+                \label{fig:SCFCPUSSD}
+        \end{subfigure}
+        \caption{CPU-Utilization and IO-Wait characteristics in SwatIII-Basic (1-HDD/node) and SwatIII-Storage(1-SSD/node)}\label{fig:HddSsdCPU}
+\end{figure*}
+
+\begin{figure*}[htb]
+        \centering
+%        \begin{subfigure}[b]{0.3\textwidth}
+%                \includegraphics[width=\textwidth]{Figure/SystemData/Plots/BGHddSsdRdIops.pdf}
+%                \caption{Read-Iops in Graph Construction in SwatIII-Basic and SwatIII-Storage}
+%                \label{fig:BGHddSsdRdIops}
+%        \end{subfigure}
+%        ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc.
+%          %(or a blank line to force the subfigure onto a new line)
+%        \begin{subfigure}[b]{0.3\textwidth}
+%                \includegraphics[width=\textwidth]{Figure/SystemData/Plots/ECHddSsdRdIops.pdf}
+%                \caption{Read-Iops in Graph Simplification in SwatIII-Basic and SwatIII-Storage}
+%                \label{fig:ECHddSsdRdIops}
+%        \end{subfigure}
+%        ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc.
+%          %(or a blank line to force the subfigure onto a new line)
+%        \begin{subfigure}[b]{0.3\textwidth}
+%                \includegraphics[width=\textwidth]%{Figure/SystemData/Plots/SCFHddSsdRdIops.pdf}
+%                \caption{Read-Iops in Scaffolding in SwatIII-Basic and SwatIII-Storage}
+%                \label{fig:SCFHddSsdRdIops}
+%        \end{subfigure}        
+        \begin{subfigure}[b]{0.3\textwidth}
+                \includegraphics[width=\textwidth]{Figure/SystemData/Plots/BGHddSsdWrIops.pdf}
+                \caption{Write-Iops in Graph Construction in SwatIII-Basic and SwatIII-Storage}
+                \label{fig:BGHddSsdWrIops}
+        \end{subfigure}
+        ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc.
+          %(or a blank line to force the subfigure onto a new line)
+        \begin{subfigure}[b]{0.3\textwidth}
+                \includegraphics[width=\textwidth]{Figure/SystemData/Plots/ECHddSsdWrIops.pdf}
+                \caption{Write-Iops in Graph Simplification in SwatIII-Basic and SwatIII-Storage}
+                \label{fig:ECHddSsdWrIops}
+        \end{subfigure}
+        ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc.
+          %(or a blank line to force the subfigure onto a new line)
+        \begin{subfigure}[b]{0.3\textwidth}
+                \includegraphics[width=\textwidth]{Figure/SystemData/Plots/SCFHddSsdWrIops.pdf}
+                \caption{Write-Iops in Scaffolding in SwatIII-Basic and SwatIII-Storage}
+                \label{fig:SCFHddSsdWrIops}
+        \end{subfigure}
+	\caption{Comparison of Total Write-IOPS in one host in SwatIII-Basic (1-HDD/node) and SwatIII-Storage (1-SSD/node)} \label{fig:HddSsdRWiops}
+\end{figure*}
+
+\begin{figure*}[htb]
+        \centering
+%        \begin{subfigure}[b]{0.3\textwidth}
+%                \includegraphics[width=\textwidth]{Figure/SystemData/Plots/BGHddSsdHdfsRdIops.pdf}
+%                \caption{HDFS-Read-Rate in Graph Construction in SwatIII-Basic and SwatIII-Storage}
+%                \label{fig:BGHddSsdHdfsRdIops}
+%        \end{subfigure}
+%        ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc.
+%          %(or a blank line to force the subfigure onto a new line)
+%        \begin{subfigure}[b]{0.3\textwidth}
+%                \includegraphics[width=\textwidth]{Figure/SystemData/Plots/ECHddSsdHdfsRdIops.pdf}
+%                \caption{HDFS-Read-Rate in Graph Simplification in SwatIII-Basic and SwatIII-Storage}
+%                \label{fig:ECHddSsdHdfsRdIops}
+%        \end{subfigure}
+%        ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc.
+%          %(or a blank line to force the subfigure onto a new line)
+%        \begin{subfigure}[b]{0.3\textwidth}
+%                \includegraphics[width=\textwidth]{Figure/SystemData/Plots/SCFHddSsdHdfsRdIops.pdf}
+%                \caption{HDFS-Read-Rate in Scaffolding phase in SwatIII-Basic and SwatIII-Storage}
+%                \label{fig:SCFHddSsdHdfsRdIops}
+%        \end{subfigure}        
+        \begin{subfigure}[b]{0.3\textwidth}
+                \includegraphics[width=\textwidth]{Figure/SystemData/Plots/BGHddSsdHdfsWrIops.pdf}
+                \caption{HDFS-Write-Rate in Graph Construction in SwatIII-Basic and SwatIII-Storage}
+                \label{fig:BGHddSsdHdfsWrIops}
+        \end{subfigure}
+        ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc.
+          %(or a blank line to force the subfigure onto a new line)
+        \begin{subfigure}[b]{0.3\textwidth}
+                \includegraphics[width=\textwidth]{Figure/SystemData/Plots/ECHddSsdHdfsWrIops.pdf}
+                \caption{HDFS-Write-Rate in Graph Simplification in SwatIII-Basic and SwatIII-Storage}
+                \label{fig:ECHddSsdHdfsWrIops}
+        \end{subfigure}
+        ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc.
+          %(or a blank line to force the subfigure onto a new line)
+        \begin{subfigure}[b]{0.3\textwidth}
+                \includegraphics[width=\textwidth]{Figure/SystemData/Plots/SCFHddSsdHdfsWrIops.pdf}
+                \caption{HDFS-Write-Rate in Scaffolding phase in SwatIII-Basic and SwatIII-Storage}
+                \label{fig:SCFHddSsdHdfsWrIops}
+        \end{subfigure}        
+        \caption{Comparison of HDFS write rate across all datanode SwatIII-Basic (1-HDD/node) and SwatIII-Storage (1-SSD/node)}\label{fig:HddSsdHdfsRWps}
+        
+\end{figure*}
 Figure-\ref{fig:SuperMikeSwatStorageMemory} shows the execution time of our assembler in SuperMikeII and SwatIII-storage which uses 1-SSD per node unlike 1-HDD per node as in SuperMikeII.
 The execution time is again normalized to the SuperMikeII-baseline.
 The second column of each stage of the assembler in Figure-\ref{fig:SuperMikeSwat} shows the impact of using SSD in that stage of the assembly.
@@ -1046,48 +1053,68 @@ In this section we compare the performance of different cluster architecture in 
 Figure-\ref{fig:DifferentArchitecturesPerf} shows the relative merits of different cluster architecture in terms of raw execution time.
 Since most of the time the selection of the clusters are driven by the sheer volume of data that needs some minimum storage and memory space to be analyzed, in our study, we did not compromise the total storage or memory space. All the clusters that we evaluate in this section has almost the same amount of total memory and storage space except SwatIII-Memory where the amount of memory is significantly higher than the others.
 The observations are as follows:
-1) The SwatIII-Memory, i.e. the 16-nodes cluster with 256GB memory and one SSD per node performs the best in terms of raw execution time for any type of workload due to high resource availability.
-2) Given the same amount of storage and memory space and same type of storage, Hadoop performs almost linearly with increase in number of nodes because of increase in number of cores, as shown in SwatIII-Storage (15 datanodes), SwatIII-Medium-SSD(7 datanodes) and SwatIII-FullScaleup-SSD (2 datanodes).
+1) The SwatIII-Memory, i.e. the 15-DataNode cluster with 256GB memory and one SSD per node performs the best in terms of raw execution time for any type of workload due to high resource availability.
+2) Because of the io-bound nature of the Hadoop job, SSD shows better scalabality than HDD in the graph-construction stage with increase in number of nodes in the cluster, thus increasing the number of cores. There is almost no performance improvement in SwatIII-Medium-HDD (7-DN with 2-HDD each) and SwatIII-basic (15-DN with 1-HDD each). However, there is almost 50\% improvement in the corresponding SSD case (i.e. SwatIII-medium-SSD and SwatIII-Storage).
 3) Number of cores plays a critical role in case of Giraph. We observed the optimum performance in graph simplification stage in SwatIII-Medium (8-nodes) cluster.
 4) Although the use of SSD is beneficial for Hadoop when there is only one disk per node (as shown in SuperMikeII and SwatIII-Storage), in a full scaled-up environment with multiple disks per node, Hadoop shows similar performance with both HDD and SSD as shown in SwatIII-FullScaleup-SSD and SwatIII-FullScaleup-HDD.
-5) SSD yields better scalability than HDD when more nodes are added to the cluster. It can be observed by comparing the execution time of graph construction stage in 2, 7 and 15 datanodes separately for SSD and HDD variant of Swat-III. 
+\begin{figure*}[htb]
+        \begin{subfigure}[b]{0.5\textwidth}
+                \includegraphics[width=\textwidth, height=.3\textheight]{Figure/PerormanceData/Plots/PerfDiffArch.pdf}
+                \caption{Execution-time (Lower is better)}
+                \label{fig:DifferentArchitecturesPerf}
+        \end{subfigure}
+        \begin{subfigure}[b]{0.5\textwidth}
+                \includegraphics[width=\textwidth, height=.3\textheight]{Figure/PerormanceData/Plots/PerfPerDollarDiffArch.pdf}
+                \caption{Performance/\$ (Higher is better)}
+                \label{fig:DifferentArchitecturesPerfPerDollar}
+        \end{subfigure}
+        \caption{Compare different type of cluster architeture for bumble bee genome assembly pipeline}
+  \label{fig:DifferentArchitectures}
+\end{figure*}
 
 \subsection {Scaledup cluster and SSD} \label{ScaledupClusterAndSSD}
-In order to quantify the benefit of SSD, we started with evaluating the performance of a single SSD per node in the SwatIII-Storage cluster. 
-We replaced the single SSD used in each node of SwatIII-Storage with increasing number of HDDs and assembled the 90GB bumble-bee genome each time using 16nodes until the  execution time is similar to that of the single SSD case.
-Figure-\ref{fig:SsdN4Hdd} shows the execution time of different number of HDDs per node again normalized to the baseline.
-We observed almost a linear trend in performance by increasing the number of HDDs per node in the cluster.
-At the same time, 4-HDDs per node shows similar performance (only 5\% variation) with a single-SSD in the graph-construction phase.
-Hence, at this point, we expected a similar performance for both HDDs and SSDs with more than 4 DAS per node in any compute cluster with the same number of cores per node.
 \begin{figure}[h]
   \centering
   \begin{subfigure}[b]{0.23\textwidth}
           \includegraphics[width=\textwidth]{Figure/PerormanceData/Plots/SSDHDDSameNode.pdf}
-          \caption{Performance trend using 1, 2 and 4 HDD(s) and 1-SSD per node using a 15 datanodes cluster}
+          \caption{Performance trend using 1, 2 and 4 HDD(s) and 1-SSD per node using a 15 datanodes}
           \label{fig:SsdN4Hdd}
   \end{subfigure}
   \begin{subfigure}[b]{0.23\textwidth}
           \includegraphics[width=\textwidth]{Figure/PerormanceData/Plots/SSDHDDDiffNode.pdf}
-          \caption{Performance trend for SSD and HDD using 1, 2, 7 disks per node in 15, 7 and 2 datanodes cluster}
+          \caption{Performance trend for SSD and HDD using 1, 2, 7 disks per node in 15, 7 and 2 datanodes}
           \label{fig:SsdNHddDiffNodes}
   \end{subfigure}
-  \caption{Comparing strong and weak scalability of Hadoop with HDDs and SSDs}
+  \caption{Performance trend using HDD and SSD}
   \label{fig:SsdNHdd}
 \end{figure}
-We generalize the observation and propose the following rule for a shuffle-intensive Hadoop job.
-If,  
-($TotalShuffledData$ / $NumNodesInCluster$)/ $SingleDiskCapacity$ $<$ $ThresholdPoint $
-then, SSD is benefitial in terms of performance, where the $ThresholdPoint$ is determined by number of cores and the processor family. In our case the $ThresholdPoint$ is 4
+Cloud service providers already started using SSDs as the elemental feature in their cloud infrastructure.
+Furthermore, many of the available cloud instances provide more SSDs per compute-node in order to improve the performance.
+Consequently, the setup-cost as well as the pricing of these scaledup instances increase.
+For example AWS i2.8xlarge storage-optimized instance offers 8SSDs per compute-node with 32 v-cores per node in a rate of \$6.82 per hour which is one of the high-cost AWS-EC2-instances \footnote{http://aws.amazon.com/ec2/pricing/}.
+In this section, we analyze how to leverage SSDs in a cost-effective manner.
+In particular, we point out the scenario where HDDs and SSDs yield similar level of performance.
 
-\subsection {CeresII: Scaledout-in-a-box and SSD} \label{CeresII:Scaledout-in-a-boxAndSSD}
-In the previous sections we observed that SSD shows huge performance benefit in a scaled out cluster setup where each node has fewer number of DAS.
-We also observed that the performance gap between HDD and SSD decreases with increase in number of DAS per node.
-Finally, depending upon the number of cores (and processor family) per node, beyond a certain threshold point HDD and SSD starts perform similarly.
-However, due to less number of cores in fewer nodes, the overall performance may drop significantly. On the other hand, use of more scaledup servers has an immidiate impact on performance to price.
+Figure-\ref{fig:SsdN4Hdd} compares the performance of a single SSD and  increasing number of HDDs per node for the Hadoop-based graph-construction stage of the bumble bee genome assembly pipeline.
+The performance improves almost linearly by increasing the number of HDDs per node in the cluster.
+On the other hand, 4-HDDs per node shows similar performance (only 5\% variation) with a single-SSD per node.
+We did not observe any more significant improvement by providing more SSDs per node, concluding the disk-io rate reaches a saturation point.
+As a consequence, we did not find any significant performance-difference between SwatIII-FullScaleup-SSD and -HDD as shown in figure-\ref{fig:SsdNHddDiffNodes} while assembling the same bumble bee genome using 2-datanodes each with 7-disks.
+However, SSD shows significantly better performnce as well as scalability than HDD when we scale out by adding more compute nodes to the cluster (thus, increasing the total number of cores) and reducing the number of disks per node (thus, keeping the total storage space almost same in the cluster).
 
-In this section, we evaluate another cluster architecture called CeresII which uses 2 physical cores per node, 1 SSD and 16GB memory per node.  In order to assemble the 95GB bumblebee genome we use 33 nodes of this cluster.
+\subsection {CeresII: Samsung-MicroBricks for shared nothing paradigm} \label{CeresII:Scaledout-in-a-boxAndSSD}
+%In the previous sections we observed that SSD shows huge performance benefit in a scaled out cluster setup where each node has fewer number of DAS.
+%We also observed that the performance gap between HDD and SSD decreases with increase in number of DAS per node.
+%Finally, depending upon the number of cores (and processor family) per node, beyond a certain threshold point HDD and SSD starts perform similarly.
+%However, due to less number of cores in fewer nodes, the overall performance may drop significantly. On the other hand, use of more scaledup servers has an immidiate impact on performance to price.
+
+In this section, we evaluate a Samsung-MicroBricks based novel prototype-architecture called CeresII which is an improvement over CeresI \cite{Cluster:ceres1}.  
+As mentioned before, CeresII uses 2 physical cores, 1 SSD and 16GB memory per computation module.
+In order to assemble the 95GB bumblebee genome we use 32 such modules of this cluster as Hadoop-datanodes.
 The last columns of different stages of the assembly in Figure-\ref{fig:DifferentArchitectures} shows the execution time of CeresII.
 As it can be seen, CeresII with only half the number of cores than the SupermikeII-baseline performs better in every stage of the assembly pipeline.
+Its performance is almost comparable to SwatIII-Medium-SSD which used 7-datanodes.
+However, the entire cluster (all the 32 modules) takes significantly less space than 8 nodes of SwatIII-Medium-SSD, thus yielding significantly better performance per rack-unit.
 
 %In the last section we discuss the benefit of SSD in bigdata processing in a supercomputing environment.
 %Many cloud service providers has already started offering SSDs as an elemental hardware feature in their cloud infrastructure.
@@ -1134,13 +1161,59 @@ As it can be seen, CeresII with only half the number of cores than the Supermike
 %In our case with (i.e. 16 vcores per node) the $ThresholdPoint$ is 4.
 
 \section {Price to Performance} \label{PriceToPerformance}
-Table-price show the cost of each hardware component and the entire workstation used in different experiments in this paper.
+\begin{table}
+\begin{center}
+	\begin{tabular}{ |p{5cm} | p{3cm} |} \hline
+		Component & Cost (\$)\\ \hline
+		Intel SandyBridge Xeon 64bit Ep series (8-cores): used in SuperMikeII and Each variant of SwatIII & 1520\\ \hline
+		Intel Xeon E3-1220L V2 (2-cores): used in CeresII & 389\\ \hline
+		1-HDD (Western Digital, 500GB ) & 67\\ \hline
+		1-SSD (Samsung, 500GB) & 177\\ \hline
+		Dell Poweredge 16GB meory module & 139\\ \hline
+	\end{tabular}
+	\caption{Cost of each hardware component}
+	\label{table:PriceOfEachComponent}
+\end{center}
+\end{table}
+Table-\ref{table:PriceOfEachComponent} show the cost of each hardware component used in different clusters.
+Price information is collected from \footnote{http://www.newegg.com/} and \footnote{http://www.amazon.com/}
 It is worthy to mention here, We do not assume that a single scaled up server with one disk can accomodate the entire data.
 The total amount of data should be held in its entirity in the cluster for both scaled-up and scaled-out cases.
 Hence, we did not compromise with the total disk-space or memory-space required in case of scaled up and scaled out.
 Rather, we compare the performance to price from the view point of a proper architectural balance among number of cores, number of disks and amount of memory.
 Since, we did not find any impact of network on the oerformance of our assembly pipeline we exclude the cost of network (infiniband and ethernet) in our comparison. It is obvious, that Infiniband with higher cost will yield lower performance to price as we did not find much performance difference between these two network interconnect. 
 Figure-\ref{fig:DifferentArchitecturesPerfPerDollar} shows the performance to price comparison among all the clusters.
+
+\section {Stress-testing of different clusters using human-genome }
+\begin{figure}[htb]
+        \begin{subfigure}[b]{0.23\textwidth}
+                \includegraphics[width=\textwidth]{Figure/PerormanceData/Plots/PerfDiffArchHum.pdf}
+                \caption{Execution-time (Lower is better)}
+                \label{fig:DifferentArchitecturesPerfHum}
+        \end{subfigure}
+        \begin{subfigure}[b]{0.23\textwidth}
+                \includegraphics[width=\textwidth]{Figure/PerormanceData/Plots/PerfPerDollarDiffArchHum.pdf}
+                \caption{Performance/\$ (Higher is better)}
+                \label{fig:DifferentArchitecturesPerfPerDollarHum}
+        \end{subfigure}
+        \caption{Compare different type of cluster architeture for human genome assembly pipeline}
+  \label{fig:DifferentArchitectures}
+\end{figure}  
+
+In order to evaluate the cumulative impact of all the hardware components (i.e. network, cpu-cores, storage and memory) on the entire cluster we summarize our study with a stress testing of SuperMikeII and SwatIII clusters using the large scale 452GB human genome that produces 3.2TB of graph(refer to table-\ref{table:HumanData}).
+In this part we utilize the maximum amount of resources that are available in any of the compute-clusters. 
+We used 127-datanodes of SuperMikeII to accomodate the huge volume of data: either stored on disk (HDFS data or shuffled data) or the huge graph that is loaded in memory. 
+On the other hand, we use 15-datanodes in the SwatIII-Full-Scaleup cluster (both HDD and SSD variant) which yields almost same amount of storage space as well as memory.
+As mentioned before, due to the low value of maximum allowed file descriptor in SuperMikeII ($ulimit -n$ is set to 1024) we could not run the scaffolding stage in this cluster. Hence, remove it from the comparison.
+
+Figure-\ref{fig:DifferentArchitecturesPerfHum} and \ref{fig:DifferentArchitecturesPerfPerDollarHum} shows the execution time and the performance/\$ respectively for the Hadoop-based graph-construction and Giraph-based graph-simplification stage of human genome assembly on three different cluster architectures.
+The observations are as follows:
+1) The 128nodes of SuperMikeII (2032-cores) shows only 15-17\% better performance than 15-datanodes of any variant of SwatIII-Full-Scaleup cluster (240 physical cores) while using almost 9-times more cores in the Hadoop-based graph-construction stage.
+The reason behind the suboptimal performance in superMikeII is two folded: first, the huge amount of io-wait resulted by only one HDD per node as discussed in section-\ref{EffectOfSSD}. Second, the availability of less effective-network-bandwidth between compute-nodes because of resource sharing among many users as discussed in \ref{EffectOfNetwork}. However, Hadoop depends on network only once in the entire job: during data transfer tot he reducers
+2) The Giraph-based graph-simplification stage performs 10\% better in SwatIII-FullScaleup-SSD than SuperMikeII. Since Giraph is more network intensive, the higher effective-network-bandwidth between compute-nodes of SwatIII yields better performance although it has very less amount of cores than SuperMikeII.
+3) Both HDD and SSD variants of SwatIII-FullScaleup shows almost similar performance for both Hadoop and Giraph (less than 5\% variation). The effect is similar as discussed in section-\ref{ScaledupClusterAndSSD}.
+4) In terms of performance/\$ any of the SwatIII-FullScaleup cluster is found to yield almost 4.5-times better result for the Hadoop stage and almost 5-times better result for the Giraph stage.
+
 
 \section {Conclusion}
 %The conclusion goes here.
@@ -1176,111 +1249,16 @@ The authors would like to thank...
 % http://www.ctan.org/tex-archive/biblio/bibtex/contrib/doc/
 % The IEEEtran BibTeX style support page is at:
 % http://www.michaelshell.org/tex/ieeetran/bibtex/
-%\bibliographystyle{IEEEtran}
+\bibliographystyle{IEEEtran}
 % argument is your BibTeX string definitions and bibliography database(s)
-%\bibliography{IEEEabrv,../bib/paper}
+\bibliography{bare_conf_bib}
 %
 % <OR> manually copy in the resultant .bbl file
 % set second argument of \begin to the number of references
 % (used to reserve space for the reference number labels box)
-\begin{thebibliography}{1}
-\bibitem{fw:mapreduce}
-Dean, Jeffrey, and Sanjay Ghemawat. "MapReduce: simplified data processing on large clusters." Communications of the ACM 51, no. 1 (2008): 107-113.
-\bibitem{fw:pregel}
-Malewicz, Grzegorz, Matthew H. Austern, Aart JC Bik, James C. Dehnert, Ilan Horn, Naty Leiser, and Grzegorz Czajkowski. "Pregel: a system for large-scale graph processing." In Proceedings of the 2010 ACM SIGMOD International Conference on Management of data, pp. 135-146. ACM, 2010.
-\bibitem{fw:bsp}
-Cheatham, Thomas, Amr Fahmy, Dan Stefanescu, and Leslie Valiant. "Bulk synchronous parallel computing—a paradigm for transportable software." In Tools and Environments for Parallel and Distributed Systems, pp. 61-76. Springer US, 1996.
-\bibitem{fw:hadoop}
-White, Tom. Hadoop: the definitive guide: the definitive guide. " O'Reilly Media, Inc.", 2009.
-\bibitem{fw:hdfs}
-Borthakur, Dhruba. "The hadoop distributed file system: Architecture and design." Hadoop Project Website 11, no. 2007 (2007): 21.
-\bibitem{fw:hbase}
-George, Lars. HBase: the definitive guide. " O'Reilly Media, Inc.", 2011.
-\bibitem{fw:hive}
-Thusoo, Ashish, Joydeep Sen Sarma, Namit Jain, Zheng Shao, Prasad Chakka, Suresh Anthony, Hao Liu, Pete Wyckoff, and Raghotham Murthy. "Hive: a warehousing solution over a map-reduce framework." Proceedings of the VLDB Endowment 2, no. 2 (2009): 1626-1629.
-\bibitem{fw:impala}
-Wanderman-Milne, Skye, and Nong Li. "Runtime Code Generation in Cloudera Impala." IEEE Data Eng. Bull. 37, no. 1 (2014): 31-37.
-%\bibitem{fw:tajo}
+%\begin{thebibliography}{1}
 
-\bibitem{fw:surfer}
-Chen, Rishan, Xuetian Weng, Bingsheng He, Mao Yang, Byron Choi, and Xiaoming Li. "On the efficiency and programmability of large graph processing in the cloud." Microsoft Research TechReport (2010).
-\bibitem{fw:pegasus}
-Kang, U., Charalampos E. Tsourakakis, and Christos Faloutsos. "Pegasus: A peta-scale graph mining system implementation and observations." In Data Mining, 2009. ICDM'09. Ninth IEEE International Conference on, pp. 229-238. IEEE, 2009.
-\bibitem{fw:gbase}
-Kang, U., Hanghang Tong, Jimeng Sun, Ching-Yung Lin, and Christos Faloutsos. "Gbase: a scalable and general graph management system." In Proceedings of the 17th ACM SIGKDD international conference on Knowledge discovery and data mining, pp. 1091-1099. ACM, 2011.
-%\bibitem{fw:GridGain}
-
-\bibitem{fw:rdd}
-Zaharia, Matei, Mosharaf Chowdhury, Tathagata Das, Ankur Dave, Justin Ma, Murphy McCauley, Michael J. Franklin, Scott Shenker, and Ion Stoica. "Resilient distributed datasets: A fault-tolerant abstraction for in-memory cluster computing." In Proceedings of the 9th USENIX conference on Networked Systems Design and Implementation, pp. 2-2. USENIX Association, 2012.
-\bibitem{fw:sparkstreaming}
-Zaharia, Matei, Tathagata Das, Haoyuan Li, Scott Shenker, and Ion Stoica. "Discretized streams: an efficient and fault-tolerant model for stream processing on large clusters." In Proceedings of the 4th USENIX conference on Hot Topics in Cloud Ccomputing, pp. 10-10. USENIX Association, 2012.
-\bibitem{fw:graphx}
-Gonzalez, Joseph E., Reynold S. Xin, Ankur Dave, Daniel Crankshaw, Michael J. Franklin, and Ion Stoica. "Graphx: Graph processing in a distributed dataflow framework." In Proceedings of the 11th USENIX Symposium on Operating Systems Design and Implementation (OSDI). 2014.
-\bibitem{fw:sparksql}
-Xin, Reynold S., Josh Rosen, Matei Zaharia, Michael J. Franklin, Scott Shenker, and Ion Stoica. "Shark: SQL and rich analytics at scale." In Proceedings of the 2013 ACM SIGMOD International Conference on Management of data, pp. 13-24. ACM, 2013.
-\bibitem{fw:redis}
-Carlson, Josiah L. Redis in Action. Manning Publications Co., 2013.
-\bibitem{fw:piccolo}
-Power, Russell, and Jinyang Li. "Piccolo: Building Fast, Distributed Programs with Partitioned Tables." In OSDI, vol. 10, pp. 1-14. 2010.
-\bibitem{fw:giraph}
-Avery, Ching. "Giraph: Large-scale graph processing infrastructure on hadoop." Proceedings of the Hadoop Summit. Santa Clara (2011).
-\bibitem{fw:giraphpp}
-Tian, Yuanyuan, Andrey Balmin, Severin Andreas Corsten, Shirish Tatikonda, and John McPherson. "From" think like a vertex" to" think like a graph." Proceedings of the VLDB Endowment 7, no. 3 (2013): 193-204.
-\bibitem{fw:graphlab}
-Low, Yucheng, Joseph E. Gonzalez, Aapo Kyrola, Danny Bickson, Carlos E. Guestrin, and Joseph Hellerstein. "Graphlab: A new framework for parallel machine learning." arXiv preprint arXiv:1408.2041 (2014).
-\bibitem{fw:graphx}
-Xin, Reynold S., Joseph E. Gonzalez, Michael J. Franklin, and Ion Stoica. "Graphx: A resilient distributed graph system on spark." In First International Workshop on Graph Data Management Experiences and Systems, p. 2. ACM, 2013.
-\bibitem{fw:xstream}
-Roy, Amitabha, Ivo Mihailovic, and Willy Zwaenepoel. "X-stream: Edge-centric graph processing using streaming partitions." In Proceedings of the Twenty-Fourth ACM Symposium on Operating Systems Principles, pp. 472-488. ACM, 2013.
-\bibitem{fw:graphchi}
-Kyrola, Aapo, Guy E. Blelloch, and Carlos Guestrin. "GraphChi: Large-Scale Graph Computation on Just a PC." In OSDI, vol. 12, pp. 31-46. 2012.
-\bibitem{fw:myhadoop}
-Krishnan, Sriram, Mahidhar Tatineni, and Chaitanya Baru. "myHadoop-Hadoop-on-Demand on Traditional HPC Resources." San Diego Supercomputer Center Technical Report TR-2011-2, University of California, San Diego (2011).
-\bibitem{ssdhdd:moon}
-Moon, Sangwhan, Jaehwan Lee, and Yang Suk Kee. "Introducing SSDs to the Hadoop MapReduce Framework." In Cloud Computing (CLOUD), 2014 IEEE 7th International Conference on, pp. 272-279. IEEE, 2014.
-\bibitem{ssdhdd:tan}
-Tan, Wei, Liana Fong, and Yanbin Liu. "Effectiveness Assessment of Solid-State Drive Used in Big Data Services." In Web Services (ICWS), 2014 IEEE International Conference on, pp. 393-400. IEEE, 2014.
-\bibitem{ssdhdd:kang}
-Kang, Yangwook, Yang-suk Kee, Ethan L. Miller, and Chanik Park. "Enabling cost-effective data processing with smart ssd." In Mass Storage Systems and Technologies (MSST), 2013 IEEE 29th Symposium on, pp. 1-12. IEEE, 2013.
-\bibitem{ssdhdd:wu}
-Wu, Dan, Wenhai Luo, Wenyan Xie, Xiaoheng Ji, Jian He, and Di Wu. "Understanding the Impacts of Solid-State Storage on the Hadoop Performance." In Advanced Cloud and Big Data (CBD), 2013 International Conference on, pp. 125-130. IEEE, 2013.
-\bibitem{ssdhdd:ahn}
-Ahn, Sungyong, Sangkyu Park, Jae-Ki Hong, and Wooseok Chang. "Performance Implications of SSDs in Virtualized Hadoop Clusters." In Big Data (BigData Congress), 2014 IEEE International Congress on, pp. 586-593. IEEE, 2014.
-\bibitem{ethib:vienne}
-Vienne, Jerome, Jitong Chen, Md Wasi-Ur-Rahman, Nusrat S. Islam, Hari Subramoni, and Dhabaleswar K. Panda. "Performance analysis and evaluation of infiniband fdr and 40gige roce on hpc and cloud computing systems." In High-Performance Interconnects (HOTI), 2012 IEEE 20th Annual Symposium on, pp. 48-55. IEEE, 2012.
-\bibitem{ethib:yu}
-Yu, Jie, Guangming Liu, Wei Hu, Wenrui Dong, and Weiwei Zhang. "Mechanisms of Optimizing MapReduce Framework on High Performance Computer." In High Performance Computing and Communications \& 2013 IEEE International Conference on Embedded and Ubiquitous Computing (HPCC\_EUC), 2013 IEEE 10th International Conference on, pp. 708-713. IEEE, 2013.
-\bibitem{scaleupscaleout:appuswamy}
-Appuswamy, Raja, Christos Gkantsidis, Dushyanth Narayanan, Orion Hodson, and Antony Rowstron. "Scale-up vs Scale-out for Hadoop: Time to rethink?." In Proceedings of the 4th annual Symposium on Cloud Computing, p. 20. ACM, 2013.
-\bibitem{scaleupscaleout:michael}
-Michael, Maged, Jose E. Moreira, Doron Shiloach, and Robert W. Wisniewski. "Scale-up x scale-out: A case study using nutch/lucene." In Parallel and Distributed Processing Symposium, 2007. IPDPS 2007. IEEE International, pp. 1-8. IEEE, 2007.
-\bibitem{scaleupscaleout:chen}
-Chen, Yanpei, Sara Alspaugh, and Randy Katz. "Interactive analytical processing in big data systems: A cross-industry study of mapreduce workloads." Proceedings of the VLDB Endowment 5, no. 12 (2012): 1802-1813.
-\bibitem{bm:hibench}
-Huang, Shengsheng, Jie Huang, Yan Liu, Lan Yi, and Jinquan Dai. "Hibench: A representative and comprehensive hadoop benchmark suite." In Proc. ICDE Workshops. 2010.
-\bibitem{bm:graph500}
-Murphy, Richard C., Kyle B. Wheeler, Brian W. Barrett, and James A. Ang. "Introducing the graph 500." Cray User’s Group (CUG) (2010).
-\bibitem{cloudhpc:marathe}
-Marathe, Aniruddha, Rachel Harris, David K. Lowenthal, Bronis R. de Supinski, Barry Rountree, Martin Schulz, and Xin Yuan. "A comparative study of high-performance computing on the cloud." In Proceedings of the 22nd international symposium on High-performance parallel and distributed computing, pp. 239-250. ACM, 2013.
-\bibitem{bio:debruijngraph}
-Pevzner, Pavel A., Haixu Tang, and Michael S. Waterman. "An Eulerian path approach to DNA fragment assembly." Proceedings of the National Academy of Sciences 98, no. 17 (2001): 9748-9753.
-\bibitem{bio:quality1}
-Medvedev, Paul, Eric Scott, Boyko Kakaradov, and Pavel Pevzner. "Error correction of high-throughput sequencing datasets with non-uniform coverage." Bioinformatics 27, no. 13 (2011): i137-i141.
-\bibitem{bio:quality2}
-Yang, Xiao, Sriram P. Chockalingam, and Srinivas Aluru. "A survey of error-correction methods for next-generation sequencing." Briefings in bioinformatics 14, no. 1 (2013): 56-66.
-\bibitem{bio:gage}
-Salzberg, Steven L., Adam M. Phillippy, Aleksey Zimin, Daniela Puiu, Tanja Magoc, Sergey Koren, Todd J. Treangen et al. "GAGE: A critical evaluation of genome assemblies and assembly algorithms." Genome research 22, no. 3 (2012): 557-567.
-\bibitem{schadoop:fadika}
-Fadika, Zacharia, Madhusudhan Govindaraju, Richard Canon, and Lavanya Ramakrishnan. "Evaluating hadoop for data-intensive scientific operations." In Cloud Computing (CLOUD), 2012 IEEE 5th International Conference on, pp. 67-74. IEEE, 2012.
-\bibitem{schadoop:jha}
-Jha, Shantenu, Judy Qiu, Andre Luckow, Pradeep Mantha, and Geoffrey C. Fox. "A tale of two data-intensive paradigms: Applications, abstractions, and architectures." In Big Data (BigData Congress), 2014 IEEE International Congress on, pp. 645-652. IEEE, 2014.
-\bibitem{schadoop:matsunaga}
-Matsunaga, Andréa, Maurício Tsugawa, and José Fortes. "Cloudblast: Combining mapreduce and virtualization on distributed resources for bioinformatics applications." In eScience, 2008. eScience'08. IEEE Fourth International Conference on, pp. 222-229. IEEE, 2008.
-\bibitem{scgraph:guo}
-Guo, Yong, Marcin Biczak, Ana Lucia Varbanescu, Alexandru Iosup, Claudio Martella, and Theodore L. Willke. "How well do graph-processing platforms perform? an empirical performance evaluation and analysis." In Parallel and Distributed Processing Symposium, 2014 IEEE 28th International, pp. 395-404. IEEE, 2014.
-\bibitem{nsfcloud}
-https://www.chameleoncloud.org/nsf-cloud-workshop/.
-\end{thebibliography}
+%\end{thebibliography}
 
 % that's all folks
 \end{document}
