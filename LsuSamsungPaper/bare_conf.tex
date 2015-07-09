@@ -699,11 +699,11 @@ As mentioned in \cite{fw:hadoop}, JBOD is found to perform 30\% better than RAID
 
 The last one: CeresII is an improvement over CeresI \cite{Cluster:ceres1} and is in prototype phase. 
 The architecture of CeresII is based on Samsung-MicroBricks.
-A single MicroBricks chassis consists of 21 computation- and storage-module.
-Each module consists of one intel Xeon E3-1220L V2 processor with two physical cores, 16GB DRAM module (Dell) and  one SATA-SSD (Samsung).
+A single MicroBricks chassis consists of 22 computation- and storage-module.
+Each module consists of one intel Xeon E3-1220L V2 processor with two physical cores, 16GB DRAM module (Samsung) and  one SATA-SSD (Samsung).
 Each module has several PCI-express (PCIe) ports.
 Unlike SuperMikeII (traditional supercomputer) and SwatIII (regular datacenter), all the CeresII-module in a single chassis are connected to a common PCIe switch to communicate with each other.
-The high density of compute-modules per chassis in CeresII yields 42 physical cores connected through PCIe comparing to 16 physical cores per node as in SuperMikeII and SwatIII, thus resulting in better performance.
+The high density of compute-modules per chassis in CeresII yields 44 physical cores connected through PCIe comparing to 16 physical cores per node as in SuperMikeII and SwatIII, thus resulting in better performance.
 Furthermore, the use of SSD reduce the io-wait and 8GB RAM per physical cores improves the access parallelism.
 
 %\begin{table*}

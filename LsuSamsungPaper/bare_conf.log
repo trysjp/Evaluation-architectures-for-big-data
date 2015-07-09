@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.2.5)  8 JUL 2015 20:22
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.2.5)  8 JUL 2015 20:40
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -718,7 +718,12 @@ Underfull \hbox (badness 6348) in paragraph at lines 1125--1125
 com/ and
  []
 
-<Figure/PerormanceData/Plots/PerfDiffArchHum.pdf, id=94, 505.89pt x 505.89pt>
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [8 <./Figure/PerormanceData/Plots/PerfDiffArch.pdf> <./Figure/PerormanceData/P
+lots/PerfPerDollarDiffArch.pdf>]
+<Figure/PerormanceData/Plots/PerfDiffArchHum.pdf, id=107, 505.89pt x 505.89pt>
 File: Figure/PerormanceData/Plots/PerfDiffArchHum.pdf Graphic file (type pdf)
 
 <use Figure/PerormanceData/Plots/PerfDiffArchHum.pdf>
@@ -726,8 +731,8 @@ Package pdftex.def Info: Figure/PerormanceData/Plots/PerfDiffArchHum.pdf used o
 n input line 1160.
 (pdftex.def)             Requested size: 120.5407pt x 120.53607pt.
 
-<Figure/PerormanceData/Plots/PerfPerDollarDiffArchHum.pdf, id=95, 505.89pt x 50
-5.89pt>
+<Figure/PerormanceData/Plots/PerfPerDollarDiffArchHum.pdf, id=108, 505.89pt x 5
+05.89pt>
 File: Figure/PerormanceData/Plots/PerfPerDollarDiffArchHum.pdf Graphic file (ty
 pe pdf)
  <use Figure/PerormanceData/Plots/PerfPerDollarDiffArchHum.pdf>
@@ -735,10 +740,6 @@ Package pdftex.def Info: Figure/PerormanceData/Plots/PerfPerDollarDiffArchHum.p
 df used on input line 1165.
 (pdftex.def)             Requested size: 120.5407pt x 120.53607pt.
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [8 <./Figure/PerormanceData/Plots/PerfDiffArch.pdf> <./Figure/PerormanceData/P
-lots/PerfPerDollarDiffArch.pdf>]
 <Figure/PerormanceData/Plots/SSDHDDSameNode.pdf, id=109, 505.89pt x 505.89pt>
 File: Figure/PerormanceData/Plots/SSDHDDSameNode.pdf Graphic file (type pdf)
 
@@ -765,7 +766,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 1217--1217
 Missing character: There is no â in font ptmr7t!
 Missing character: There is no € in font ptmr7t!
 Missing character: There is no ” in font ptmr7t!
-)
+ [10])
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -777,7 +778,9 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-[10] (./bare_conf.aux) ) 
+[11
+
+] (./bare_conf.aux) ) 
 Here is how much of TeX's memory you used:
  4192 strings out of 493304
  68557 string characters out of 6139872
@@ -786,18 +789,18 @@ Here is how much of TeX's memory you used:
  40814 words of font info for 74 fonts, out of 8000000 for 9000
  960 hyphenation exceptions out of 8191
  38i,10n,38p,2183b,400s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.
-enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></
-usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/sha
-re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/tex
-live/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist
-/fonts/type1/urw/times/utmbi8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/u
-rw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8
-a.pfb>
-Output written on bare_conf.pdf (10 pages, 244048 bytes).
+{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc
+}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr
+/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/
+texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texliv
+e/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fo
+nts/type1/urw/times/utmbi8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/
+times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.p
+fb>
+Output written on bare_conf.pdf (11 pages, 244492 bytes).
 PDF statistics:
- 163 PDF objects out of 1000 (max. 8388607)
- 110 compressed objects within 2 object streams
+ 166 PDF objects out of 1000 (max. 8388607)
+ 112 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  81 words of extra memory for PDF output out of 10000 (max. 10000000)
 
