@@ -386,11 +386,20 @@
   publisher={Cold Spring Harbor Lab}
 }
 
-@inproceedings{Cluster:ceres,
+@inproceedings{Cluster:ceres1,
   title={ABC: dynamic configuration management for MicroBrick-based cloud computing systems},
   author={Min, Junghi and Ryu, Hyungwoo and La, Kwanghyun and Kim, Jihong},
   booktitle={Proceedings of the Posters \& Demos Session},
   pages={25--26},
   year={2014},
+  organization={ACM}
+}
+
+@inproceedings{algo:parallellistrank,
+  title={Randomized speed-ups in parallel computation},
+  author={Vishkin, Uzi},
+  booktitle={Proceedings of the sixteenth annual ACM symposium on Theory of computing},
+  pages={230--239},
+  year={1984},
   organization={ACM}
 }

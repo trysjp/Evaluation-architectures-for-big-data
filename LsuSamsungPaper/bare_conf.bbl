@@ -133,6 +133,16 @@ A.~Matsunaga, M.~Tsugawa, and J.~Fortes, ``Cloudblast: Combining mapreduce and
   \emph{eScience, 2008. eScience'08. IEEE Fourth International Conference
   on}.\hskip 1em plus 0.5em minus 0.4em\relax IEEE, 2008, pp. 222--229.
 
+\bibitem{bio:debruijngraph}
+P.~A. Pevzner, H.~Tang, and M.~S. Waterman, ``An eulerian path approach to dna
+  fragment assembly,'' \emph{Proceedings of the National Academy of Sciences},
+  vol.~98, no.~17, pp. 9748--9753, 2001.
+
+\bibitem{algo:parallellistrank}
+U.~Vishkin, ``Randomized speed-ups in parallel computation,'' in
+  \emph{Proceedings of the sixteenth annual ACM symposium on Theory of
+  computing}.\hskip 1em plus 0.5em minus 0.4em\relax ACM, 1984, pp. 230--239.
+
 \bibitem{bio:gage}
 S.~L. Salzberg, A.~M. Phillippy, A.~Zimin, D.~Puiu, T.~Magoc, S.~Koren, T.~J.
   Treangen, M.~C. Schatz, A.~L. Delcher, M.~Roberts \emph{et~al.}, ``Gage: A

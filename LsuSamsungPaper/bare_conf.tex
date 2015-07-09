@@ -337,7 +337,6 @@
 \usepackage{subcaption}
 
 
-
 % *** Do not adjust lengths that control margins, column widths, etc. ***
 % *** Do not use packages that alter fonts (such as pslatex).         ***
 % There should be no need to do such things with IEEEtran.cls V1.6 and later.
@@ -570,9 +569,11 @@ Our study is significantly different in the following aspects.
 %\section {Workload}
 %\input {pgaoverview.tex}
 
-\section {Bigdata Softwares on Traditional Supercomputers} \label{Bigdata Softwares on Traditional Supercomputers}
-\subsection {Hadoop}
+\section {Motivation: Bigdata-softwares on traditional supercomputers} \label{Bigdata Softwares on Traditional Supercomputers}
+In this section we briefly describe the programming model of two popular bigdata analytics softwares: Hadoop and Giraph followed by their general performance characteristics on a trditional supercomputing environment. 
+\subsection {Programming model of Hadoop and Giraph}
 %\input {hadoop.tex}
+\textbf{1) Hadoop:}
 Hadoop was originated as the opensource counter part of Google's Map-Reduce \cite{fw:mapreduce}.
 Hadoop has two different components: Hadoop Distributed File System (HDFS) and a mapreduce programming abstarction.
 HDFS splits huge volume of data into small disjoint sets called blocks (typically of size 64mb to 128mb) and distributes those accross the cluster.
@@ -580,22 +581,23 @@ A user defined map function is applied to each blocks parallely in order to extr
 These intermidiate key-value pairs are then partitioned on the basis of keys where each key gets a list of values.
 Finally, a user defined reduce function is applied to the value-list of each key independently and the final output is written to the HDFS.
  
-\subsection {Giraph}
+%\subsection {Giraph}
 %\input {giraph.tex}
-Large scale graph analysis is a core part of many supercomputing workload.
-Apache Giraph is an iterative in-memory grpah processing framework that is implemented on top of Hadoop's map-reduce implementation.
+%Large scale graph analysis is a core part of many supercomputing workload.
+\textbf{2) Giraph}Apache Giraph is an in-memory grpah processing framework that is implemented on top of Hadoop's map-reduce implementation.
 It is originated as the open-source counterpart to Google's Pregel \cite{fw:pregel}.
 Giraph is inspired by Bulk Synchronous Parallel model \cite{fw:bsp} where computation proceeds in supersteps.
 In each superstep all vertices of the graph excutes different istances of the same progam called vetrex-program simultaneosly without ineracting with other verties which is similar to map tasks of Hadoop
 After each superstep all the vertices send messages to other vertices normally cotaining the output of its vertex-progam-instance.
 Once all the messages are recieved by the intended vertices, the next supesrtep starts and the pocess iterates until all the vertices vote to halt simultaeously.
 
-\subsection {Hadoop/Giraph-workload and Traditional-Supercomputing hardwares}
+\subsection {Hadoop/Giraph-workload over Traditional-Supercomputing hardwares}
 %\input {challenges.tex}
-Earlier studies \cite{schadoop:fadika}, \cite{schadoop:matsunaga} as well as our experience show that Hadoop and other softwares in its eco system like Giraph can be useful for data-intensive scientific applications. However, the underlying storage, memory as well as the computation model differs severely from other parallel processing frameworks like MPI.
-In this section we describe the challenges in a traditional supercomputing environment while handling a Hadoop-enabled HPC workload.
+%Earlier studies \cite{schadoop:fadika}, \cite{schadoop:matsunaga} as well as our experience show that Hadoop and other softwares in its eco system like Giraph can be useful for data-intensive scientific applications. However, the underlying storage, memory as well as the computation model differs severely from other parallel processing frameworks like MPI.
 %The challenges involved in optimal processing of these data-intensive workload needs to be addressed possibly by changing the underlying hardware infrastructure.
 %In this section we provide a brief overview on the limitations in existing supercomputers.
+"Traditional supercomputers focused on performing calculations at blazing speeds have fallen behind when it comes to sifting through huge amounts of Big Data."\footnote{http://spectrum.ieee.org/tech-talk/computing/hardware/ibm-redesigned-supercomputers-to-solve-big-data-problems}
+In this section we provide a general overview of the performance characteristics of Hadoop and Giraph on top of traditional supercomputing resources.
 \subsubsection {Network}
 In a typical Hadoop job, the data movement is minimal early in the job flow when the mappers carfully consider the data locality. 
 Once the mappers completed their tasks, the intermidiate data is shuffled to the reducers which results in a huge data movement across the cluster. 
@@ -626,7 +628,7 @@ In this paper, we consider only HDFS to evaluate the underlying hardwares.
 \subsubsection {Memory}
 The performance of a Hadoop job can be improved by providing more memory per node in the compute-cluster. 
 At the end of the map-phase, each map task spills a huge amount of data onto the DAS. 
-Providing more memory with properly tuned buffer-size (io.sort.mb and io.sort.factor) reduce the amount of spilling to the disk, thus, improve the performance of a Hadoop job significantly.
+Providing more memory with properly tuned buffer-size (io.sort.mb and io.sort.factor) reduce the amount of spilling to the disk, thus, improve the performance of a Hadoop job significantly especially in case of HDD where disk-io creates huge performance-bottleneck.
 %On the other hand, providing efficient hardware for any large scale in-memory graph processing frameworks has never been simple.
 %The processor/memory compute-communication model as well as the disparity between memory access time and processor cycle time, traditionally known as memory-wall will not improve without significant investment[Graph500].
 Furthermore, increasing memory in each node improves the caching effect during the computation which is extremely beneficial for iterative computation in Giraph.
@@ -651,117 +653,6 @@ Furthermore, for a memory-intensive job, like graph analysis with Giraph that lo
 %Memory system that is used in most of the supercomputers shows lower capacity per core and fewer independent channels \cite{bm:graph500}.
 %Complicating the scenario, the performance is again hindered by high message passing over network for Giraph, which is designed to facilitate BSP model.
 %In our study, we show the impact of provisioning more memory per core in a Giraph workload.
-
-\section {The Workload} \label{TheWorkload}
-%\input {pgaoverview.tex}
-De novo genome assembly refers to the construction of an entire genome sequence from a large amount of short read sequences when no reference genome is available. 
-De Bruijn graph construction  and removal of sequencing errors (tips and bubble) from this graph is central to de novo sequencing. 
-Finally, resolving  repeated regions followed by a scaffolding phase produces long size scaffolds that represents a region in the actual genome.
-
-We classified de novo sequencing in three different phases like other assemblers.
-\begin{inparaenum}[\itshape a\upshape)]
-\item De Bruijn graph construction
-\item Graph simplification and
-\item Scaffolding.
-\end{inparaenum}
-We store short reads in fastq format in hdfs as input to PGA.
-In the first phase, we use Hadoop in order to build de Bruijn graph from these short reads. 
-Once the graph is constructed we use Giraph in the subsequent phases to analyze the graph in order to construct appreciably long contigs and scaffolds.
-In this section we provide a brief overview of each stage of the assembler.
-
-\subsection {Hadoop-based De Bruijn graph construction}
-In our assembler we constructed the de Bruijn graph from the fastq short reads using two MapReduce jobs as follows. 
-
-\textbf{1) Fastq-preprocessing:} Each short-read (or, simply read) in a fastq file can be considered as a tuple and it consists of four different lines. The first line is a read-id. The second line is the actual read from the sequencing machine. The third line is an additional line containing some biological information. And the fourth line is a quality-score assigned to that read. 
-In thepreprocessing step of our assembler we invoke a mapper-only Hadoop job which filters out only the read-ids and the corresponding reads from the fatq file(s). It then compute the reverse complement of the read. Finally the read and its reverse complement along with the read-id is written in the HDFS.
-
-\textbf{2) Build-graph:} 
-In the map phase, each read is divided into several short fragments of length $k$ known as $k$-mer.
-Two subsequent $k$-mers are emitted as key-value pairs where the first one (key) represents a vertex in the de Bruijn graph and the second one (value) represents the outgoing edge from the key. 
-Each read emits $(l_r-k+1)$ kmers as keys where $l_r$ is the length of the read.
-Again, each $k$-mer is produced twice, once as the key, and once as the value as mentioned before.
-Similar process is repeated for the reverse complement of all the reads also.
-Based upon the value of $k$ the Hadoop-mappers write a huge amount of data to the local file system making the job extremely shuffle-intensive. 
-After the mappers complete, the shuffle phase partitions the intermidiate key-value pairs on the basis of key which effectively collects the edges of the graph emitted from the same source $k$-mer.
-Finally, the reduce function aggregates the edges (value-list) of each source $k$-mer and saves the graph structure in HDFS in adjacency list format.
-
-\subsection {Giraph-based Graph Simplification}
-The graph produced in the graph construction stage works as the input to the graph simplification stage.
-In this stage PGA invokes a series of Giraph jobs to simplify the graph.
-Giraph reads the graph from HDFS in an adjacency list format.
-%Each $k$-mer vertex also contains the read-id(s) from which it belongs to.
-Each Giraph job consists of three different types of computation, called compression, tip-removal and bubble-removal as described below.
-The Giraph-master vertex computation keeps a counter on number of supersteps and invoke these three different types of computation based upon that counter.
- 
-\textbf{Compression:} The first step that follows after building the graph is compressing the linear chains of nodes in the graph.
-The non-branching linear paths of vertices are compressed into single vertex without any loss of any information.
-In one superstep each compressible vertex is tagged as either head or tail with equal probability and send a meassage containing the tag to the immidiate predecessor.
-In the next superstep the head-vertices are merged with corresponding tail-vertices.
-The value of the head is updated accordingly. 
-This process continues for $i$ supersteps until there is no compressible vertex remaining in the graph.
-
-\textbf{Tip removal:} Tips are formed because of errors in the end of the short reads.
-Removing the tips from the de Bruijn Graph is a straight forward process.
-After compressing the graph, in a single superstep the vertices with no outgoing edge and the value-length less than a threshold (normally set to $2k$) are deleted from the graph.
-
-\textbf{Bubble removal:} Bubbles are introduced in the DBG because of errors in the middle of the short reads.
-Bubbles are formed when two paths start and end at the same vertices.
-After compressing the linear chain, the objective of bubble removal is to group the vertices by the same predecessor and successor in the entire graph and from each group keep only the node which has the highest frequency support.
-In one superstep every node matching this criteria sends the cumulative frequency to their immidiate successor.
-In the next superstep successor nodes compute difference in frequency and delete all the nodes with lower frequency.
-Remember we calculated the frequency during the compression phase.
-
-\subsection {Scaffolding: Mix of Hadoop and Giraph job}
-%The first step of scaffolding determines which contigs are linked by matepairs, and their relative orientation and separation. By convention, mated reads have the same name except for their suffix (either 1 or 2). 
-%PGA therefore finds all mate-linked contigs using a single MapReduce cycle by emitting from the mapper mate messages consisting of the read name without the suffix as the key, and the contig name, read orientation, and read offset as the value.
-%Next, we developed a graph hop method to find the exact path between the linked nodes
-Scaffolding consists of mainly two different types of jobs as follows:
-
-\textbf{Mate Bundling:}
-The first step of scaffolding determines which contigs are linked by matepairs, and their relative orientation and separation. By convention, mated reads have the same name except for their suffix (either 1 or 2). Contrail therefore finds all mate-linked contigs using a single MapReduce cycle by emitting from the mapper mate messages consisting of the read name without the suffix as the key, and the contig name, read orientation, and read offset as the value. The reduce function scans these mate messages and saves contig link messages that contain the id of the two contigs that are linked and their expected separation and relative orientation. A second MapReduce stage emits the contig link messages and the assembly graph in the mapper, and then bundles together link messages between the same pair of contigs in the reducer (Figure 46, left). Mate-pairs between repetitive contigs are discarded, using a threshold on contig depth of coverage to filter repetitive contigs.
-
-\textbf{Bundle Resolution:}
-Once the mates are bundled, Contrail searches the graph for paths of contigs consistent with bundles supported by multiple mate pairs (default 5). If there are multiple such bundles extending from the forward or reverse of a contig, then only the bundle to the nearest contig is considered. More distant connections are considered in subsequent rounds of scaffolding. A path is consistent if the separation between contigs implied by the path of overlapping contigs is within the expected distance recorded in the bundle, and their relative orientation matches the relative orientation implied by the mate pairs. If a unique path is found to be consistent with
-the bundle, it merges the contigs along that path into a single contig (Figure 46, right).  For this, Contrail uses a variation of breath-first frontier search from all unique nodes with bundles. In the first MapReduce cycle, all paths of length 1 are explored, using message passing between the unique nodes and their immediate neighbors. In the second cycle, all paths of length 2 are explored using message passing from the 1-hop neighbors in the first cycle. The process repeats for n cycles (default 20), iteratively exploring more distant neighbors. Each hop adds at least one extra base to the candidate path, but will usually extend the path by a much larger
-stride, depending on the contig size. In each cycle, paths longer (in total base-pairs) than the expected distance to the mate-linked contig are pruned from further consideration. Paths ending with the correct separation and orientation at the matelinked contig are stored. If after n cycles, there is only a single path consistent with the bundled mate pairs, the path of contigs connecting those contigs are resolved into individual larger contigs using a variation of the repeat resolution method described above. In short, repetitive contigs along the path are split into multiple copies, depending on how many paths contain them, and then the linear path compression
-routine merges the path of now non-branching contigs into a single contig. The scaffolding process then repeats bundling and merging nodes until no more merges occur.
-
-\section {Input Data} \label{InputData}
-%\input {inputdata.tex}
-High throughput next generation DNA sequencing machines like Illumina Genome Analyzer produce huge amount of short read sequences typically in the scale of several GigaBytes to Terabytes.
-Furthermore, the size of the de Bruijn graph built from these vast amount of short reads may be another magnitude higher than the reads itself making the entire assembly pipe line severely data-intensive.
-
-In this paper, we use two genome dataset, 1) a moderate size bumble bee genome data (90GB) and 2) a large scale human genome data (452GB).
-The corresponding graph size is 95GB and 3.2TB based upon the number of unique $k$-mers in the data set
-The bumble bee genome is available in Genome Assembly Gold-standard Evaluation (GAGE \cite{bio:gage}) website\footnote{http://gage.cbcb.umd.edu/} in fastq format.
-The Human genome is available in NCBI website with accession number SRA0016239.
-Table-\ref{table:BumbleBeeData} and \ref{table:HumanData} shows the details of the data size in the assembly pipeline for both the genomes.
-It is to be noted that, in SuperMikeII we could not run the scaffolding stage for the human genome data set because of lower number of maximum allowed open file descriptor ($ulimit -n$). Hence, we did not consider it in our comparison. The corresponding parameter was set to 1024 in SuperMikeII whereas it is quite common to make to set it to some higher value (eg. 64000).
-
-\begin{table}
-\begin{center}
-    \begin{tabular}{ |p{1.1cm} | p{0.8cm} | p{1.1cm} | p{0.8cm} | p{0.8cm} | p{0.8cm} | p{0.8cm}|} \hline
-    & Job Type & Input & Final output & \# jobs & Shuffled data & HDFS Data \\ \hline
-    Graph Construction & Hadoop & 90GB & 95GB & 2 & 2TB & 136GB \\ \hline
-    Graph Simplification & Series of Giraph jobs & 95GB (71581898 vertices) & 24GB (4787619 vertices) & 15 & - & 966GB \\ \hline
-    Scaffolding & Small Hadoop/ Giraph & 24GB & 640MB & 100 & 600GB & 1121GB \\ \hline    
-    \end{tabular}
-    \caption{Bumble-bee genome assembly}
-	\label{table:BumbleBeeData}
-\end{center}
-\end{table}
-
-\begin{table}
-\begin{center}
-    \begin{tabular}{ |p{1.1cm} | p{0.8cm} | p{1.1cm} | p{0.8cm} | p{0.8cm} | p{0.8cm} | p{0.8cm}|} \hline
-    & Job Type & Input & Final output & \# jobs & Shuffled data & HDFS Data \\ \hline
-    Graph Construction & Hadoop & 452GB & 3TB & 2 & 9.9TB & 3.2TB \\ \hline
-    Graph Simplification & Series of Giraph jobs & 3.2TB (1483246722 vertices) & 24GB (16619505 vertices) & 15 & - & 4.1TB \\ \hline    
-    \end{tabular}
-    \caption{Human genome assembly}
-	\label{table:HumanData}
-\end{center}
-\end{table}
 
 \section {Evaluation Methodology} \label{Evaluation Methodology}
 %\input {evaluationmethodology.tex}
@@ -830,32 +721,193 @@ Furthermore, the use of SSD reduce the io-wait and 8GB RAM per physical cores im
 %	\label{table:PricePerWorkstation}
 %\end{center}
 %\end{table*}
+\subsection {Understanding the workload} \label{TheWorkload}
+%\input {pgaoverview.tex}
+De novo genome assembly refers to the construction of an entire genome sequence from a huge amount of small, overlapping and erroneous fragments called short-read sequences while no reference genome is available.
+The problem can be mapped as a simplified de Bruijn graph traversal \cite{bio:debruijngraph}. 
+%However, the huge size of the input short-reads and the corresponding graph makes the assembly problem severely data-intensive. 
+%On the other hand, removing the sequencing errors from those reads and the graph involves complex computation making it extremely compute-intensive also. 
+%De Bruijn graph construction  and removing the sequencing errors from this graph is central to de novo sequencing. 
+%Finally, scaffolding phase produces long size scaffolds that represents a region in the actual genome.
+We classified the de novo assembly in two different stages as follows:
+\begin{inparaenum}[\itshape a\upshape)]
+\item Hadoop based de Bruijn graph construction. 
+%short-reads are fragmented to smaller substrings of length $k$ (called $k$-mers) and the graph is constructed  based upon the $k-1$ suffix-prefix overlap between the $k$-mers using Hadoop map-reduce.
+\item Giraph-based graph simplification. 
+%the linear chains in the graph are merged and the spurious vertices and edges introduced in the graph due to the sequencing errors are removed using a series of Giraph jobs.
+%\item Scaffolding (mix of Hadoop and Giraph jobs): all the paths between the vertices which match certain criteria are found out from the error corrected graph, and merged together using a series of Hadoop and Giraph jobs.
+\end{inparaenum}
+In this section we provide a brief overview of each stage of the assembler.
+%We store the huge amount of short reads in the hdfs as the input to PGA.
+%In the first stage, we use Hadoop in order to construct the de Bruijn graph from these short reads. 
+%Once the graph is constructed, we use Giraph in the subsequent stages to analyze the graph in order to construct appreciably long contigs and scaffolds.
+
+\subsubsection {Hadoop-based De Bruijn graph construction}
+%\textbf{1) Filtering short-reads and the read-id:} 
+This stage consists of two different Hadoop job.
+The first one is a mapper-only Hadoop job that filters the actual short reads i.e. the lines containing only neucleotide characters ($A$,$T$,$G$ and $C$) from a standard fastq format file.
+%The map task basically scan each line of the fastq file(s) and filter only the lines that consists of only neucleotide characters ($A$,$T$,$G$ and $C$).
+%Each short-read-sequence (or, simply read) in a fastq (standard format to represent short-reads) file forms a 4-line-tuple.
+%We invoke a mapper-only Hadoop job to filter out the first and the third lines of each tuple which correspond to the actual read (a string containing $A$,$T$,$G$ and $C$) and its id (always starts with a $@$ symbol) respectively.
+%The input short-read sequences are stored in the HDFS in fastq format. Each short-read (or, simply read) in a fastq file forms a tuple that consists of four consecutive lines. The first line is a unique read-id that always starts with a '@'. The second line is the actual read from the sequencing machine which contains only $A$, $T$, $G$ or $C$ (called neucleotide characters). The third line is an additional line containing some biological information. And the fourth line is a quality-score assigned to that read. 
+%In the first step of our assembler we filter out the actual read-lines and their corresponding id-s by invoking a mapper-only Hadoop job. Sometimes, the read-lines contain some non-neucleutide characters (e.g. $N$) indicating sequencing error. In the same Hadoop job we eliminate those reads (and their ids) also.
+
+%\textbf{2) Build de Bruijn graph in adjacency-list format:}
+The second map-reduce job that constructs the de Bruijn graph from the filtered reads is extremely compute as well as shuffle intensive.
+%The algorithm used in this job resembles to the word-count application. However, a magnitude more compute-intensive.
+In the map phase, each read is divided into several short fragments of length $k$ known as $k$-mer. 
+Two subsequent $k$-mers are emitted as intermediate key-value pair that represents  a vetrtex and an edge (emmited from that vertex) in the de Bruijn graph.  
+The reduce function aggregates the edges (i.e the value-list) of each vertex (i.e. the $k$-mer emmited as key) and finally, writes the graph structure in the HDFS in the adjacency-list format.
+%Additionally, each $k$-mer keeps track of the read-ids of all the reads from which it belongs. 
+
+%Each read emits $(l_r-k+1)$ $k$-mers once as the key and once as the value, where $l_r$ is the length of the read.
+Based upon the value of $k$ (determined by biological characteristics of the species) the job produces huge amount of shuffled data. 
+For example, for a read-length of 100 and $k$ of 31 the shuffled data size is found to be 20-times than the original fastq input.
+On the other hand, based upon the number of unique $k$-mers the final output (i.e. the graph) can vary from 1 to 10 times of the input. 
+
+\subsubsection {Giraph-based Graph Simplification}
+This stage consists of a series of Giraph jobs.
+The large scale graph data structure produced by the last map-reduce stage is analyzed in this stage, making the computation extremely memory-intensive.
+%The first Giraph job reads the graph data structure that is produced by the previous graph construction stage. 
+%The final output of the workflow is several magnitudes smaller than the initial size of the graph.
+%The final output of this stage is several magnitude smaller than the input graph and is called contigs which represent the concensus regions of the actual DNA-sequence of the species under consideration. 
+%Based upon the number of unique $k$-mers and their distribution, the graph size can be upto 10-times higher than the original fastq file.
+%The subsequent Giraph jobs read the output of its previous one as the input. 
+%The graph produced in the graph construction stage works as the input to the graph simplification stage.
+%In this stage PGA invokes a series of Giraph jobs to simplify the graph.
+%Giraph reads the graph from HDFS in an adjacency list format.
+%Each $k$-mer vertex also contains the read-id(s) from which it belongs to.
+The Giraph job consists of three different types of computation: compress linear chains of vertices followed by removing the tip-structure (introduced due to sequencing errors) in the graph.
+Giraph can maintain a counter on the number of supersteps and the master-vertex class invokes each type of computation based on that.
+The subsequent jobs in the workflow do the similar computation incrementally on the last job's output.
+
+%\textbf{Compress linear chains of vertices:} 
+%The first step that follows after building the graph is compressing the linear chains of nodes in the graph.
+%At first, each non-branching linear paths of vertices in the graph structure are merged into a single vertex based upon a modified parallel random list ranking algorithm \cite{algo:parallellistrank}.
+In order to compress the linear chains into a single vertices we use a randomized parallel algorithm \cite{algo:parallellistrank}.
+The computation is proceeds in rounds of two supersteps until a user defined $limit$ is reached.
+In one superstep each compressible vertex with only one incoming and outgoing edge is labeled with either $head$ or $tail$ randomly with equal probability and send a meassage containing the tag to the immidiate predecessor.
+In the next superstep, all the $head$-$tail$ links are merged, that is, the $head$-$k$mer is extended (or, appended) with the last character of the $tail$-$k$mer and the $tail$ vertex is removed.
+Each vertex also maintain a frequency counter which increments after each merge to that vertex.
+%The value of the tail is updated accordingly. 
+%This process continues for $i$ supersteps until there is no compressible vertex remaining in the graph.
+%After each round, the Giraph-master vertex computation increments a counter and invoke the next computation when it reaches a predefined upper-bound.
+
+%\textbf{Remove tips:}
+After the compression, All the tip-structures in the graph are removed in two supersteps.
+A tip refers to a vertex with very short length and is disconnected on one end.
+The first superstep identifies all the vertices with no outgoing edge and  legth is less than $2k$ as tips.
+The second superstep is used to delete those vertices.
+%Tips are formed because of errors in the end of the short reads.
+%A tip refers to a vertex with very short length and is disconnected on one end.
+%We use two Giraph-supersteps two remove all the tips in the graph.
+%In the first superstep (after the merging phase) the vertices with no outgoing edge and the length less than $2k$ are identified as tips which send a message to its predecessor. In the next superstep the tip and the corresponding edge are deleted from the graph.
+%When there are no more tips to remove, the vertex-compression takes place once again.
+
+%\textbf{Remove bubbles:} 
+After the tips, all the bubble-structures, in the graph are resolved in another two supersteps.
+In the first superstep, the vertices with same predecessor and successor as well as very short length (less than $5k$) are identified as bubbles. They send a message containing their id, value and frequency to their corresponding predecessors. 
+The predecessor employs a Levenshtein like edit distance algorithm. If the veertices are found similar enough then the low frequency vertex is removed. 
+%Bubbles are introduced in the de Bruijn graph because of errors in the middle of the short reads.
+%Bubbles are the vertices that have the same predecessor and successor and.
+%After compressing the linear chain, the objective of bubble removal is to group the vertices by the same predecessor and successor in the entire graph and from each group keep only the node which has the highest frequency support.
+%Removing the bubbles again uses two supersteps.
+%In the first superstep, all the vertices with only one incoming and one outgoing edge and the length less than $5k$ are identified as the potential bubbles. They send a message to their predecessor containing their own value, the successor-id and the cumulative frequency (calculated during compression). Then in the next superstep, the predecessor vertices compute the difference in the frequency and delete all the vertices with lower frequency.
+%The final output of the Giraph job is written into the HDFS.
+%This output graph again contain several linear chains followed by tips and bubbles which are resolved in the next giraph job.
+%The series continues until a predefined number of jobs.
+
+ 
+
+%\subsubsection {Scaffolding: Mix of Hadoop and Giraph job}
+%The first step of scaffolding determines which contigs are linked by matepairs, and their relative orientation and separation. By convention, mated reads have the same name except for their suffix (either 1 or 2). 
+%PGA therefore finds all mate-linked contigs using a single MapReduce cycle by emitting from the mapper mate messages consisting of the read name without the suffix as the key, and the contig name, read orientation, and read offset as the value.
+%Next, we developed a graph hop method to find the exact path between the linked nodes
+%Scaffolding consists of mainly two different types of jobs as follows:
+
+%\textbf{Mate Bundling:}
+%The first step of scaffolding determines which contigs are linked by matepairs, and their relative orientation and separation. By convention, mated reads have the same name except for their suffix (either 1 or 2). Contrail therefore finds all mate-linked contigs using a single MapReduce cycle by emitting from the mapper mate messages consisting of the read name without the suffix as the key, and the contig name, read orientation, and read offset as the value. The reduce function scans these mate messages and saves contig link messages that contain the id of the two contigs that are linked and their expected separation and relative orientation. A second MapReduce stage emits the contig link messages and the assembly graph in the mapper, and then bundles together link messages between the same pair of contigs in the reducer (Figure 46, left). Mate-pairs between repetitive contigs are discarded, using a threshold on contig depth of coverage to filter repetitive contigs.
+
+%\textbf{Bundle Resolution:}
+%Once the mates are bundled, Contrail searches the graph for paths of contigs consistent with bundles supported by multiple mate pairs (default 5). If there are multiple such bundles extending from the forward or reverse of a contig, then only the bundle to the nearest contig is considered. More distant connections are considered in subsequent rounds of scaffolding. A path is consistent if the separation between contigs implied by the path of overlapping contigs is within the expected distance recorded in the bundle, and their relative orientation matches the relative orientation implied by the mate pairs. If a unique path is found to be consistent with the bundle, it merges the contigs along that path into a single contig (Figure 46, right).  For this, Contrail uses a variation of breath-first frontier search from all unique nodes with bundles. In the first MapReduce cycle, all paths of length 1 are explored, using message passing between the unique nodes and their immediate neighbors. In the second cycle, all paths of length 2 are explored using message passing from the 1-hop neighbors in the first cycle. The process repeats for n cycles (default 20), iteratively exploring more distant neighbors. Each hop adds at least one extra base to the candidate path, but will usually extend the path by a much larger stride, depending on the contig size. In each cycle, paths longer (in total base-pairs) than the expected distance to the mate-linked contig are pruned from further consideration. Paths ending with the correct separation and orientation at the matelinked contig are stored. If after n cycles, there is only a single path consistent with the bundled mate pairs, the path of contigs connecting those contigs are resolved into individual larger contigs using a variation of the repeat resolution method described above. In short, repetitive contigs along the path are split into multiple copies, depending on how many paths contain them, and then the linear path compression routine merges the path of now non-branching contigs into a single contig. The scaffolding process then repeats bundling and merging nodes until no more merges occur.
+
+\subsection {Input Data} \label{InputData}
+%\input {inputdata.tex}
+\begin{table}
+\begin{center}
+    \begin{tabular}{ |p{1.1cm} | p{0.8cm} | p{1.1cm} | p{0.8cm} | p{0.8cm} | p{0.8cm} | p{0.8cm}|} \hline
+    & Job Type & Input & Final output & \# jobs & Shuffled data & HDFS Data \\ \hline
+    Graph Construction & Hadoop & 90GB (500-million reads) & 95GB & 2 & 2TB & 136GB \\ \hline
+    Graph Simplification & Series of Giraph jobs & 95GB (71581898 vertices) & 640MB (787619 vertices) & 15 & - & 966GB \\ \hline
+   % Graph Simplification & Series of Giraph jobs & 95GB (71581898 vertices) & 24GB (4787619 vertices) & 15 & - & 966GB \\ \hline
+%    Scaffolding & Small Hadoop/ Giraph & 24GB & 640MB & 100 & 600GB & 1121GB \\ \hline    
+    \end{tabular}
+    \caption{Bumble-bee genome assembly}
+	\label{table:BumbleBeeData}
+\end{center}
+\end{table}
+
+\begin{table}
+\begin{center}
+    \begin{tabular}{ |p{1.1cm} | p{0.8cm} | p{1.1cm} | p{0.8cm} | p{0.8cm} | p{0.8cm} | p{0.8cm}|} \hline
+    & Job Type & Input & Final output & \# jobs & Shuffled data & HDFS Data \\ \hline
+    Graph Construction & Hadoop & 452GB (2-billion reads) & 3TB & 2 & 9.9TB & 3.2TB \\ \hline
+    Graph Simplification & Series of Giraph jobs & 3.2TB (1483246722 vertices) & 3.8GB (2077438 vertices) & 15 & - & 4.1TB \\ \hline    
+    \end{tabular}
+    \caption{Human genome assembly}
+	\label{table:HumanData}
+\end{center}
+\end{table}
+High throughput next generation DNA sequencing machines like Illumina Genome Analyzer produce huge amount of short read sequences typically in the scale of several GigaBytes to Terabytes.
+Furthermore, the size of the de Bruijn graph built from these vast amount of short reads may be another magnitude higher than the reads itself making the entire assembly pipe line severely data-intensive.
+
+In this paper, we use two genome dataset, 1) a moderate size bumble bee genome data (90GB) and 2) a large scale human genome data (452GB).
+The corresponding graph size is 95GB and 3.2TB based upon the number of unique $k$-mers in the data set
+The bumble bee genome is available in Genome Assembly Gold-standard Evaluation (GAGE \cite{bio:gage}) website\footnote{http://gage.cbcb.umd.edu/} in fastq format.
+The Human genome is available in NCBI website with accession number SRX016231\footnote{http://www.ncbi.nlm.nih.gov/sra/SRX016231[accn]}.
+Table-\ref{table:BumbleBeeData} and \ref{table:HumanData} shows the details of the data size in the assembly pipeline for both the genomes.
+%It is to be noted that, in SuperMikeII we could not run the scaffolding stage for the human genome data set because of lower number of maximum allowed open file descriptor ($ulimit -n$). Hence, we did not consider it in our comparison. The corresponding parameter was set to 1024 in SuperMikeII whereas it is quite common to make to set it to some higher value (eg. 64000).
 
 \subsection {Hadoop configurations and optimizations} \label{HadoopConfigurationsAndoptimizations}
-Since our goal is to evaluate the underlying hardwares and the balance among different hardware components (i.e. network, cpu-cores, storage and memory) we avoid any unnecessary change in the source code of Hadoop or Giraph. 
+Since our goal is to evaluate the underlying hardwares and the balance among different hardware components we avoid any unnecessary change in the source code of Hadoop or Giraph. 
 In order to evaluate the relative merits of different clusters we started with tuning and optimizing different Hadoop parameters to the baseline, that is a traditional supercomputing environment, SuperMikeII. Then, we further modified the parameters with change in the underlying harware infrastructure in SwatIII cluster to optimize the perfromance in each configuration.
 A brief description of the Hadoop-parameters that we changed are as follows.
   
 \textbf{Number of concurrent Yarn containers:} We performed regorous testing on any of the clusters by launching different number of containers concurrently and reported the most optimized result.
 
-\textbf{Amount of memory per container:} In each node in any cluster, we kept 10\% of the memory available per node both for system use and buffering during the completion of mappers. Rest of the memory is equally divided among the launched containers.
+\textbf{Amount of memory per container and Java-heap-space:} In each node in any cluster, we kept 10\% of the memory available per node both for the system use. Rest of the memory is equally divided among the launched containers. The java heap space per worker is always set to lower than this as per normal recommendation
 
-\textbf{Java Heap Space:} We always configure the value of the corresponding Hadoop parameters less the amount of memory allocated per containers which is a general recommendation for any MapReduce job.
+\textbf{Total number of Reducers:} We observed the job profile of our workload many times over seevral size of data and fixed the total number of reducers as double the total number of concurrently launched containers always across all clusters which was found to yield good performance. 
 
-\textbf{Total number of Reducers:} We observed the job profile of different workload and fixed the total number of reducers as double the total number of concurrently launched containers always across all clusters which was found to yield good performance. 
+\textbf{Slow Restart:} It is always set to 1 i.e. the reducers will start only when all the mappers are finished. Although performance is found to drop little bit for this, it helps us separating the impact of network as well as observe the io-characteristics of map and reduce phase separately.
 
 \textbf{Giraph workers:} We changed the numbers of Giraph workers according to the number of Yarn-containers launched simultaneously. Memory per Giraph-worker is fixed similarly to the yarn containers.
-Other performance parameters: io.sort.mb and io.sort.factor is adjusted according to the cluster-configuration
-Slow Restart: To segregate the effect of the network during any map-reduce job.
 
-\section {Performance Comparison between SuperMikeII and SwatIII-Basic/Storage/Memory} \label{IndividualHWEffect}
+\textbf{Other Giraph parameters:} We always use enough memory to accomodate the graph structure in memory and always avoided using the out-of-core execution feature (and the checkpointing) of Giraph which writed huge data to the disk.
+
+\section {Individual impact of different hardware optimization} 
 %\input {resultanalysis.tex}
 %The main motivation of this paper is to analyze the limitations in a traditional supercomputing environment for a Hadoop enabled data intensive scientific workload.
 %Although the traditional supercomputers perform calculations at blazing speed, when it comes to shifting to the bigdata they have fallen behind due to the architectural imbalance mainly in terms of storage and memory. 
 In this section, we compare the impact of each hardware component: network, storage and memory individually on our benchmark genome assembler.
 In order to do that, we use 16 nodes both in SuperMikeII and SwatIII. Each node in both the clusters has 16 processing cores.
 We started with comparing the impact of network between SuperMikeII and SwatIII-Basic.
-Then, we further optimized the SwatIII cluster incrementally in terms of storage (named as SwatIII-Storage) and memory (named as SwatIII-Memory) one after another and compare the performance of each component in each stage of our assembler.
+Then, we further optimized the SwatIII cluster incrementally in terms of storage (named as SwatIII-Storage) and then memory (named as SwatIII-Memory) and compare the performance of each component in each stage of our assembler.
+\label{IndividualHWEffect}
+\begin{figure}[htb]
+	\begin{subfigure}[b]{0.23\textwidth}
+                \includegraphics[width=\textwidth]{Figure/PerormanceData/Plots/Network.pdf}
+                \caption{Effect of network}
+                \label{fig:SuperMikeSwatBasic}
+        \end{subfigure}
+ 	\begin{subfigure}[b]{0.23\textwidth}
+                \includegraphics[width=\textwidth]{Figure/PerormanceData/Plots/StorageMemory.pdf}
+                \caption{Effect of SSD and DRAM}
+                \label{fig:SuperMikeSwatStorageMemory}
+   \end{subfigure}
+   \caption{Impact each individual hardware component on execution time of different stages of the assembly pipeline in 15 DataNodes }
+  \label{fig:SuperMikeSwat}
+\end{figure}
 
 \subsection {Performance in SuperMikeII}
 \label{PerformanceInSuperMikeII}
@@ -863,21 +915,6 @@ Since each node of SuperMikeII is equipped with only 1-HDD, there is a practical
 More the number of mappers (or reducers) running simultaneously, more is the parallel disk-io especially during the shuffle phase. 
 With only 1-HDD per node, the performance of Hadoop is advarsely affected because of huge amout of io-wait.
 As a consequence, even if each node of SuperMikeII has 16 processing cores we observed the best performance for our entire assembly pipeline by running only 8 yarn-containers concurrently in each node, i.e. only half of the number of cores per node.
-\begin{figure*}[htb]
-	\begin{subfigure}[b]{0.5\textwidth}
-                \includegraphics[width=\textwidth, height=.3\textheight]{Figure/PerormanceData/Plots/Network.pdf}
-                \caption{Impact of network}
-                \label{fig:SuperMikeSwatBasic}
-        \end{subfigure}
- 	\begin{subfigure}[b]{0.5\textwidth}
-                \includegraphics[width=\textwidth, height=.3\textheight]{Figure/PerormanceData/Plots/StorageMemory.pdf}
-                \caption{Impact of SSD and RAM}
-                \label{fig:SuperMikeSwatStorageMemory}
-   \end{subfigure}
-   \caption{Impact of each individual hardware component on different stages of the assembly pipeline (15 DataNodes used)}
-  \label{fig:SuperMikeSwat}
-\end{figure*}
-
 
 \subsection {Effect of Network} \label{EffectOfNetwork}
 Figure-\ref{fig:SuperMikeSwatBasic} compares the impact of network interconnect on each stage of PGA's genome assembly pipeline while assembling a 90GB bumble bee genome. 
@@ -894,46 +931,43 @@ Hence, in any of the Hadoop or Giraph workloads in the moderate size bumble bee 
 
 %Although there was no visible difference in the execution-time for both the network in case of the best performance in our assembly, we experimented with the a varying number of concurrently running yarn-containers (i.e. number of mappers, reducers or Giraph-workers). 
 %In case of a Giraph job we observed an almost exponential increase in the number of TCP connections with increase in number of Giraph-workers. Figure-\ref{fig:GiraphTCP} shows the increase in number of TCP connections when we increase the number of Giraph workers from 115 to 220 as shown in the Figure-GiraphTcp.
-
-\subsection {Effect of SSD} \label{EffectOfSSD}
 \begin{figure*}[htb]
-\centering
-        \begin{subfigure}[b]{0.3\textwidth}
+%\centering
+        \begin{subfigure}[b]{0.23\textwidth}
                 \includegraphics[width=\textwidth]{Figure/SystemData/Plots/BGCPUHDD.pdf}
                 \caption{Graph Construction in SwatIII-Basic}
                 \label{fig:BGCPUHDD}
         \end{subfigure}
-		\begin{subfigure}[b]{0.3\textwidth}
+		\begin{subfigure}[b]{0.23\textwidth}
                 \includegraphics[width=\textwidth]{Figure/SystemData/Plots/ECCPUHDD.pdf}
                 \caption{Graph Simplification in SwatIII-Basic}
                 \label{fig:ECCPUHDD}
         \end{subfigure} 
-        \begin{subfigure}[b]{0.3\textwidth}
-                \includegraphics[width=\textwidth]{Figure/SystemData/Plots/SCFCPUHDD.pdf}
-                \caption{Scaffolding in SwatIII-Basic}
-                \label{fig:SCFCPUHDD}
-        \end{subfigure}       
-        
-        \begin{subfigure}[b]{0.3\textwidth}
+        %\begin{subfigure}[b]{0.3\textwidth}
+        %        \includegraphics[width=\textwidth]{Figure/SystemData/Plots/SCFCPUHDD.pdf}
+        %        \caption{Scaffolding in SwatIII-Basic}
+        %        \label{fig:SCFCPUHDD}
+        %\end{subfigure}       
+        \begin{subfigure}[b]{0.23\textwidth}
                 \includegraphics[width=\textwidth]{Figure/SystemData/Plots/BGCPUSSD.pdf}
                 \caption{Graph Construction in SwatIII-Storage}
                 \label{fig:BGCPUSSD}
         \end{subfigure}    
-        \begin{subfigure}[b]{0.3\textwidth}
+        \begin{subfigure}[b]{0.23\textwidth}
                 \includegraphics[width=\textwidth]{Figure/SystemData/Plots/ECCPUSSD.pdf}
                 \caption{Graph Simplification in SwatIII-Storage}
                 \label{fig:ECCPUSSD}
         \end{subfigure}
-        \begin{subfigure}[b]{0.3\textwidth}
-                \includegraphics[width=\textwidth]{Figure/SystemData/Plots/SCFCPUSSD.pdf}
-                \caption{Scaffolding in SwatIII-Storage}
-                \label{fig:SCFCPUSSD}
-        \end{subfigure}
+        %\begin{subfigure}[b]{0.3\textwidth}
+        %        \includegraphics[width=\textwidth]{Figure/SystemData/Plots/SCFCPUSSD.pdf}
+        %        \caption{Scaffolding in SwatIII-Storage}
+        %        \label{fig:SCFCPUSSD}
+        %\end{subfigure}
         \caption{CPU-Utilization and IO-Wait characteristics in SwatIII-Basic (1-HDD/node) and SwatIII-Storage(1-SSD/node)}\label{fig:HddSsdCPU}
 \end{figure*}
 
 \begin{figure*}[htb]
-        \centering
+%        \centering
 %        \begin{subfigure}[b]{0.3\textwidth}
 %                \includegraphics[width=\textwidth]{Figure/SystemData/Plots/BGHddSsdRdIops.pdf}
 %                \caption{Read-Iops in Graph Construction in SwatIII-Basic and SwatIII-Storage}
@@ -953,30 +987,29 @@ Hence, in any of the Hadoop or Giraph workloads in the moderate size bumble bee 
 %                \caption{Read-Iops in Scaffolding in SwatIII-Basic and SwatIII-Storage}
 %                \label{fig:SCFHddSsdRdIops}
 %        \end{subfigure}        
-        \begin{subfigure}[b]{0.3\textwidth}
+        \begin{subfigure}[b]{0.23\textwidth}
                 \includegraphics[width=\textwidth]{Figure/SystemData/Plots/BGHddSsdWrIops.pdf}
                 \caption{Write-Iops in Graph Construction in SwatIII-Basic and SwatIII-Storage}
                 \label{fig:BGHddSsdWrIops}
         \end{subfigure}
         ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc.
           %(or a blank line to force the subfigure onto a new line)
-        \begin{subfigure}[b]{0.3\textwidth}
+        \begin{subfigure}[b]{0.23\textwidth}
                 \includegraphics[width=\textwidth]{Figure/SystemData/Plots/ECHddSsdWrIops.pdf}
                 \caption{Write-Iops in Graph Simplification in SwatIII-Basic and SwatIII-Storage}
                 \label{fig:ECHddSsdWrIops}
         \end{subfigure}
         ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc.
           %(or a blank line to force the subfigure onto a new line)
-        \begin{subfigure}[b]{0.3\textwidth}
-                \includegraphics[width=\textwidth]{Figure/SystemData/Plots/SCFHddSsdWrIops.pdf}
-                \caption{Write-Iops in Scaffolding in SwatIII-Basic and SwatIII-Storage}
-                \label{fig:SCFHddSsdWrIops}
-        \end{subfigure}
-	\caption{Comparison of Total Write-IOPS in one host in SwatIII-Basic (1-HDD/node) and SwatIII-Storage (1-SSD/node)} \label{fig:HddSsdRWiops}
-\end{figure*}
-
-\begin{figure*}[htb]
-        \centering
+        %\begin{subfigure}[b]{0.3\textwidth}
+        %        \includegraphics[width=\textwidth]{Figure/SystemData/Plots/SCFHddSsdWrIops.pdf}
+        %        \caption{Write-Iops in Scaffolding in SwatIII-Basic and SwatIII-Storage}
+         %       \label{fig:SCFHddSsdWrIops}
+        %\end{subfigure}
+	%\caption{Comparison of Total Write-IOPS in one host in SwatIII-Basic (1-HDD/node) and SwatIII-Storage (1-SSD/node)} \label{fig:HddSsdRWiops}
+%\end{figure*}
+%\begin{figure*}[htb]
+%        \centering
 %        \begin{subfigure}[b]{0.3\textwidth}
 %                \includegraphics[width=\textwidth]{Figure/SystemData/Plots/BGHddSsdHdfsRdIops.pdf}
 %                \caption{HDFS-Read-Rate in Graph Construction in SwatIII-Basic and SwatIII-Storage}
@@ -996,67 +1029,71 @@ Hence, in any of the Hadoop or Giraph workloads in the moderate size bumble bee 
 %                \caption{HDFS-Read-Rate in Scaffolding phase in SwatIII-Basic and SwatIII-Storage}
 %                \label{fig:SCFHddSsdHdfsRdIops}
 %        \end{subfigure}        
-        \begin{subfigure}[b]{0.3\textwidth}
+        \begin{subfigure}[b]{0.23\textwidth}
                 \includegraphics[width=\textwidth]{Figure/SystemData/Plots/BGHddSsdHdfsWrIops.pdf}
                 \caption{HDFS-Write-Rate in Graph Construction in SwatIII-Basic and SwatIII-Storage}
                 \label{fig:BGHddSsdHdfsWrIops}
         \end{subfigure}
         ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc.
           %(or a blank line to force the subfigure onto a new line)
-        \begin{subfigure}[b]{0.3\textwidth}
+        \begin{subfigure}[b]{0.23\textwidth}
                 \includegraphics[width=\textwidth]{Figure/SystemData/Plots/ECHddSsdHdfsWrIops.pdf}
                 \caption{HDFS-Write-Rate in Graph Simplification in SwatIII-Basic and SwatIII-Storage}
                 \label{fig:ECHddSsdHdfsWrIops}
         \end{subfigure}
         ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc.
           %(or a blank line to force the subfigure onto a new line)
-        \begin{subfigure}[b]{0.3\textwidth}
-                \includegraphics[width=\textwidth]{Figure/SystemData/Plots/SCFHddSsdHdfsWrIops.pdf}
-                \caption{HDFS-Write-Rate in Scaffolding phase in SwatIII-Basic and SwatIII-Storage}
-                \label{fig:SCFHddSsdHdfsWrIops}
-        \end{subfigure}        
-        \caption{Comparison of HDFS write rate across all datanode SwatIII-Basic (1-HDD/node) and SwatIII-Storage (1-SSD/node)}\label{fig:HddSsdHdfsRWps}
+        %\begin{subfigure}[b]{0.3\textwidth}
+        %        \includegraphics[width=\textwidth]{Figure/SystemData/Plots/SCFHddSsdHdfsWrIops.pdf}
+        %        \caption{HDFS-Write-Rate in Scaffolding phase in SwatIII-Basic and SwatIII-Storage}
+        %        \label{fig:SCFHddSsdHdfsWrIops}
+        %\end{subfigure}        
+        \caption{Comparison of rate of disk write on Local File System (of one datanode) and HDFS (across all datanodes) SwatIII-Basic (1-HDD/node) and SwatIII-Storage (1-SSD/node)}\label{fig:HddSsdHdfsRWps}
         
 \end{figure*}
-Figure-\ref{fig:SuperMikeSwatStorageMemory} shows the execution time of our assembler in SuperMikeII and SwatIII-storage which uses 1-SSD per node unlike 1-HDD per node as in SuperMikeII.
-The execution time is again normalized to the SuperMikeII-baseline.
+\subsection {Effect of SSD} \label{EffectOfSSD}
+Figure-\ref{fig:SuperMikeSwatStorageMemory} compares the execution time of SwatIII-Storage (1-SSD/node) to the SuperMikeII-baseline (1-HDD/node).
+%The execution time is again normalized to the SuperMikeII-baseline.
 The second column of each stage of the assembler in Figure-\ref{fig:SuperMikeSwat} shows the impact of using SSD in that stage of the assembly.
-Graph construction being a shuffle-intensive Hadoop job, got maximum benefit from SSD. We observed almost 50\% improvement in this stage of the assembler. Graph simplification consists of a series of in-memory Giraph jobs. Hence, in this stage, we did not observe much impact (less than 5\%) of SSD. Scaffolding stage, being a mix of small Hadoop and Giraph job the corresponding gain is almost 10\%.
+%Graph construction being a shuffle-intensive Hadoop job, got maximum benefit from SSD. 
+We observed almost 50\% improvement in the shuffle intensive graph-construction stage because of reduced io-wait. 
+However, graph-simplification, being a series of in-memory Giraph jobs is not affected much (less than 5\%) by storage optimization with SSD. 
+%Scaffolding stage, being a mix of small Hadoop and Giraph job the corresponding gain is almost 10\%.
 
 Figure-\ref{fig:HddSsdCPU} compares the CPU-utilization and IO-wait characteristics for 1-HDD and 1-SSD per node.
-As mentioned earlier, for any map-reduce job we always started the reducers after all the mappers finished. 
-Hence, the first three peaks in the left side of figure-\ref{fig:BGCPUHDD} and \ref{fig:BGCPUSSD} corresponds to the CPU utilization during three mapper-waves. 
-In case of HDD, most of the io-wait is found to occur in two places. First, at the end of each mapper-wave when many mappers write onto the DAS in parallel. Second, when the shuffled data is copied to the reducers.
-In the graph simplification stage, we observed fewer io-wait mainly when Giraph reads/writes a large graph from/to HDFS.
-Scaffolding being a series of small Hadoop and Giraph job suffers from least io-wait. 
-As shown in figure-\ref{fig:BGCPUSSD}, \ref{fig:ECCPUSSD} and \ref{fig:SCFCPUSSD}, the io-wait is reduced by using solid state drive (SSD) instead of HDD especially in case of shuffle-intensive Hadoop job. 
+%As mentioned earlier, for any map-reduce job we always started the reducers after all the mappers finished. 
+%The first three peaks in the left side of figure-\ref{fig:BGCPUHDD} and \ref{fig:BGCPUSSD} corresponds to the CPU utilization during three mapper-waves. 
+The performance of a shuffle-intensive Hadoop job becomes io-bound mainly in two places. First, at the end of each mapper-wave when many mappers write intermediate shuffle data parallely to the local file system. Second, when this shuffled data is read by the reducers.
+A Giraph job becomes io-bound when it reads/writes a large graph from/to HDFS as shown in figure-\ref{fig:ECCPUHDD}.
+%Scaffolding being a series of small Hadoop and Giraph job suffers from least io-wait. 
+As shown in figure-\ref{fig:BGCPUSSD} and \ref{fig:ECCPUSSD} io-wait is reduced by using solid state drive (SSD) instead of HDD. 
 
-Figure-\ref{fig:HddSsdRWiops} compares the read and write io operations per second to the local disk (of one datanode) for different stages of the same assembly using HDD and SSD.
-We observed almost 7 to 8 times improvement in the peak IOPS in case of SSD than HDD in the shuffle-intensive graph construction phase that writes huge amount of data to the local file system.
-Figure-\ref{fig:HddSsdHdfsRWps} compares the total HDFS-bytes read/written per second accross the cluster using HDD and SSD. 
-There is almost 2-3 times improvement in the peak HDFS read/write per second for SSD in any of the phase of the assembler.
+Basically the SSD increases the disk io-rate tremendously especially in case of the local file system that is the shuffle phase of Hadoop.
+Figure-\ref{fig:BGHddSsdWrIops} shows that SSD improves the peak IOPS 7 to 8 times in one of the datanodes than corresponding HDD case during the shuffle phase of the Hadoop build-graph job.
+On the other hand, figure-\ref{fig:ECHddSsdWrIops} compares the rate of local disk-write of the same datanode for a series of Giraph jobs which read/write only to the HDFS.
+Whereas, figure-\ref{fig:BGHddSsdHdfsWrIops} and  \ref{fig:ECHddSsdHdfsWrIops} shows the write rate over HDFS across all datanodes.
+From the later three cases, the SSD is found to yield 2-times improvement in the peak HDFS read/write.
+%Figure-\ref{fig:BGHddSsdWrIops} and \ref{fig:ECHddSsdWrIops} compares the read and write io operations per second to the local disk (of one datanode) for different stages of the same assembly using HDD and SSD.
+%We observed almost 7 to 8 times improvement in the peak IOPS in case of SSD than HDD in the shuffle-intensive graph construction phase that writes huge amount of data to the local file system.
+%Figure-\ref{fig:HddSsdHdfsRWps} compares the total HDFS-bytes read/written per second accross the cluster using HDD and SSD. 
+%There is almost 2-3 times improvement in the peak HDFS read/write per second for SSD in any of the phase of the assembler.
 
-In a traditional supercomputing environment each compute node is typically provided with only one local hard disk drive (HDD), thus provides fewer number of io-operations per second (IOPS) which makes a Hadoop job severely io-bound.
-The problem is more severe in case of a shuffle-intensive Hadoop job which involves huge amount parallel ios to the local file system.
+%In a traditional supercomputing environment each compute node is typically provided with only one local hard disk drive (HDD), thus provides fewer number of io-operations per second (IOPS) which makes a Hadoop job severely io-bound.
+%The problem is more severe in case of a shuffle-intensive Hadoop job which involves huge amount parallel ios to the local file system.
 
-Figure-\ref{fig:HddSsdCPU} compares the CPU-utilization and IO-wait characteristics for both 1-HDD and 1-SSD.
-We observed, Fig-iowait(a) shows the huge amount of io-wait that we observed in the graph construction phase of our benchmark-assembler while assembling the bumble bee genome using 16 nodes each with only one HDD.
-We observed the maximum io-wait at the end of each mapper-wave when a huge amount of data is written to the local file system. 
+%Figure-\ref{fig:HddSsdCPU} compares the CPU-utilization and IO-wait characteristics for both 1-HDD and 1-SSD.
+%We observed, Fig-iowait(a) shows the huge amount of io-wait that we observed in the graph construction phase of our benchmark-assembler while assembling the bumble bee genome using 16 nodes each with only one HDD.
+%We observed the maximum io-wait at the end of each mapper-wave when a huge amount of data is written to the local file system. 
 
 \subsection {Effect of DRAM} \label{EffectOfDRAM}
 The third columns of Figure-\ref{fig:SuperMikeSwatStorageMemory} shows the impact of memory in different stages of our assemblers in SwatIII-Memory normalized to the SuperMikeII-baseline. 
-We observed almost 20\% improvement in the initial graph-construction phase from SwatIII-Storage and almost 70\% improvement to the baseline. Both SwatIII-Storage and SwatIII-Memory use SSD as their underlying storage. Due to increase in the memory size, there is fewer amount of data spilling to the disk at the end of the map phase.
-In the Giraph phase, the corresponding improvement is almost 40\%. The computation in Giraph proceeds in iterative supersteps. Given enough memory, a huge amount of data is kept in cache and is fetched upon requirement during the next compute-superstep.
+We observed almost 20\% improvement in the initial graph-construction phase from SwatIII-Storage and almost 70\% improvement to the baseline. %Both SwatIII-Storage and SwatIII-Memory use SSD as their underlying storage. 
+%Due to increase in the memory size, there is fewer amount of data spilling to the disk at the end of the map phase.
+In the Giraph phase, the corresponding improvement is almost 35\%. 
+The improvement is because of the caching and increase in cpu-memory access parallelism.
+Especially in case of Giraph, where computation proceeds in iterative supersteps, a huge amount of data is kept in cache and is fetched upon requirement during the next compute-superstep.
 
-\section {Performance Comparison between Different Architectural-Balance} \label{ComparingDifferentArchitecturalBalance}
-In this section we compare the performance of different cluster architecture in terms of raw execution time as well as performance per dollar.
-Figure-\ref{fig:DifferentArchitecturesPerf} shows the relative merits of different cluster architecture in terms of raw execution time.
-Since most of the time the selection of the clusters are driven by the sheer volume of data that needs some minimum storage and memory space to be analyzed, in our study, we did not compromise the total storage or memory space. All the clusters that we evaluate in this section has almost the same amount of total memory and storage space except SwatIII-Memory where the amount of memory is significantly higher than the others.
-The observations are as follows:
-1) The SwatIII-Memory, i.e. the 15-DataNode cluster with 256GB memory and one SSD per node performs the best in terms of raw execution time for any type of workload due to high resource availability.
-2) Because of the io-bound nature of the Hadoop job, SSD shows better scalabality than HDD in the graph-construction stage with increase in number of nodes in the cluster, thus increasing the number of cores. There is almost no performance improvement in SwatIII-Medium-HDD (7-DN with 2-HDD each) and SwatIII-basic (15-DN with 1-HDD each). However, there is almost 50\% improvement in the corresponding SSD case (i.e. SwatIII-medium-SSD and SwatIII-Storage).
-3) Number of cores plays a critical role in case of Giraph. We observed the optimum performance in graph simplification stage in SwatIII-Medium (8-nodes) cluster.
-4) Although the use of SSD is beneficial for Hadoop when there is only one disk per node (as shown in SuperMikeII and SwatIII-Storage), in a full scaled-up environment with multiple disks per node, Hadoop shows similar performance with both HDD and SSD as shown in SwatIII-FullScaleup-SSD and SwatIII-FullScaleup-HDD.
+\section {Comparison between Different Architectural-Balance} \label{ComparingDifferentArchitecturalBalance}
 \begin{figure*}[htb]
         \begin{subfigure}[b]{0.5\textwidth}
                 \includegraphics[width=\textwidth, height=.3\textheight]{Figure/PerormanceData/Plots/PerfDiffArch.pdf}
@@ -1071,6 +1108,81 @@ The observations are as follows:
         \caption{Compare different type of cluster architeture for bumble bee genome assembly pipeline}
   \label{fig:DifferentArchitectures}
 \end{figure*}
+In this section we compare the performance of different cluster architecture in terms of raw execution time as well as performance per dollar.
+\subsection {Performance comparison of SuperMikeII and SwatIII with bumble bee genome}
+Figure-\ref{fig:DifferentArchitecturesPerf} shows the relative merits of different cluster architecture in terms of raw execution time. The execution time is normalized to the baseline i.e. SuperMikeII.
+Observe, we always keep the total aggregated storage and memory space almost same across all the clusters.
+The basic assumption behind this experimental setup is that, the total amount of data should be held in its entirity in any of the cluster. 
+Furthermore, the choice of the cluster in a cloud scenario is often driven by the sheer volume of the data rather than the performance.
+%Since most of the time the selection of the clusters are driven by the sheer volume of data that needs some minimum storage and memory space to be analyzed, in our study, we did not compromise the total storage or memory space. All the clusters that we evaluate in this section has almost the same amount of total memory and storage space except SwatIII-Memory where the amount of memory is significantly higher than the others.
+The observations are as follows:
+1) The SwatIII-Memory, i.e. the 15-DataNode cluster with 256GB memory and one SSD per node performs the best in terms of raw execution time for any type of workload due to high resource availability.
+2) Because of the io-bound nature of the Hadoop job, SSD shows better scalabality than HDD in the graph-construction stage with increase in number of nodes in the cluster, thus increasing the number of cores. There is almost no performance improvement in SwatIII-Medium-HDD (7-DN with 2-HDD each) and SwatIII-basic (15-DN with 1-HDD each). However, there is almost 50\% improvement in the corresponding SSD case (i.e. SwatIII-medium-SSD and SwatIII-Storage).
+3) Number of cores plays a critical role in case of Giraph. We observed the optimum performance in graph simplification stage in SwatIII-Medium (8-nodes) cluster.
+4) Although the use of SSD is beneficial for Hadoop when there is only one disk per node (as shown in SuperMikeII and SwatIII-Storage), in a full scaled-up environment with multiple disks per node, Hadoop shows similar performance with both HDD and SSD as shown in SwatIII-FullScaleup-SSD and SwatIII-FullScaleup-HDD.
+
+\subsection {Performance to Price comparison between SuperMikeII and SwatIII variants with the bumble bee genome} \label{PriceToPerformance}
+Table-\ref{table:PriceOfEachComponent} shows the cost\footnote{Price information is collected from http://www.newegg.com/ and http://www.amazon.com/} of each hardware component used in different clusters.
+%It is worthy to mention here, We do not assume that a single scaled up server with one disk can accomodate the entire data.
+%The total amount of data should be held in its entirity in the cluster for both scaled-up and scaled-out cases.
+%Hence, we did not compromise with the total disk-space or memory-space required in case of scaled up and scaled out.
+As mentioned earlier, the total aggregated storage and memory space is kept almost same across all the clusters except SwatIII-Memory which has a huge amount of total aggregated memory.
+Which means, in our experiments, none of the cluster gets any price benefit over the other because of the total storage or memory space.   
+Rather, we compare the performance to price from the view point of a proper architectural balance among number of cores, number of disks and amount of memory per node.
+Since SuperMikeII resources are shared among many users whereas the SwatIII and CeresII are private cluster we did not consider the cost of network for a fair comparison.
+Figure-\ref{fig:DifferentArchitecturesPerfPerDollar} shows the performance to price comparison among all the clusters.
+The observations are as follows:
+1) For a shuffle intensive Hadoop job, SuperMikeII and SwatIII-basic yields the lowest performance/\$ because of huge performance bottleneck caused by the io-wait.
+2) Use of more memory per node as in SwatIII-Memory does not show any better result in terms of performance/\$ once SSD is used as underlying storage as in SwatIII-Storage for Hadoop.
+3) Although the use of huge memory space in SwatIII-Memory shows the maximum performance in case of Giraph, it does not have much impact on performance/\$ when compared to low memory cluster (e.g. SwatIII-Storage or SwatIII-Basic) given the fact that, the graph fit in the total memory space.
+%4) Hadoop yields almost similar performance to price for any number of nodes. This is because each core analyzes the same amount of data at a certain point of time (normally, determined by the hdfs block size).
+5) For Giraph, the performance/\$ decreases almost linearly with the increase in the number of nodes. Whereas, Hadoop-performance/\$ shows very small variation with increasing the number of nodes, given there is no io-bottleneck (as in the SSD variant of SwatIII-FullScaleup-/Medium/Storage). 
+This is because each computation-core analyzes the same amount of data at a certain point of time in case of Hadoop (determined by the HDFS block size), resulting in full CPU-utilization. Whereas, in a Giraph job, more the number of nodes less is the amount of data handled by each core at a certain point of time, thus improving the performance in the cost of lower CPU utilization.
+%6) The scaffolding phase, the series of small Hadoop and Giraph jobs shows trhe similar trend as the Giraph only workflow because each involves very less amount of disk-io. 
+\begin{table}
+\begin{center}
+	\begin{tabular}{ |p{5cm} | p{3cm} |} \hline
+		Component & Cost (\$)\\ \hline
+		Intel SandyBridge Xeon 64bit Ep series (8-cores): used in SuperMikeII and Each variant of SwatIII & 1520\\ \hline
+		Intel Xeon E3-1220L V2 (2-cores): used in CeresII & 389\\ \hline
+		1-HDD (Western Digital, 500GB ) & 67\\ \hline
+		1-SSD (Samsung, 500GB) & 177\\ \hline
+		Dell Poweredge 16GB meory module & 139\\ \hline
+	\end{tabular}
+	\caption{Cost of each hardware component}
+	\label{table:PriceOfEachComponent}
+\end{center}
+\end{table}
+
+\subsection {Comparing SuperMikeII and SwatIII with Large human-genome }
+\begin{figure}[htb]
+        \begin{subfigure}[b]{0.23\textwidth}
+                \includegraphics[width=\textwidth]{Figure/PerormanceData/Plots/PerfDiffArchHum.pdf}
+                \caption{Execution-time (Lower is better)}
+                \label{fig:DifferentArchitecturesPerfHum}
+        \end{subfigure}
+        \begin{subfigure}[b]{0.23\textwidth}
+                \includegraphics[width=\textwidth]{Figure/PerormanceData/Plots/PerfPerDollarDiffArchHum.pdf}
+                \caption{Performance/\$ (Higher is better)}
+                \label{fig:DifferentArchitecturesPerfPerDollarHum}
+        \end{subfigure}
+        \caption{Compare different type of cluster architeture for human genome assembly pipeline}
+  \label{fig:DifferentArchitecturesHum}
+\end{figure}  
+
+In order to evaluate the cumulative impact of all the hardware components (i.e. network, cpu-cores, storage and memory) on the entire cluster we summarize our study with a stress testing of SuperMikeII and SwatIII clusters using the large scale 452GB human genome that produces 3.2TB of graph(refer to table-\ref{table:HumanData}).
+In this part we utilize the maximum amount of resources that are available in any of the compute-clusters. 
+We used 127-datanodes of SuperMikeII to accomodate the huge volume of data: either stored on disk (HDFS data or shuffled data) or the huge graph that is loaded in memory. 
+On the other hand, we use 15-datanodes in the SwatIII-Full-Scaleup cluster (both HDD and SSD variant) which yields almost same amount of storage space as well as memory.
+As mentioned before, due to the low value of maximum allowed file descriptor in SuperMikeII ($ulimit -n$ is set to 1024) we could not run the scaffolding stage in this cluster. Hence, remove it from the comparison.
+
+Figure-\ref{fig:DifferentArchitecturesPerfHum} and \ref{fig:DifferentArchitecturesPerfPerDollarHum} shows the execution time and the performance/\$ respectively for the Hadoop-based graph-construction and Giraph-based graph-simplification stage of human genome assembly on three different cluster architectures.
+The observations are as follows:
+1) The 128nodes of SuperMikeII (2032-cores) shows only 15-17\% better performance than 15-datanodes of any variant of SwatIII-Full-Scaleup cluster (240 physical cores) while using almost 9-times more cores in the Hadoop-based graph-construction stage.
+The reason behind the suboptimal performance in superMikeII is two folded: first, the huge amount of io-wait resulted by only one HDD per node as discussed in section-\ref{EffectOfSSD}. Second, the availability of less effective-network-bandwidth between compute-nodes because of resource sharing among many users as discussed in section-\ref{EffectOfNetwork}. However, Hadoop depends on network only once in the entire job: during data transfer tot he reducers
+2) The Giraph-based graph-simplification stage performs 10\% better in SwatIII-FullScaleup-SSD than SuperMikeII. Since Giraph is more network intensive, the higher effective-network-bandwidth between compute-nodes of SwatIII yields better performance although it has very less amount of cores than SuperMikeII.
+3) Both HDD and SSD variants of SwatIII-FullScaleup shows almost similar performance for both Hadoop and Giraph (less than 5\% variation). The effect is similar as discussed in section-\ref{ScaledupClusterAndSSD}.
+4) In terms of performance/\$ any of the SwatIII-FullScaleup cluster is found to yield almost 4.5-times better result for the Hadoop stage and almost 5-times better result for the Giraph stage.
 
 \subsection {Scaledup cluster and SSD} \label{ScaledupClusterAndSSD}
 \begin{figure}[h]
@@ -1093,7 +1205,7 @@ Furthermore, many of the available cloud instances provide more SSDs per compute
 Consequently, the setup-cost as well as the pricing of these scaledup instances increase.
 For example AWS i2.8xlarge storage-optimized instance offers 8SSDs per compute-node with 32 v-cores per node in a rate of \$6.82 per hour which is one of the high-cost AWS-EC2-instances \footnote{http://aws.amazon.com/ec2/pricing/}.
 In this section, we analyze how to leverage SSDs in a cost-effective manner.
-In particular, we point out the scenario where HDDs and SSDs yield similar level of performance.
+In particular, we point out the scaledup scenario where HDDs and SSDs yield similar level of performance.
 
 Figure-\ref{fig:SsdN4Hdd} compares the performance of a single SSD and  increasing number of HDDs per node for the Hadoop-based graph-construction stage of the bumble bee genome assembly pipeline.
 The performance improves almost linearly by increasing the number of HDDs per node in the cluster.
@@ -1108,13 +1220,19 @@ However, SSD shows significantly better performnce as well as scalability than H
 %Finally, depending upon the number of cores (and processor family) per node, beyond a certain threshold point HDD and SSD starts perform similarly.
 %However, due to less number of cores in fewer nodes, the overall performance may drop significantly. On the other hand, use of more scaledup servers has an immidiate impact on performance to price.
 
-In this section, we evaluate a Samsung-MicroBricks based novel prototype-architecture called CeresII which is an improvement over CeresI \cite{Cluster:ceres1}.  
+In this section, we evaluate a Samsung-MicroBricks based novel prototype-architecture called CeresII which is an improvement over CeresI \cite{Cluster:ceres1}.
 As mentioned before, CeresII uses 2 physical cores, 1 SSD and 16GB memory per computation module.
 In order to assemble the 95GB bumblebee genome we use 32 such modules of this cluster as Hadoop-datanodes.
-The last columns of different stages of the assembly in Figure-\ref{fig:DifferentArchitectures} shows the execution time of CeresII.
-As it can be seen, CeresII with only half the number of cores than the SupermikeII-baseline performs better in every stage of the assembly pipeline.
-Its performance is almost comparable to SwatIII-Medium-SSD which used 7-datanodes.
-However, the entire cluster (all the 32 modules) takes significantly less space than 8 nodes of SwatIII-Medium-SSD, thus yielding significantly better performance per rack-unit.
+The last columns of different stages of the assembly in Figure-\ref{fig:DifferentArchitecturesPerf} shows the execution time of CeresII.
+As it can be seen, CeresII performs almost similar in every stage of the assembly pipeline and shows almost 2-times improvement in performance/\$.
+%On the other hand, CeresII shows similar Perf and Perf/\$ to this medium sized cluster(7DNs). Moreover, the MicroBrick architecture is expected to consume less power and obviously the space thus yielding more benefit in terms of TCO (total cost of ownership).
+%Its performance is almost comparable to SwatIII-Medium-SSD which used 7-datanodes.
+
+From the performance-study between SuperMikeII and SwatIII, we noticed a huge tradeoff between the execution time and the performance/\$. 
+For example, the full-scaledup small-sized clusters (2-DNs cases), even though shows lower performance than the SuperMikeII-baseline, it shows a magnitude higher Perf/\$. Again, considering both performance and cost, we can say, the medium sized clusters (7-DNs) are well balanced.
+On the other hand, CeresII shows similar performance both in terms of execution time as well as performance/\$ to the medium sized cluster(7DNs). Moreover, the Samsung MicroBricks based architecture is expected to consume less power and obviously occupies less space. Hence, CeresII shows more benefit in terms of TCO (total cost of ownership) among all the clusters.
+
+%However, the entire cluster (all the 32 modules) takes significantly less space than 8 nodes of SwatIII-Medium-SSD, thus yielding significantly better performance per rack-unit.
 
 %In the last section we discuss the benefit of SSD in bigdata processing in a supercomputing environment.
 %Many cloud service providers has already started offering SSDs as an elemental hardware feature in their cloud infrastructure.
@@ -1160,64 +1278,9 @@ However, the entire cluster (all the 32 modules) takes significantly less space 
 %Cloud-service providers should be aware of the $ThresholdPoint$ befor investing for their infrastructure. 
 %In our case with (i.e. 16 vcores per node) the $ThresholdPoint$ is 4.
 
-\section {Price to Performance} \label{PriceToPerformance}
-\begin{table}
-\begin{center}
-	\begin{tabular}{ |p{5cm} | p{3cm} |} \hline
-		Component & Cost (\$)\\ \hline
-		Intel SandyBridge Xeon 64bit Ep series (8-cores): used in SuperMikeII and Each variant of SwatIII & 1520\\ \hline
-		Intel Xeon E3-1220L V2 (2-cores): used in CeresII & 389\\ \hline
-		1-HDD (Western Digital, 500GB ) & 67\\ \hline
-		1-SSD (Samsung, 500GB) & 177\\ \hline
-		Dell Poweredge 16GB meory module & 139\\ \hline
-	\end{tabular}
-	\caption{Cost of each hardware component}
-	\label{table:PriceOfEachComponent}
-\end{center}
-\end{table}
-Table-\ref{table:PriceOfEachComponent} show the cost of each hardware component used in different clusters.
-Price information is collected from \footnote{http://www.newegg.com/} and \footnote{http://www.amazon.com/}
-It is worthy to mention here, We do not assume that a single scaled up server with one disk can accomodate the entire data.
-The total amount of data should be held in its entirity in the cluster for both scaled-up and scaled-out cases.
-Hence, we did not compromise with the total disk-space or memory-space required in case of scaled up and scaled out.
-Rather, we compare the performance to price from the view point of a proper architectural balance among number of cores, number of disks and amount of memory.
-Since, we did not find any impact of network on the oerformance of our assembly pipeline we exclude the cost of network (infiniband and ethernet) in our comparison. It is obvious, that Infiniband with higher cost will yield lower performance to price as we did not find much performance difference between these two network interconnect. 
-Figure-\ref{fig:DifferentArchitecturesPerfPerDollar} shows the performance to price comparison among all the clusters.
-
-\section {Stress-testing of different clusters using human-genome }
-\begin{figure}[htb]
-        \begin{subfigure}[b]{0.23\textwidth}
-                \includegraphics[width=\textwidth]{Figure/PerormanceData/Plots/PerfDiffArchHum.pdf}
-                \caption{Execution-time (Lower is better)}
-                \label{fig:DifferentArchitecturesPerfHum}
-        \end{subfigure}
-        \begin{subfigure}[b]{0.23\textwidth}
-                \includegraphics[width=\textwidth]{Figure/PerormanceData/Plots/PerfPerDollarDiffArchHum.pdf}
-                \caption{Performance/\$ (Higher is better)}
-                \label{fig:DifferentArchitecturesPerfPerDollarHum}
-        \end{subfigure}
-        \caption{Compare different type of cluster architeture for human genome assembly pipeline}
-  \label{fig:DifferentArchitectures}
-\end{figure}  
-
-In order to evaluate the cumulative impact of all the hardware components (i.e. network, cpu-cores, storage and memory) on the entire cluster we summarize our study with a stress testing of SuperMikeII and SwatIII clusters using the large scale 452GB human genome that produces 3.2TB of graph(refer to table-\ref{table:HumanData}).
-In this part we utilize the maximum amount of resources that are available in any of the compute-clusters. 
-We used 127-datanodes of SuperMikeII to accomodate the huge volume of data: either stored on disk (HDFS data or shuffled data) or the huge graph that is loaded in memory. 
-On the other hand, we use 15-datanodes in the SwatIII-Full-Scaleup cluster (both HDD and SSD variant) which yields almost same amount of storage space as well as memory.
-As mentioned before, due to the low value of maximum allowed file descriptor in SuperMikeII ($ulimit -n$ is set to 1024) we could not run the scaffolding stage in this cluster. Hence, remove it from the comparison.
-
-Figure-\ref{fig:DifferentArchitecturesPerfHum} and \ref{fig:DifferentArchitecturesPerfPerDollarHum} shows the execution time and the performance/\$ respectively for the Hadoop-based graph-construction and Giraph-based graph-simplification stage of human genome assembly on three different cluster architectures.
-The observations are as follows:
-1) The 128nodes of SuperMikeII (2032-cores) shows only 15-17\% better performance than 15-datanodes of any variant of SwatIII-Full-Scaleup cluster (240 physical cores) while using almost 9-times more cores in the Hadoop-based graph-construction stage.
-The reason behind the suboptimal performance in superMikeII is two folded: first, the huge amount of io-wait resulted by only one HDD per node as discussed in section-\ref{EffectOfSSD}. Second, the availability of less effective-network-bandwidth between compute-nodes because of resource sharing among many users as discussed in \ref{EffectOfNetwork}. However, Hadoop depends on network only once in the entire job: during data transfer tot he reducers
-2) The Giraph-based graph-simplification stage performs 10\% better in SwatIII-FullScaleup-SSD than SuperMikeII. Since Giraph is more network intensive, the higher effective-network-bandwidth between compute-nodes of SwatIII yields better performance although it has very less amount of cores than SuperMikeII.
-3) Both HDD and SSD variants of SwatIII-FullScaleup shows almost similar performance for both Hadoop and Giraph (less than 5\% variation). The effect is similar as discussed in section-\ref{ScaledupClusterAndSSD}.
-4) In terms of performance/\$ any of the SwatIII-FullScaleup cluster is found to yield almost 4.5-times better result for the Hadoop stage and almost 5-times better result for the Giraph stage.
-
-
 \section {Conclusion}
 %The conclusion goes here.
-%Despite of the fundamental differences in computation and communication characteristics involved in these two paradigms, the promising performance result of these state of the art bigdata analytics software on different distributed cyber infrastructure.
+%Despite of the fundamental differences in computation and communication characteristics involved in these two paradigms, the promising performance result of these state of the art bigdata analytics software on different distributed cyber infrastructure. 
 
 
 
