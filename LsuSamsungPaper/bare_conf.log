@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.2.5)  8 JUL 2015 20:40
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.2.5)  10 JUL 2015 20:01
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -304,281 +304,358 @@ e
 ))
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
-LaTeX Font Info:    Try loading font information for OMS+ptm on input line 414.
+LaTeX Font Info:    Try loading font information for OMS+ptm on input line 415.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/omsptm.fd
 File: omsptm.fd 
 )
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 414.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 415.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 485.
+(Font)              <7> on input line 493.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 485.
+(Font)              <5> on input line 493.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 485.
+(Font)              <8> on input line 493.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 485.
- [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
+(Font)              <6> on input line 493.
+
+Underfull \hbox (badness 1448) in paragraph at lines 492--494
+\OT1/ptm/m/n/10 manufacturers, as well as the com-mer-cial cloud-service-
+ []
+
+[1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
 
 ] [2]
-Underfull \hbox (badness 10000) in paragraph at lines 594--594
- []\OT1/ptm/m/it/10 Hadoop/Giraph-workload over Traditional-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 599--599
+Underfull \hbox (badness 10000) in paragraph at lines 618--618
 [][][]\OT1/ptm/m/n/8 http://spectrum.ieee.org/tech-talk/computing/hardware/ibm-
 redesigned-
  []
 
+[3]
+Underfull \hbox (badness 10000) in paragraph at lines 688--688
+[]\OT1/ptm/m/n/7 SuperMikeII
+ []
 
-Underfull \vbox (badness 1132) has occurred while \output is active []
 
- [3]
-Underfull \hbox (badness 10000) in paragraph at lines 664--664
+Underfull \hbox (badness 10000) in paragraph at lines 688--688
+\OT1/ptm/m/n/7 (Tra-di-tional
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 688--688
+[]\OT1/ptm/m/n/7 SwatIII-Basic-
+ []
+
+
+Underfull \hbox (badness 3792) in paragraph at lines 688--688
+\OT1/ptm/m/n/7 HDD (Reg-u-lar
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 688--688
+[]\OT1/ptm/m/n/7 SwatIII-Basic-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 688--688
+\OT1/ptm/m/n/7 SSD (Reg-u-lar
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 688--688
 []\OT1/ptm/m/n/7 SwatIII-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 664--664
+Underfull \hbox (badness 10000) in paragraph at lines 688--688
+\OT1/ptm/m/n/7 Memory
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 688--688
+\OT1/ptm/m/n/7 (Reg-u-lar
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 688--688
 []\OT1/ptm/m/n/7 SwatIII-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 664--664
+Underfull \hbox (badness 10000) in paragraph at lines 688--688
 \OT1/ptm/m/n/7 FullScaleup-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 664--664
+Underfull \hbox (badness 10000) in paragraph at lines 688--688
+\OT1/ptm/m/n/7 HDD/SSD
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 688--688
+\OT1/ptm/m/n/7 (Reg-u-lar
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 688--688
 []\OT1/ptm/m/n/7 SwatIII-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 664--664
+Underfull \hbox (badness 10000) in paragraph at lines 688--688
 \OT1/ptm/m/n/7 Medium-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 672--672
+Underfull \hbox (badness 10000) in paragraph at lines 688--688
+\OT1/ptm/m/n/7 HDD/SSD
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 688--688
+\OT1/ptm/m/n/7 (Reg-u-lar
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 688--688
+[]\OT1/ptm/m/n/7 CeresII
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 688--688
+\OT1/ptm/m/n/7 (Sam-sung
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 688--688
+\OT1/ptm/m/n/7 Mi-cro-Brick
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 696--696
 []\OT1/ptm/m/n/7 #Disks(500GB
  []
 
 
-Underfull \hbox (badness 6348) in paragraph at lines 674--674
+Underfull \hbox (badness 6348) in paragraph at lines 698--698
 []\OT1/ptm/m/n/7 40-Gbps QDR
  []
 
 
-Underfull \hbox (badness 2376) in paragraph at lines 674--674
+Underfull \hbox (badness 2376) in paragraph at lines 698--698
 \OT1/ptm/m/n/7 In-fini-band (2:1
  []
 
 
-Underfull \hbox (badness 2368) in paragraph at lines 676--676
+Underfull \hbox (badness 2368) in paragraph at lines 700--700
 []\OT1/ptm/m/n/7 #DataNodes used for hu-man
  []
 
 
-Underfull \hbox (badness 4217) in paragraph at lines 691--699
-[]\OT1/ptm/m/n/10 Unlike Su-per-MikeII or SwatIII-Basic/Storage/Memory
+Underfull \hbox (badness 4660) in paragraph at lines 718--727
+[]\OT1/ptm/m/n/10 Unlike Su-per-MikeII or SwatIII-Basic and -Memory
+ []
+
+
+Underfull \hbox (badness 5490) in paragraph at lines 797--811
+ []\OT1/ptm/m/it/10 Giraph-based Graph Sim-pli-fi-ca-tion (memory- and
  []
 
 [4]
-Underfull \hbox (badness 10000) in paragraph at lines 839--839
+Underfull \hbox (badness 10000) in paragraph at lines 867--867
 []\OT1/ptm/m/n/7 Job
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 839--839
+Underfull \hbox (badness 10000) in paragraph at lines 867--867
 []\OT1/ptm/m/n/7 Final
  []
 
 
-Overfull \hbox (0.78555pt too wide) in paragraph at lines 839--839
+Overfull \hbox (0.78555pt too wide) in paragraph at lines 867--867
 []\OT1/ptm/m/n/7 Shuffled
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 839--839
+Underfull \hbox (badness 10000) in paragraph at lines 867--867
 []\OT1/ptm/m/n/7 HDFS
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 840--840
+Underfull \hbox (badness 10000) in paragraph at lines 868--868
 []\OT1/ptm/m/n/7 Graph
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 840--840
+Underfull \hbox (badness 10000) in paragraph at lines 868--868
 \OT1/ptm/m/n/7 Con-struc-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 840--840
+Underfull \hbox (badness 10000) in paragraph at lines 868--868
 []\OT1/ptm/m/n/7 90GB
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 840--840
+Underfull \hbox (badness 10000) in paragraph at lines 868--868
 \OT1/ptm/m/n/7 (500-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 840--840
+Underfull \hbox (badness 10000) in paragraph at lines 868--868
 \OT1/ptm/m/n/7 million
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 841--841
+Underfull \hbox (badness 10000) in paragraph at lines 869--869
 []\OT1/ptm/m/n/7 Graph
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 841--841
+Underfull \hbox (badness 10000) in paragraph at lines 869--869
 \OT1/ptm/m/n/7 Sim-pli-fi-ca-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 841--841
+Underfull \hbox (badness 10000) in paragraph at lines 869--869
 []\OT1/ptm/m/n/7 Series
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 841--841
+Underfull \hbox (badness 10000) in paragraph at lines 869--869
 \OT1/ptm/m/n/7 of
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 841--841
+Underfull \hbox (badness 10000) in paragraph at lines 869--869
 \OT1/ptm/m/n/7 Gi-raph
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 841--841
+Underfull \hbox (badness 10000) in paragraph at lines 869--869
 []\OT1/ptm/m/n/7 95GB
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 841--841
+Underfull \hbox (badness 10000) in paragraph at lines 869--869
 \OT1/ptm/m/n/7 (71581898
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 841--841
+Underfull \hbox (badness 10000) in paragraph at lines 869--869
 []\OT1/ptm/m/n/7 640MB
  []
 
 
-Overfull \hbox (0.56868pt too wide) in paragraph at lines 841--841
+Overfull \hbox (0.56868pt too wide) in paragraph at lines 869--869
 \OT1/ptm/m/n/7 (787619
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 841--841
+Underfull \hbox (badness 10000) in paragraph at lines 869--869
 \OT1/ptm/m/n/7 ver-
  []
 
 
-Overfull \hbox (7.35796pt too wide) in paragraph at lines 838--845
+Overfull \hbox (7.35796pt too wide) in paragraph at lines 866--873
  [] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 853--853
+Underfull \hbox (badness 10000) in paragraph at lines 881--881
 []\OT1/ptm/m/n/7 Job
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 853--853
+Underfull \hbox (badness 10000) in paragraph at lines 881--881
 []\OT1/ptm/m/n/7 Final
  []
 
 
-Overfull \hbox (0.78555pt too wide) in paragraph at lines 853--853
+Overfull \hbox (0.78555pt too wide) in paragraph at lines 881--881
 []\OT1/ptm/m/n/7 Shuffled
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 853--853
+Underfull \hbox (badness 10000) in paragraph at lines 881--881
 []\OT1/ptm/m/n/7 HDFS
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 854--854
+Underfull \hbox (badness 10000) in paragraph at lines 882--882
 []\OT1/ptm/m/n/7 Graph
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 854--854
+Underfull \hbox (badness 10000) in paragraph at lines 882--882
 \OT1/ptm/m/n/7 Con-struc-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 854--854
+Underfull \hbox (badness 10000) in paragraph at lines 882--882
 []\OT1/ptm/m/n/7 452GB
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 854--854
+Underfull \hbox (badness 10000) in paragraph at lines 882--882
 \OT1/ptm/m/n/7 (2-billion
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 855--855
+Underfull \hbox (badness 10000) in paragraph at lines 883--883
 []\OT1/ptm/m/n/7 Graph
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 855--855
+Underfull \hbox (badness 10000) in paragraph at lines 883--883
 \OT1/ptm/m/n/7 Sim-pli-fi-ca-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 855--855
+Underfull \hbox (badness 10000) in paragraph at lines 883--883
 []\OT1/ptm/m/n/7 Series
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 855--855
+Underfull \hbox (badness 10000) in paragraph at lines 883--883
 \OT1/ptm/m/n/7 of
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 855--855
+Underfull \hbox (badness 10000) in paragraph at lines 883--883
 \OT1/ptm/m/n/7 Gi-raph
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 855--855
+Underfull \hbox (badness 10000) in paragraph at lines 883--883
 []\OT1/ptm/m/n/7 3.2TB
  []
 
 
-Overfull \hbox (6.03276pt too wide) in paragraph at lines 855--855
+Overfull \hbox (6.03276pt too wide) in paragraph at lines 883--883
 \OT1/ptm/m/n/7 (1483246722
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 855--855
+Underfull \hbox (badness 10000) in paragraph at lines 883--883
 []\OT1/ptm/m/n/7 3.8GB
  []
 
 
-Overfull \hbox (4.06868pt too wide) in paragraph at lines 855--855
+Overfull \hbox (4.06868pt too wide) in paragraph at lines 883--883
 \OT1/ptm/m/n/7 (2077438
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 855--855
+Underfull \hbox (badness 10000) in paragraph at lines 883--883
 \OT1/ptm/m/n/7 ver-
  []
 
 
-Overfull \hbox (7.35796pt too wide) in paragraph at lines 852--857
+Overfull \hbox (7.35796pt too wide) in paragraph at lines 880--885
  [] 
  []
 
@@ -587,7 +664,7 @@ File: Figure/PerormanceData/Plots/Network.pdf Graphic file (type pdf)
 
 <use Figure/PerormanceData/Plots/Network.pdf>
 Package pdftex.def Info: Figure/PerormanceData/Plots/Network.pdf used on input 
-line 899.
+line 927.
 (pdftex.def)             Requested size: 120.5407pt x 120.53607pt.
 
 <Figure/PerormanceData/Plots/StorageMemory.pdf, id=26, 505.89pt x 505.89pt>
@@ -595,7 +672,7 @@ File: Figure/PerormanceData/Plots/StorageMemory.pdf Graphic file (type pdf)
 
 <use Figure/PerormanceData/Plots/StorageMemory.pdf>
 Package pdftex.def Info: Figure/PerormanceData/Plots/StorageMemory.pdf used on 
-input line 904.
+input line 932.
 (pdftex.def)             Requested size: 120.5407pt x 120.53607pt.
 
 <Figure/SystemData/Plots/BGCPUHDD.pdf, id=27, 505.89pt x 505.89pt>
@@ -603,11 +680,16 @@ File: Figure/SystemData/Plots/BGCPUHDD.pdf Graphic file (type pdf)
 
 <use Figure/SystemData/Plots/BGCPUHDD.pdf>
 Package pdftex.def Info: Figure/SystemData/Plots/BGCPUHDD.pdf used on input lin
-e 937.
+e 963.
 (pdftex.def)             Requested size: 120.5407pt x 120.53607pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 938--938
-[]\OT1/ptm/m/n/9 (a) |Graph Con-struc-tion in
+Underfull \hbox (badness 10000) in paragraph at lines 964--964
+[]\OT1/ptm/m/n/9 (a) |Hadoop-based graph-
+ []
+
+
+Underfull \hbox (badness 4846) in paragraph at lines 964--964
+\OT1/ptm/m/n/9 construction in SwatIII-Basic-
  []
 
 <Figure/SystemData/Plots/ECCPUHDD.pdf, id=28, 505.89pt x 505.89pt>
@@ -615,11 +697,11 @@ File: Figure/SystemData/Plots/ECCPUHDD.pdf Graphic file (type pdf)
 
 <use Figure/SystemData/Plots/ECCPUHDD.pdf>
 Package pdftex.def Info: Figure/SystemData/Plots/ECCPUHDD.pdf used on input lin
-e 942.
+e 968.
 (pdftex.def)             Requested size: 120.5407pt x 120.53607pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 943--943
-[]\OT1/ptm/m/n/9 (b) |Graph Sim-pli-fi-ca-tion in
+Underfull \hbox (badness 10000) in paragraph at lines 969--969
+[]\OT1/ptm/m/n/9 (b) |Giraph-based graph-
  []
 
 <Figure/SystemData/Plots/BGCPUSSD.pdf, id=29, 505.89pt x 505.89pt>
@@ -627,11 +709,16 @@ File: Figure/SystemData/Plots/BGCPUSSD.pdf Graphic file (type pdf)
 
 <use Figure/SystemData/Plots/BGCPUSSD.pdf>
 Package pdftex.def Info: Figure/SystemData/Plots/BGCPUSSD.pdf used on input lin
-e 952.
+e 978.
 (pdftex.def)             Requested size: 120.5407pt x 120.53607pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 953--953
-[]\OT1/ptm/m/n/9 (c) |Graph Con-struc-tion in
+Underfull \hbox (badness 10000) in paragraph at lines 979--979
+[]\OT1/ptm/m/n/9 (c) |Hadoop-based graph-
+ []
+
+
+Underfull \hbox (badness 4846) in paragraph at lines 979--979
+\OT1/ptm/m/n/9 construction in SwatIII-Basic-
  []
 
 <Figure/SystemData/Plots/ECCPUSSD.pdf, id=30, 505.89pt x 505.89pt>
@@ -639,11 +726,11 @@ File: Figure/SystemData/Plots/ECCPUSSD.pdf Graphic file (type pdf)
 
 <use Figure/SystemData/Plots/ECCPUSSD.pdf>
 Package pdftex.def Info: Figure/SystemData/Plots/ECCPUSSD.pdf used on input lin
-e 957.
+e 983.
 (pdftex.def)             Requested size: 120.5407pt x 120.53607pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 958--958
-[]\OT1/ptm/m/n/9 (d) |Graph Sim-pli-fi-ca-tion in
+Underfull \hbox (badness 10000) in paragraph at lines 984--984
+[]\OT1/ptm/m/n/9 (d) |Giraph-based graph-
  []
 
 <Figure/SystemData/Plots/BGHddSsdWrIops.pdf, id=31, 505.89pt x 505.89pt>
@@ -651,19 +738,15 @@ File: Figure/SystemData/Plots/BGHddSsdWrIops.pdf Graphic file (type pdf)
 
 <use Figure/SystemData/Plots/BGHddSsdWrIops.pdf>
 Package pdftex.def Info: Figure/SystemData/Plots/BGHddSsdWrIops.pdf used on inp
-ut line 991.
+ut line 1017.
 (pdftex.def)             Requested size: 120.5407pt x 120.53607pt.
-
-Underfull \hbox (badness 1371) in paragraph at lines 992--992
-\OT1/ptm/m/n/9 struc-tion in SwatIII-Basic and
- []
 
 <Figure/SystemData/Plots/ECHddSsdWrIops.pdf, id=32, 505.89pt x 505.89pt>
 File: Figure/SystemData/Plots/ECHddSsdWrIops.pdf Graphic file (type pdf)
 
 <use Figure/SystemData/Plots/ECHddSsdWrIops.pdf>
 Package pdftex.def Info: Figure/SystemData/Plots/ECHddSsdWrIops.pdf used on inp
-ut line 998.
+ut line 1024.
 (pdftex.def)             Requested size: 120.5407pt x 120.53607pt.
 
 <Figure/SystemData/Plots/BGHddSsdHdfsWrIops.pdf, id=33, 505.89pt x 505.89pt>
@@ -671,11 +754,16 @@ File: Figure/SystemData/Plots/BGHddSsdHdfsWrIops.pdf Graphic file (type pdf)
 
 <use Figure/SystemData/Plots/BGHddSsdHdfsWrIops.pdf>
 Package pdftex.def Info: Figure/SystemData/Plots/BGHddSsdHdfsWrIops.pdf used on
- input line 1033.
+ input line 1059.
 (pdftex.def)             Requested size: 120.5407pt x 120.53607pt.
 
-Underfull \hbox (badness 6461) in paragraph at lines 1034--1034
-\OT1/ptm/m/n/9 Con-struc-tion in SwatIII-Basic
+Underfull \hbox (badness 2856) in paragraph at lines 1060--1060
+[]\OT1/ptm/m/n/9 (c) |HDFS-Write-throughput in
+ []
+
+
+Underfull \hbox (badness 3428) in paragraph at lines 1060--1060
+\OT1/ptm/m/n/9 Basic-HDD (1HDD/node) and
  []
 
 <Figure/SystemData/Plots/ECHddSsdHdfsWrIops.pdf, id=34, 505.89pt x 505.89pt>
@@ -683,16 +771,31 @@ File: Figure/SystemData/Plots/ECHddSsdHdfsWrIops.pdf Graphic file (type pdf)
 
 <use Figure/SystemData/Plots/ECHddSsdHdfsWrIops.pdf>
 Package pdftex.def Info: Figure/SystemData/Plots/ECHddSsdHdfsWrIops.pdf used on
- input line 1040.
+ input line 1066.
 (pdftex.def)             Requested size: 120.5407pt x 120.53607pt.
- [6 <./Figure/PerormanceData/Plots/Network.pdf> <./Figure/PerormanceData/Plots/
-StorageMemory.pdf>]
+
+Underfull \hbox (badness 2359) in paragraph at lines 1067--1067
+[]\OT1/ptm/m/n/9 (d) |HDFS-Write-throughput in
+ []
+
+
+Underfull \hbox (badness 3428) in paragraph at lines 1067--1067
+\OT1/ptm/m/n/9 Basic-HDD (1HDD/node) and
+ []
+
+
+Underfull \hbox (badness 3590) in paragraph at lines 1080--1087
+[]\OT1/ptm/m/n/10 Figure-1b[] com-pares the ex-e-cu-tion time of SwatIII-
+ []
+
+[6 <./Figure/PerormanceData/Plots/Network.pdf> <./Figure/PerormanceData/Plots/S
+torageMemory.pdf>]
 <Figure/PerormanceData/Plots/PerfDiffArch.pdf, id=48, 505.89pt x 505.89pt>
 File: Figure/PerormanceData/Plots/PerfDiffArch.pdf Graphic file (type pdf)
 
 <use Figure/PerormanceData/Plots/PerfDiffArch.pdf>
 Package pdftex.def Info: Figure/PerormanceData/Plots/PerfDiffArch.pdf used on i
-nput line 1099.
+nput line 1126.
 (pdftex.def)             Requested size: 262.05309pt x 204.60643pt.
 
 <Figure/PerormanceData/Plots/PerfPerDollarDiffArch.pdf, id=49, 505.89pt x 505.8
@@ -701,51 +804,60 @@ File: Figure/PerormanceData/Plots/PerfPerDollarDiffArch.pdf Graphic file (type
 pdf)
  <use Figure/PerormanceData/Plots/PerfPerDollarDiffArch.pdf>
 Package pdftex.def Info: Figure/PerormanceData/Plots/PerfPerDollarDiffArch.pdf 
-used on input line 1104.
+used on input line 1131.
 (pdftex.def)             Requested size: 262.05309pt x 204.60643pt.
 
-Overfull \hbox (2.29994pt too wide) in paragraph at lines 1098--1108
+Overfull \hbox (2.29994pt too wide) in paragraph at lines 1125--1135
 [][] [] 
  []
 
-[7 <./Figure/SystemData/Plots/BGCPUHDD.pdf> <./Figure/SystemData/Plots/ECCPUHDD
-.pdf> <./Figure/SystemData/Plots/BGCPUSSD.pdf> <./Figure/SystemData/Plots/ECCPU
-SSD.pdf> <./Figure/SystemData/Plots/BGHddSsdWrIops.pdf> <./Figure/SystemData/Pl
-ots/ECHddSsdWrIops.pdf> <./Figure/SystemData/Plots/BGHddSsdHdfsWrIops.pdf> <./F
-igure/SystemData/Plots/ECHddSsdHdfsWrIops.pdf>]
-Underfull \hbox (badness 6348) in paragraph at lines 1125--1125
-[][][]\OT1/ptm/m/n/8 Price in-for-ma-tion is col-lected from http://www.newegg.
-com/ and
+
+Underfull \hbox (badness 3503) in paragraph at lines 1140--1140
+ []\OT1/ptm/m/it/10 Execution-time com-par-i-son be-tween Su-per-MikeII and
  []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [8 <./Figure/PerormanceData/Plots/PerfDiffArch.pdf> <./Figure/PerormanceData/P
-lots/PerfPerDollarDiffArch.pdf>]
-<Figure/PerormanceData/Plots/PerfDiffArchHum.pdf, id=107, 505.89pt x 505.89pt>
+ [7 <./Figure/SystemData/Plots/BGCPUHDD.pdf> <./Figure/SystemData/Plots/ECCPUHD
+D.pdf> <./Figure/SystemData/Plots/BGCPUSSD.pdf> <./Figure/SystemData/Plots/ECCP
+USSD.pdf> <./Figure/SystemData/Plots/BGHddSsdWrIops.pdf> <./Figure/SystemData/P
+lots/ECHddSsdWrIops.pdf> <./Figure/SystemData/Plots/BGHddSsdHdfsWrIops.pdf> <./
+Figure/SystemData/Plots/ECHddSsdHdfsWrIops.pdf>]
+Underfull \hbox (badness 1527) in paragraph at lines 1154--1154
+ []\OT1/ptm/m/it/10 Performance-to-Price com-par-i-son be-tween Su-per-MikeII
+ []
+
+
+Underfull \hbox (badness 6348) in paragraph at lines 1169--1169
+[][][]\OT1/ptm/m/n/8 Price in-for-ma-tion is col-lected from http://www.newegg.
+com/ and
+ []
+
+<Figure/PerormanceData/Plots/PerfDiffArchHum.pdf, id=94, 505.89pt x 505.89pt>
 File: Figure/PerormanceData/Plots/PerfDiffArchHum.pdf Graphic file (type pdf)
 
 <use Figure/PerormanceData/Plots/PerfDiffArchHum.pdf>
 Package pdftex.def Info: Figure/PerormanceData/Plots/PerfDiffArchHum.pdf used o
-n input line 1160.
+n input line 1197.
 (pdftex.def)             Requested size: 120.5407pt x 120.53607pt.
 
-<Figure/PerormanceData/Plots/PerfPerDollarDiffArchHum.pdf, id=108, 505.89pt x 5
-05.89pt>
+<Figure/PerormanceData/Plots/PerfPerDollarDiffArchHum.pdf, id=95, 505.89pt x 50
+5.89pt>
 File: Figure/PerormanceData/Plots/PerfPerDollarDiffArchHum.pdf Graphic file (ty
 pe pdf)
  <use Figure/PerormanceData/Plots/PerfPerDollarDiffArchHum.pdf>
 Package pdftex.def Info: Figure/PerormanceData/Plots/PerfPerDollarDiffArchHum.p
-df used on input line 1165.
+df used on input line 1202.
 (pdftex.def)             Requested size: 120.5407pt x 120.53607pt.
-
+ [8 <./Figure/PerormanceData/Plots/PerfDiffArch.pdf> <./Figure/PerormanceData/P
+lots/PerfPerDollarDiffArch.pdf>]
 <Figure/PerormanceData/Plots/SSDHDDSameNode.pdf, id=109, 505.89pt x 505.89pt>
 File: Figure/PerormanceData/Plots/SSDHDDSameNode.pdf Graphic file (type pdf)
 
 <use Figure/PerormanceData/Plots/SSDHDDSameNode.pdf>
 Package pdftex.def Info: Figure/PerormanceData/Plots/SSDHDDSameNode.pdf used on
- input line 1191.
+ input line 1229.
 (pdftex.def)             Requested size: 120.5407pt x 120.53607pt.
 
 <Figure/PerormanceData/Plots/SSDHDDDiffNode.pdf, id=110, 505.89pt x 505.89pt>
@@ -753,20 +865,20 @@ File: Figure/PerormanceData/Plots/SSDHDDDiffNode.pdf Graphic file (type pdf)
 
 <use Figure/PerormanceData/Plots/SSDHDDDiffNode.pdf>
 Package pdftex.def Info: Figure/PerormanceData/Plots/SSDHDDDiffNode.pdf used on
- input line 1196.
+ input line 1234.
 (pdftex.def)             Requested size: 120.5407pt x 120.53607pt.
- [9 <./Figure/PerormanceData/Plots/PerfDiffArchHum.pdf> <./Figure/PerormanceDat
-a/Plots/PerfPerDollarDiffArchHum.pdf> <./Figure/PerormanceData/Plots/SSDHDDSame
-Node.pdf> <./Figure/PerormanceData/Plots/SSDHDDDiffNode.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 1217--1217
- []\OT1/ptm/m/it/10 CeresII: Samsung-MicroBricks for shared noth-ing
+
+Underfull \hbox (badness 4429) in paragraph at lines 1254--1256
+\OT1/ptm/m/n/10 con-sum-ing, Samsung-MicroBricks-based novel prototype-
  []
 
-(./bare_conf.bbl
+[9 <./Figure/PerormanceData/Plots/PerfDiffArchHum.pdf> <./Figure/PerormanceData
+/Plots/PerfPerDollarDiffArchHum.pdf> <./Figure/PerormanceData/Plots/SSDHDDSameN
+ode.pdf> <./Figure/PerormanceData/Plots/SSDHDDDiffNode.pdf>] (./bare_conf.bbl
 Missing character: There is no â in font ptmr7t!
 Missing character: There is no € in font ptmr7t!
 Missing character: There is no ” in font ptmr7t!
- [10])
+)
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -778,29 +890,27 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-[11
-
-] (./bare_conf.aux) ) 
+[10] (./bare_conf.aux) ) 
 Here is how much of TeX's memory you used:
- 4192 strings out of 493304
- 68557 string characters out of 6139872
- 144986 words of memory out of 5000000
- 7595 multiletter control sequences out of 15000+600000
+ 4195 strings out of 493304
+ 68653 string characters out of 6139872
+ 146021 words of memory out of 5000000
+ 7598 multiletter control sequences out of 15000+600000
  40814 words of font info for 74 fonts, out of 8000000 for 9000
  960 hyphenation exceptions out of 8191
- 38i,10n,38p,2183b,400s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc
-}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr
-/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/
-texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texliv
-e/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fo
-nts/type1/urw/times/utmbi8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/
-times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.p
-fb>
-Output written on bare_conf.pdf (11 pages, 244492 bytes).
+ 38i,10n,38p,2183b,398s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.
+enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></
+usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/sha
+re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/tex
+live/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist
+/fonts/type1/urw/times/utmbi8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/u
+rw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8
+a.pfb>
+Output written on bare_conf.pdf (10 pages, 246830 bytes).
 PDF statistics:
- 166 PDF objects out of 1000 (max. 8388607)
- 112 compressed objects within 2 object streams
+ 163 PDF objects out of 1000 (max. 8388607)
+ 110 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  81 words of extra memory for PDF output out of 10000 (max. 10000000)
 

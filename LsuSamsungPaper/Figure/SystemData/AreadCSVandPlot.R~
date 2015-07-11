@@ -1,21 +1,21 @@
 #Where the file is saved
-pdf("/home/hadoop/rough/MyGITProjects/PGA_EvaluationArchitecturePaper/Evaluation-architectures-for-big-data/LsuSamsungPaper/Figure/SystemData/Plots/ECHddSsdHdfsRdIops.pdf", family="Times")
+pdf("/home/hadoop/rough/MyGITProjects/PGA_EvaluationArchitecturePaper/Evaluation-architectures-for-big-data/LsuSamsungPaper/Figure/SystemData/Plots/BGHddSsdWrIops.pdf", family="Times")
 
 #Read data from CSV
-data <- read.csv(file="EC_1HDD_HDFSrwps.csv",head=FALSE,sep=",")
+data <- read.csv(file="BG_1HDD_rwiops.csv",head=FALSE,sep=",")
 
-x <- 1:length(data$V14)
+x <- 1:length(data$V19)
 
 lt <- c(1,2)
 
-plot(x, data$V14, type='l', col='blue', lwd=2, lty=lt[1], ann=FALSE, cex.axis=1.5)
-lines(x, data$V4, col='black', lwd=2, lty=lt[2])
+plot(x, data$V19, type='l', col='blue', lwd=2, lty=lt[1], ann=FALSE, cex.axis=1.5)
+lines(x, data$V9, col='black', lwd=2, lty=lt[2])
 
 title(xlab="Time (minutes)", cex.lab=1.5)
-title(ylab="Bytes/s", cex.lab=1.5)
+title(ylab="", cex.lab=1.5)
 #title(main="IOPS Over Time")
 
-legend("topright", c("SwatIII-Storage", "SwatIII-Basic"), col=c("blue","black"), lwd=c(2,2), lty=lt, cex = 1.5)
+legend("topright", c("1SSD/node", "1HDD/node"), col=c("blue","black"), lwd=c(2,2), lty=lt, cex = 1.5)
 
 #print(data$V5)
 dev.off()
