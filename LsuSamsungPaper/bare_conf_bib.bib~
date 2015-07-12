@@ -386,6 +386,33 @@
   publisher={Cold Spring Harbor Lab}
 }
 
+@inproceedings{bio:contrail,
+  title={De novo assembly of large genomes using cloud computing},
+  author={Schatz, Michael C and Sommer, DD and Kelley, DR and Pop, Mihai},
+  booktitle={Proceedings of the Cold Spring Harbor Biology of Genomes Conference},
+  year={2010}
+}
+
+@inproceedings{bigGenome:graphtraversal,
+  title={Parallel de bruijn graph construction and traversal for de novo genome assembly},
+  author={Georganas, Evangelos and Bulu{\c{c}}, Aydin and Chapman, Jarrod and Oliker, Leonid and Rokhsar, Daniel and Yelick, Katherine},
+  booktitle={High Performance Computing, Networking, Storage and Analysis, SC14: International Conference for},
+  pages={437--448},
+  year={2014},
+  organization={IEEE}
+}
+
+@inproceedings{biggenome:kmerpartition,
+  title={Memory efficient minimum substring partitioning},
+  author={Li, Yang and Kamousi, Pegah and Han, Fangqiu and Yang, Shengqi and Yan, Xifeng and Suri, Subhash},
+  booktitle={Proceedings of the VLDB Endowment},
+  volume={6},
+  number={3},
+  pages={169--180},
+  year={2013},
+  organization={VLDB Endowment}
+}
+
 @inproceedings{Cluster:ceres1,
   title={ABC: dynamic configuration management for MicroBrick-based cloud computing systems},
   author={Min, Junghi and Ryu, Hyungwoo and La, Kwanghyun and Kim, Jihong},

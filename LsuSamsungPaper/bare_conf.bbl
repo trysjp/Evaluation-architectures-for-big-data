@@ -21,6 +21,19 @@
 \providecommand{\BIBdecl}{\relax}
 \BIBdecl
 
+\bibitem{bigGenome:graphtraverse}
+E.~Georganas, A.~Bulu{\c{c}}, J.~Chapman, L.~Oliker, D.~Rokhsar, and K.~Yelick,
+  ``Parallel de bruijn graph construction and traversal for de novo genome
+  assembly,'' in \emph{High Performance Computing, Networking, Storage and
+  Analysis, SC14: International Conference for}.\hskip 1em plus 0.5em minus
+  0.4em\relax IEEE, 2014, pp. 437--448.
+
+\bibitem{biggenome:kmerpartition}
+Y.~Li, P.~Kamousi, F.~Han, S.~Yang, X.~Yan, and S.~Suri, ``Memory efficient
+  minimum substring partitioning,'' in \emph{Proceedings of the VLDB
+  Endowment}, vol.~6, no.~3.\hskip 1em plus 0.5em minus 0.4em\relax VLDB
+  Endowment, 2013, pp. 169--180.
+
 \bibitem{schadoop:fadika}
 Z.~Fadika, M.~Govindaraju, R.~Canon, and L.~Ramakrishnan, ``Evaluating hadoop
   for data-intensive scientific operations,'' in \emph{Cloud Computing (CLOUD),
@@ -127,11 +140,15 @@ T.~Cheatham, A.~Fahmy, D.~Stefanescu, and L.~Valiant, ``Bulk synchronous
   and Environments for Parallel and Distributed Systems}.\hskip 1em plus 0.5em
   minus 0.4em\relax Springer, 1996, pp. 61--76.
 
-\bibitem{schadoop:matsunaga}
-A.~Matsunaga, M.~Tsugawa, and J.~Fortes, ``Cloudblast: Combining mapreduce and
-  virtualization on distributed resources for bioinformatics applications,'' in
-  \emph{eScience, 2008. eScience'08. IEEE Fourth International Conference
-  on}.\hskip 1em plus 0.5em minus 0.4em\relax IEEE, 2008, pp. 222--229.
+\bibitem{fw:hadoop}
+T.~White, \emph{Hadoop: The definitive guide}.\hskip 1em plus 0.5em minus
+  0.4em\relax " O'Reilly Media, Inc.", 2012.
+
+\bibitem{Cluster:ceres1}
+J.~Min, H.~Ryu, K.~La, and J.~Kim, ``Abc: dynamic configuration management for
+  microbrick-based cloud computing systems,'' in \emph{Proceedings of the
+  Posters \& Demos Session}.\hskip 1em plus 0.5em minus 0.4em\relax ACM, 2014,
+  pp. 25--26.
 
 \bibitem{bio:debruijngraph}
 P.~A. Pevzner, H.~Tang, and M.~S. Waterman, ``An eulerian path approach to dna
@@ -148,15 +165,5 @@ S.~L. Salzberg, A.~M. Phillippy, A.~Zimin, D.~Puiu, T.~Magoc, S.~Koren, T.~J.
   Treangen, M.~C. Schatz, A.~L. Delcher, M.~Roberts \emph{et~al.}, ``Gage: A
   critical evaluation of genome assemblies and assembly algorithms,''
   \emph{Genome research}, vol.~22, no.~3, pp. 557--567, 2012.
-
-\bibitem{fw:hadoop}
-T.~White, \emph{Hadoop: The definitive guide}.\hskip 1em plus 0.5em minus
-  0.4em\relax " O'Reilly Media, Inc.", 2012.
-
-\bibitem{Cluster:ceres1}
-J.~Min, H.~Ryu, K.~La, and J.~Kim, ``Abc: dynamic configuration management for
-  microbrick-based cloud computing systems,'' in \emph{Proceedings of the
-  Posters \& Demos Session}.\hskip 1em plus 0.5em minus 0.4em\relax ACM, 2014,
-  pp. 25--26.
 
 \end{thebibliography}
