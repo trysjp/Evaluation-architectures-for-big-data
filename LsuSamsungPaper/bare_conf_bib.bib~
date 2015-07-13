@@ -393,7 +393,7 @@
   year={2010}
 }
 
-@inproceedings{bigGenome:graphtraversal,
+@inproceedings{bigGenome:graphtraverse,
   title={Parallel de bruijn graph construction and traversal for de novo genome assembly},
   author={Georganas, Evangelos and Bulu{\c{c}}, Aydin and Chapman, Jarrod and Oliker, Leonid and Rokhsar, Daniel and Yelick, Katherine},
   booktitle={High Performance Computing, Networking, Storage and Analysis, SC14: International Conference for},
@@ -414,6 +414,15 @@
 }
 
 @inproceedings{Cluster:ceres1,
+  title={ABC: dynamic configuration management for MicroBrick-based cloud computing systems},
+  author={Min, Junghi and Ryu, Hyungwoo and La, Kwanghyun and Kim, Jihong},
+  booktitle={Proceedings of the Posters \& Demos Session},
+  pages={25--26},
+  year={2014},
+  organization={ACM}
+}
+
+@inproceedings{Cluster:MicroBrick,
   title={ABC: dynamic configuration management for MicroBrick-based cloud computing systems},
   author={Min, Junghi and Ryu, Hyungwoo and La, Kwanghyun and Kim, Jihong},
   booktitle={Proceedings of the Posters \& Demos Session},
