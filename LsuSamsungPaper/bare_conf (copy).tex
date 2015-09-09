@@ -958,12 +958,12 @@ The execution-times reported in this section are the means of at least 3 runs of
 \begin{figure}[htb]
 	\begin{subfigure}[b]{0.23\textwidth}
                 \includegraphics[width=\textwidth]{Figure/PerormanceData/Plots/Network.pdf}
-                \caption{Effect of network (InfiniBand vs Ethernet).}
+                \caption{Effect of network (InfiniBand vs Ethernet)}
                 \label{fig:SuperMikeSwatBasic}
         \end{subfigure}
  	\begin{subfigure}[b]{0.23\textwidth}
                 \includegraphics[width=\textwidth]{Figure/PerormanceData/Plots/StorageMemory.pdf}
-                \caption{Effect of local storage (HDD vs SSD) and size of DRAM.}
+                \caption{Effect of local storage (HDD vs SSD) and size of DRAM}
                 \label{fig:SuperMikeSwatStorageMemory}
    \end{subfigure}
    \caption{Impact each individual hardware component on execution time of different stages of the assembly pipeline in 15-DN }
@@ -1213,12 +1213,12 @@ The observations are as follows:
 \begin{figure}[htb]
         \begin{subfigure}[b]{0.23\textwidth}
                 \includegraphics[width=\textwidth]{Figure/PerormanceData/Plots/PerfDiffArchHum.pdf}
-                \caption{Execution time (Lower execution time is better).}
+                \caption{Execution time (Lower execution time is better)}
                 \label{fig:DifferentArchitecturesPerfHum}
         \end{subfigure}
         \begin{subfigure}[b]{0.23\textwidth}
                 \includegraphics[width=\textwidth]{Figure/PerormanceData/Plots/PerfPerDollarDiffArchHum.pdf}
-                \caption{Performance-to-Price (Higher performance per dollar is better).}
+                \caption{Performance-to-Price (Higher performance per dollar is better)}
                 \label{fig:DifferentArchitecturesPerfPerDollarHum}
         \end{subfigure}
         \caption{Comparison of different types of cluster architecture for human genome assembly pipeline.}
@@ -1245,15 +1245,15 @@ To anlyze the terabyte scale graph, Giraph passes a huge amount of messages acro
   \centering
   \begin{subfigure}[b]{0.23\textwidth}
           \includegraphics[width=\textwidth]{Figure/PerormanceData/Plots/SSDHDDSameNode.pdf}
-          \caption{Hadoop performance trend using 1, 2 and 4 HDD(s) and 1-SSD per node using 15 datanodes in the cluster.}
+          \caption{Performance trend using 1, 2 and 4 HDD(s) and 1-SSD per node using 15 datanodes}
           \label{fig:SsdN4Hdd}
   \end{subfigure}
   \begin{subfigure}[b]{0.23\textwidth}
           \includegraphics[width=\textwidth]{Figure/PerormanceData/Plots/SSDHDDDiffNode.pdf}
-          \caption{Hadoop performance trend for SSD and HDD using 1, 2, 7 disks per node in 15, 7 and 2 datanodes in the cluster.}
+          \caption{Performance trend for SSD and HDD using 1, 2, 7 disks per node in 15, 7 and 2 datanodes}
           \label{fig:SsdNHddDiffNodes}
   \end{subfigure}
-  \caption{Performance trend using HDD and SSD in Hadoop. SSD shows better performance and sclability in a scaled out environment}
+  \caption{Performance trend using HDD and SSD in Hadoop}
   \label{fig:SsdNHdd}
   \vspace{-1.9em}
 \end{figure}
@@ -1290,7 +1290,7 @@ CeresII shows the similar execution time to the baseline in every stage of the a
 
 From the performance-study between SuperMikeII and SwatIII, we noticed a huge trade-off between the execution time and the performance/\$. 
 For example, even though the full scaled up small-sized clusters (2-DNs cases) show extremely low performance, they show a magnitude higher performance/\$. We also concluded that the medium sized clusters (7-DNs) are well balanced considering both performance and cost.
-On the other hand, CeresII shows similar execution time as the medium sized clusters (which is eventually same as the baseline) and better performance per dollar than this. Moreover, the Samsung MicroBrick based architecture consumes less power (based upon other benchmark tests), and obviously, less space \cite{Cluster:ceres1}. Hence, we conclude that CeresII shows the maximum benefit in terms of TCO (total cost of ownership) among all the clusters.
+On the other hand, CeresII shows similar execution time as the medium sized clusters (which is eventually same as the baseline) and better performance per dollar than this. Moreover, the Samsung MicroBrick based architecture consumes less power, and obviously, less space \cite{Cluster:ceres1}. Hence, we conclude that CeresII shows the maximum benefit in terms of TCO (total cost of ownership) among all the clusters.
 
 %However, the entire cluster (all the 32 modules) takes significantly less space than 8 nodes of SwatIII-Medium-SSD, thus yielding significantly better performance per rack-unit.
 

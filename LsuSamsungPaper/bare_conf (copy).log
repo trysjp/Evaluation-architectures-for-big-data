@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.2.5)  9 SEP 2015 16:06
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.2.5)  8 SEP 2015 09:37
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**bare_conf.tex
-(./bare_conf.tex
+**"bare_conf (copy).tex"
+(./bare_conf (copy).tex
 LaTeX2e <2011/06/27>
 Babel <3.9h> and hyphenation patterns for 78 languages loaded.
 (./IEEEtran.cls
@@ -226,8 +226,8 @@ Package: subcaption 2013/02/03 v1.1-62 Sub-captions (AR)
 \c@subfigure=\count105
 \c@subtable=\count106
 )
-(./bare_conf.aux)
-\openout1 = `bare_conf.aux'.
+No file "bare_conf (copy)".aux.
+\openout1 = `"bare_conf (copy).aux"'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 354.
 LaTeX Font Info:    ... okay on input line 354.
@@ -241,7 +241,7 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 354.
 LaTeX Font Info:    ... okay on input line 354.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 354.
 LaTeX Font Info:    ... okay on input line 354.
- (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
+(/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count107
 \scratchdimen=\dimen135
@@ -325,16 +325,118 @@ Underfull \hbox (badness 3713) in paragraph at lines 494--496
 []\OT1/ptm/m/n/10 As a con-se-quence, there is a grow-ing in-ter-est in
  []
 
+
+LaTeX Warning: Citation `bigGenome:graphtraverse' on page 1 undefined on input 
+line 500.
+
+
+LaTeX Warning: Citation `biggenome:kmerpartition' on page 1 undefined on input 
+line 500.
+
 [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
 
 ]
+
+LaTeX Warning: Reference `Related Work' on page 2 undefined on input line 518.
+
+
+LaTeX Warning: Reference `Bigdata Softwares on Traditional Supercomputers' on p
+age 2 undefined on input line 519.
+
+
+LaTeX Warning: Reference `EvaluationMethodology' on page 2 undefined on input l
+ine 520.
+
+
+LaTeX Warning: Reference `IndividualHWEffect' on page 2 undefined on input line
+ 521.
+
+
+LaTeX Warning: Reference `ComparingDifferentArchitecturalBalance' on page 2 und
+efined on input line 522.
+
+
+LaTeX Warning: Reference `conclusion' on page 2 undefined on input line 522.
+
+
+LaTeX Warning: Citation `schadoop:fadika' on page 2 undefined on input line 526
+.
+
+
+LaTeX Warning: Citation `schadoop:jha' on page 2 undefined on input line 526.
+
+
+LaTeX Warning: Citation `schadoop:jha' on page 2 undefined on input line 527.
+
+
+LaTeX Warning: Citation `fw:myhadoop' on page 2 undefined on input line 528.
+
+
+LaTeX Warning: Citation `fw:myhadoop' on page 2 undefined on input line 529.
+
+
+LaTeX Warning: Citation `ethib:vienne' on page 2 undefined on input line 554.
+
+
+LaTeX Warning: Citation `ethib:yu' on page 2 undefined on input line 555.
+
+
+LaTeX Warning: Citation `ssdhdd:kang' on page 2 undefined on input line 557.
+
+
+LaTeX Warning: Citation `ssdhdd:wu' on page 2 undefined on input line 558.
+
+
+LaTeX Warning: Citation `ssdhdd:moon' on page 2 undefined on input line 559.
+
+
+LaTeX Warning: Citation `fw:hdfs' on page 2 undefined on input line 559.
+
+
+LaTeX Warning: Citation `ssdhdd:li' on page 2 undefined on input line 560.
+
+
+LaTeX Warning: Citation `ssdhdd:krish' on page 2 undefined on input line 560.
+
+
+LaTeX Warning: Citation `ssdhdd:moon' on page 2 undefined on input line 560.
+
+
+LaTeX Warning: Citation `ssdhdd:tan' on page 2 undefined on input line 561.
+
+
+LaTeX Warning: Citation `bm:hibench' on page 2 undefined on input line 563.
+
+
+LaTeX Warning: Citation `scaleupscaleout:michael' on page 2 undefined on input 
+line 568.
+
+
+LaTeX Warning: Citation `scaleupscaleout:appuswamy' on page 2 undefined on inpu
+t line 569.
+
+
+LaTeX Warning: Citation `scaleupscaleout:appuswamy' on page 2 undefined on inpu
+t line 573.
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 582--582
 [][][]\OT1/ptm/m/n/8 http://spectrum.ieee.org/tech-talk/computing/hardware/ibm-
 redesigned-
  []
 
 [2]
+
+LaTeX Warning: Citation `fw:mapreduce' on page 3 undefined on input line 585.
+
+
+LaTeX Warning: Citation `fw:pregel' on page 3 undefined on input line 585.
+
+
+LaTeX Warning: Citation `fw:bsp' on page 3 undefined on input line 591.
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 617--617
  []\OT1/ptm/m/it/10 Issues: big data ap-pli-ca-tion over traditional-
  []
@@ -484,16 +586,52 @@ Underfull \hbox (badness 3668) in paragraph at lines 723--723
 []\OT1/ptm/m/n/7 Samsung 840Pro Se-ries SA-TAIII SSD,
  []
 
+
+LaTeX Warning: Reference `table:Experimentaltestbeds' on page 3 undefined on in
+put line 734.
+
+
+LaTeX Warning: Reference `table:Experimentaltestbeds' on page 3 undefined on in
+put line 736.
+
 [3]
+
+LaTeX Warning: Reference `table:PriceOfEachComponent' on page 4 undefined on in
+put line 740.
+
+
 Underfull \hbox (badness 7925) in paragraph at lines 740--740
 [][][]\OT1/ptm/m/n/8 Price in-for-ma-tion is col-lected from http://www.newegg.
 com and
  []
 
+
+LaTeX Warning: Reference `table:Experimentaltestbeds' on page 4 undefined on in
+put line 740.
+
+
+LaTeX Warning: Citation `fw:hadoop' on page 4 undefined on input line 756.
+
+
+LaTeX Warning: Citation `fw:hadoop' on page 4 undefined on input line 758.
+
+
+LaTeX Warning: Citation `Cluster:ceres1' on page 4 undefined on input line 761.
+
+
 [4]
+
+LaTeX Warning: Citation `bio:debruijngraph' on page 5 undefined on input line 7
+88.
+
+
 Underfull \hbox (badness 5490) in paragraph at lines 828--842
  []\OT1/ptm/m/it/10 Giraph-based Graph Sim-pli-fi-ca-tion (memory- and
  []
+
+
+LaTeX Warning: Citation `algo:parallellistrank' on page 5 undefined on input li
+ne 846.
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 897--897
@@ -690,6 +828,17 @@ Overfull \hbox (7.35796pt too wide) in paragraph at lines 911--916
  [] 
  []
 
+
+LaTeX Warning: Citation `bio:gage' on page 5 undefined on input line 923.
+
+
+LaTeX Warning: Reference `table:BumbleBeeData' on page 5 undefined on input lin
+e 925.
+
+
+LaTeX Warning: Reference `table:HumanData' on page 5 undefined on input line 92
+5.
+
 [5] <Figure/PerormanceData/Plots/Network.pdf, id=25, 505.89pt x 505.89pt>
 File: Figure/PerormanceData/Plots/Network.pdf Graphic file (type pdf)
 
@@ -705,6 +854,10 @@ File: Figure/PerormanceData/Plots/StorageMemory.pdf Graphic file (type pdf)
 Package pdftex.def Info: Figure/PerormanceData/Plots/StorageMemory.pdf used on 
 input line 965.
 (pdftex.def)             Requested size: 120.5407pt x 120.53607pt.
+
+
+LaTeX Warning: Reference `fig:SuperMikeSwatBasic' on page 6 undefined on input 
+line 981.
 
 <Figure/SystemData/Plots/BGCPUHDD.pdf, id=27, 505.89pt x 505.89pt>
 File: Figure/SystemData/Plots/BGCPUHDD.pdf Graphic file (type pdf)
@@ -868,12 +1021,52 @@ Underfull \hbox (badness 10000) in paragraph at lines 1101--1101
  []
 
 
+LaTeX Warning: Reference `fig:SuperMikeSwatStorageMemory' on page 6 undefined o
+n input line 1115.
+
+
+LaTeX Warning: Reference `fig:SuperMikeSwatStorageMemory' on page 6 undefined o
+n input line 1117.
+
+
 Underfull \hbox (badness 3590) in paragraph at lines 1115--1122
-[]\OT1/ptm/m/n/10 Figure-1b[] com-pares the ex-e-cu-tion time of SwatIII-
+[]\OT1/ptm/m/n/10 Figure-[] com-pares the ex-e-cu-tion time of SwatIII-
  []
+
+
+LaTeX Warning: Reference `fig:ECCPUHDD' on page 6 undefined on input line 1127.
+
+
+
+LaTeX Warning: Reference `fig:BGCPUSSD' on page 6 undefined on input line 1129.
+
+
+
+LaTeX Warning: Reference `fig:ECCPUSSD' on page 6 undefined on input line 1129.
+
+
+
+LaTeX Warning: Reference `fig:BGHddSsdWrIops' on page 6 undefined on input line
+ 1130.
+
+
+LaTeX Warning: Reference `fig:ECHddSsdWrIops' on page 6 undefined on input line
+ 1131.
+
+
+LaTeX Warning: Reference `fig:BGHddSsdHdfsWrIops' on page 6 undefined on input 
+line 1132.
+
+
+LaTeX Warning: Reference `fig:ECHddSsdHdfsWrIops' on page 6 undefined on input 
+line 1132.
 
 [6 <./Figure/PerormanceData/Plots/Network.pdf> <./Figure/PerormanceData/Plots/S
 torageMemory.pdf>]
+
+LaTeX Warning: Reference `fig:SuperMikeSwatStorageMemory' on page 7 undefined o
+n input line 1151.
+
 <Figure/PerormanceData/Plots/PerfDiffArch.pdf, id=48, 505.89pt x 505.89pt>
 File: Figure/PerormanceData/Plots/PerfDiffArch.pdf Graphic file (type pdf)
 
@@ -900,6 +1093,22 @@ Underfull \hbox (badness 1748) in paragraph at lines 1175--1175
  []\OT1/ptm/m/it/10 Execution time com-par-i-son be-tween Su-per-MikeII and
  []
 
+
+LaTeX Warning: Reference `fig:DifferentArchitecturesPerf' on page 7 undefined o
+n input line 1176.
+
+
+LaTeX Warning: Reference `IndividualImpactofDifferentHardwareConfiguration' on 
+page 7 undefined on input line 1183.
+
+
+LaTeX Warning: Reference `ScaledupClusterAndSSD' on page 7 undefined on input l
+ine 1184.
+
+
+LaTeX Warning: Reference `IndividualImpactofDifferentHardwareConfiguration' on 
+page 7 undefined on input line 1186.
+
 [7 <./Figure/SystemData/Plots/BGCPUHDD.pdf> <./Figure/SystemData/Plots/ECCPUHDD
 .pdf> <./Figure/SystemData/Plots/BGCPUSSD.pdf> <./Figure/SystemData/Plots/ECCPU
 SSD.pdf> <./Figure/SystemData/Plots/BGHddSsdWrIops.pdf> <./Figure/SystemData/Pl
@@ -908,6 +1117,10 @@ igure/SystemData/Plots/ECHddSsdHdfsWrIops.pdf>]
 Underfull \hbox (badness 1527) in paragraph at lines 1190--1190
  []\OT1/ptm/m/it/10 Performance-to-Price com-par-i-son be-tween Su-per-MikeII
  []
+
+
+LaTeX Warning: Reference `fig:DifferentArchitecturesPerfPerDollar' on page 8 un
+defined on input line 1199.
 
 <Figure/PerormanceData/Plots/PerfDiffArchHum.pdf, id=94, 505.89pt x 505.89pt>
 File: Figure/PerormanceData/Plots/PerfDiffArchHum.pdf Graphic file (type pdf)
@@ -925,8 +1138,29 @@ pe pdf)
 Package pdftex.def Info: Figure/PerormanceData/Plots/PerfPerDollarDiffArchHum.p
 df used on input line 1220.
 (pdftex.def)             Requested size: 120.5407pt x 120.53607pt.
- [8 <./Figure/PerormanceData/Plots/PerfDiffArch.pdf> <./Figure/PerormanceData/P
-lots/PerfPerDollarDiffArch.pdf>]
+
+
+LaTeX Warning: Reference `fig:DifferentArchitecturesPerfHum' on page 8 undefine
+d on input line 1232.
+
+
+LaTeX Warning: Reference `fig:DifferentArchitecturesPerfPerDollarHum' on page 8
+ undefined on input line 1232.
+
+
+LaTeX Warning: Reference `Bigdata Softwares on Traditional Supercomputers' on p
+age 8 undefined on input line 1236.
+
+
+LaTeX Warning: Reference `IndividualHWEffect' on page 8 undefined on input line
+ 1236.
+
+
+LaTeX Warning: Reference `ExecutionTimeDiffArchBumblebee' on page 8 undefined o
+n input line 1237.
+
+[8 <./Figure/PerormanceData/Plots/PerfDiffArch.pdf> <./Figure/PerormanceData/Pl
+ots/PerfPerDollarDiffArch.pdf>]
 <Figure/PerormanceData/Plots/SSDHDDSameNode.pdf, id=109, 505.89pt x 505.89pt>
 File: Figure/PerormanceData/Plots/SSDHDDSameNode.pdf Graphic file (type pdf)
 
@@ -946,14 +1180,42 @@ Package pdftex.def Info: Figure/PerormanceData/Plots/SSDHDDDiffNode.pdf used on
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
+
+LaTeX Warning: Reference `fig:SsdN4Hdd' on page 9 undefined on input line 1269.
+
+
+
+LaTeX Warning: Reference `fig:SsdNHddDiffNodes' on page 9 undefined on input li
+ne 1274.
+
+
+LaTeX Warning: Reference `fig:DifferentArchitecturesPerfHum' on page 9 undefine
+d on input line 1274.
+
+
+LaTeX Warning: Reference `fig:SsdNHddDiffNodes' on page 9 undefined on input li
+ne 1275.
+
+
+LaTeX Warning: Citation `Cluster:ceres1' on page 9 undefined on input line 1282
+.
+
+
+LaTeX Warning: Reference `fig:DifferentArchitecturesPerf' on page 9 undefined o
+n input line 1286.
+
+
+LaTeX Warning: Reference `fig:DifferentArchitecturesPerfPerDollar' on page 9 un
+defined on input line 1286.
+
+
+LaTeX Warning: Citation `Cluster:ceres1' on page 9 undefined on input line 1293
+.
+
 [9 <./Figure/PerormanceData/Plots/PerfDiffArchHum.pdf> <./Figure/PerormanceData
 /Plots/PerfPerDollarDiffArchHum.pdf> <./Figure/PerormanceData/Plots/SSDHDDSameN
-ode.pdf> <./Figure/PerormanceData/Plots/SSDHDDDiffNode.pdf>] (./bare_conf.bbl
-Missing character: There is no â in font ptmr7t!
-Missing character: There is no € in font ptmr7t!
-Missing character: There is no ” in font ptmr7t!
-
-[10])
+ode.pdf> <./Figure/PerormanceData/Plots/SSDHDDDiffNode.pdf>]
+No file "bare_conf (copy)".bbl.
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -965,29 +1227,35 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-[11
+[10
 
-] (./bare_conf.aux) ) 
+] (./bare_conf (copy).aux)
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ ) 
 Here is how much of TeX's memory you used:
- 4198 strings out of 493304
- 68706 string characters out of 6139872
- 151037 words of memory out of 5000000
- 7601 multiletter control sequences out of 15000+600000
- 41321 words of font info for 75 fonts, out of 8000000 for 9000
+ 4186 strings out of 493304
+ 68572 string characters out of 6139872
+ 150353 words of memory out of 5000000
+ 7594 multiletter control sequences out of 15000+600000
+ 40185 words of font info for 74 fonts, out of 8000000 for 9000
  960 hyphenation exceptions out of 8191
- 38i,10n,38p,2183b,400s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc
-}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr
-/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/
-texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texliv
-e/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fo
-nts/type1/urw/times/utmbi8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/
-times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.p
-fb>
-Output written on bare_conf.pdf (11 pages, 252946 bytes).
+ 38i,10n,38p,2192b,400s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
+e/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/
+type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times
+/utmbi8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></
+usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on "bare_conf (copy).pdf" (10 pages, 246555 bytes).
 PDF statistics:
- 166 PDF objects out of 1000 (max. 8388607)
- 112 compressed objects within 2 object streams
+ 163 PDF objects out of 1000 (max. 8388607)
+ 110 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  81 words of extra memory for PDF output out of 10000 (max. 10000000)
 
