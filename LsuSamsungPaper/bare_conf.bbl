@@ -46,13 +46,11 @@ S.~Jha, J.~Qiu, A.~Luckow, P.~Mantha, and G.~C. Fox, ``A tale of two
   \emph{Big Data (BigData Congress), 2014 IEEE International Congress
   on}.\hskip 1em plus 0.5em minus 0.4em\relax IEEE, 2014, pp. 645--652.
 
-\bibitem{DBLP:conf/icpads/2014}
-\BIBentryALTinterwordspacing
-\emph{20th {IEEE} International Conference on Parallel and Distributed Systems,
-  {ICPADS} 2014, Hsinchu, Taiwan, December 16-19, 2014}.\hskip 1em plus 0.5em
-  minus 0.4em\relax {IEEE} Computer Society, 2014. [Online]. Available:
-  \url{http://ieeexplore.ieee.org/xpl/mostRecentIssue.jsp?punumber=7092978}
-\BIBentrySTDinterwordspacing
+\bibitem{DBLP:conf/icpads/SatishKPPS14}
+U.~C. Satish, P.~Kondikoppa, S.~Park, M.~Patil, and R.~Shah, ``Mapreduce based
+  parallel suffix tree construction for human genome,'' in \emph{20th {IEEE}
+  International Conference on Parallel and Distributed Systems, {ICPADS} 2014,
+  Hsinchu, Taiwan, December 16-19, 2014}, 2014, pp. 664--670.
 
 \bibitem{kondikoppa2012network}
 P.~Kondikoppa, C.-H. Chiu, C.~Cui, L.~Xue, and S.-J. Park, ``Network-aware

@@ -440,7 +440,16 @@
   organization={ACM}
 }
 
-@article{satishmapreduce,
-  title={MapReduce based Parallel Suffix Tree Construction for Human Genome},
-  author={Satish, Umesh Chandra and Kondikoppa, Praveenkumar and Park, Seung-Jong and Patil, Manish and Shah, Rahul}
+@inproceedings{DBLP:conf/icpads/SatishKPPS14,
+  author    = {Umesh Chandra Satish and
+               Praveenkumar Kondikoppa and
+               Seung{-}Jong Park and
+               Manish Patil and
+               Rahul Shah},
+  title     = {MapReduce based parallel suffix tree construction for human genome},
+  booktitle = {20th {IEEE} International Conference on Parallel and Distributed Systems,
+               {ICPADS} 2014, Hsinchu, Taiwan, December 16-19, 2014},
+  pages     = {664--670},
+  year      = {2014},
+  organization={IEEE}
 }
