@@ -422,15 +422,6 @@
   organization={ACM}
 }
 
-@inproceedings{Cluster:MicroBrick,
-  title={ABC: dynamic configuration management for MicroBrick-based cloud computing systems},
-  author={Min, Junghi and Ryu, Hyungwoo and La, Kwanghyun and Kim, Jihong},
-  booktitle={Proceedings of the Posters \& Demos Session},
-  pages={25--26},
-  year={2014},
-  organization={ACM}
-}
-
 @inproceedings{algo:parallellistrank,
   title={Randomized speed-ups in parallel computation},
   author={Vishkin, Uzi},
@@ -438,4 +429,18 @@
   pages={230--239},
   year={1984},
   organization={ACM}
+}
+
+@inproceedings{kondikoppa2012network,
+  title={Network-aware scheduling of mapreduce framework ondistributed clusters over high speed networks},
+  author={Kondikoppa, Praveenkumar and Chiu, Chui-Hui and Cui, Cheng and Xue, Lin and Park, Seung-Jong},
+  booktitle={Proceedings of the 2012 workshop on Cloud services, federation, and the 8th open cirrus summit},
+  pages={39--44},
+  year={2012},
+  organization={ACM}
+}
+
+@article{satishmapreduce,
+  title={MapReduce based Parallel Suffix Tree Construction for Human Genome},
+  author={Satish, Umesh Chandra and Kondikoppa, Praveenkumar and Park, Seung-Jong and Patil, Manish and Shah, Rahul}
 }
