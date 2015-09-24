@@ -179,4 +179,9 @@ S.~L. Salzberg, A.~M. Phillippy, A.~Zimin, D.~Puiu, T.~Magoc, S.~Koren, T.~J.
   critical evaluation of genome assemblies and assembly algorithms,''
   \emph{Genome research}, vol.~22, no.~3, pp. 557--567, 2012.
 
+\bibitem{cluster:AmdahlBalancedBlade}
+A.~S. Szalay, G.~C. Bell, H.~H. Huang, A.~Terzis, and A.~White, ``Low-power
+  amdahl-balanced blades for data intensive computing,'' \emph{ACM SIGOPS
+  Operating Systems Review}, vol.~44, no.~1, pp. 71--75, 2010.
+
 \end{thebibliography}
