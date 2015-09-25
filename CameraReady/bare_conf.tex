@@ -68,7 +68,7 @@
 % If IEEEtran.cls has not been installed into the LaTeX system files,
 % manually specify the path to it like:
 % \documentclass[conference]{../sty/IEEEtran}
-
+\IEEEoverridecommandlockouts
 
 
 
@@ -362,13 +362,13 @@
 % use a multiple column layout for up to three different
 % affiliations
 \author{
-\IEEEauthorblockN{Arghya Kusum Das, Seung-Jong Park}
+\IEEEauthorblockN{Arghya Kusum Das\thanks{*}, Seung-Jong Park}
 \IEEEauthorblockA{School of Electrical Engineering and Computer Science\\
 Center for Computation and Technology\\
 Louisiana State University, Baton Rouge, LA, 70803 \\
 Email: \{adas7, sjpark\} @lsu.edu}
 \and
-\IEEEauthorblockN{Jaeki Hong, Wooseok Chang}
+\IEEEauthorblockN{Jaeki Hong\thanks{*}, Wooseok Chang}
 \IEEEauthorblockA{Samsung Electronics Co., Ltd.\\
 95, Samsung 2-ro\\
 Giheung-gu, Yongin-si, Gyeonggi-do, 446711\\
@@ -714,7 +714,7 @@ Figure-\ref{fig:SuperMikeSwatBasic} compares the impact of network interconnect 
 Figure-\ref{fig:SuperMikeSwatStorageMemory} compares the execution time of SwatIII-Basic-SSD (1-SSD/node) to the SuperMikeII-baseline (1-HDD/node). The second column of each stage of the assembler in Figure-\ref{fig:SuperMikeSwatStorageMemory} shows the impact of using SSD in that stage of the assembly. We observed almost 50\% improvement in the shuffle intensive graph-construction stage because of reduced I/O wait. 
 However, graph-simplification, a series of in-memory Giraph jobs (that read/write data only to the HDFS), is not affected much (less than 3\%) by using SSD. 
  
-Actually, the shuffle phase of the Hadoop job experiences a huge amount of I/O wait when huge number of I/O threads work concurrently to spill a huge amount of data to the disk (by the mappers) and subsequently read by the reducers. Giraph shows I/O wait only when it reads/writes a large graph from/to HDFS (Figure-\ref{fig:ECCPUHDD}). I/O wait is significantly reduced using SSD (Figure-\ref{fig:BGCPUSSD} and -\ref{fig:ECCPUSSD}) instead of HDD which improves the Hadoop performance significantly. However, for Giraph we did not observe any significant performance improvement using SSD because of very less I/O wait. Basically, an SSD increases the disk IOPS per DataNode by 7 to 8 times than an HDD especially during the shuffle phase of Hadoop which writes huge amount of data  to  the local file system as shown in Figure-\ref{fig:BGHddSsdWrIops}. In case of Giraph, the corresponding improvement is 1.5-times as shown in Figure-\ref{fig:ECHddSsdWrIops}. Considering the I/O throughput to HDFS, we also observed 1.5-times improvement in case of SSD for both Hadoop and Giraph as shown in Figure-\ref{fig:BGHddSsdHdfsWrIops} and -\ref{fig:ECHddSsdHdfsWrIops}. Giraph, which writes data to the HDFS only, shows the similar I/O characteristics  for both IOPS per DataNode (DN) and HDFS I/O throughput because they are related by the equation: $HDFS\_IO\_Throughput = IOPS\_per\_DN \times Bytes\_per\_IO \times \#DN$, where $Bytes\_per\_IO$ is the characteristics of the disk.  However, the HDFS throughput characteristics across all the DN varies significantly from the IOPS per DN in case of shuffle-intensive Hadoop job, which writes lots of data to the local file system.
+Actually, the shuffle phase of the Hadoop job experiences a lot of I/O wait when a large number of I/O threads work concurrently to spill a huge amount of data to the disk (by the mappers) and subsequently read by the reducers. Giraph shows I/O wait only when it reads/writes a large graph from/to HDFS (Figure-\ref{fig:ECCPUHDD}). I/O wait is significantly reduced using SSD (Figure-\ref{fig:BGCPUSSD} and -\ref{fig:ECCPUSSD}) instead of HDD which improves the Hadoop performance remarkably. However, for Giraph we did not observe any notable performance improvement using SSD because of very less I/O wait. Basically, an SSD increases the disk IOPS per DataNode by 7 to 8 times than an HDD especially during the shuffle phase of Hadoop which writes a vast amount of data to the local file system as shown in Figure-\ref{fig:BGHddSsdWrIops}. In case of Giraph, the corresponding improvement is 1.5-times as shown in Figure-\ref{fig:ECHddSsdWrIops}. Considering the I/O throughput to HDFS, we also observed 1.5-times improvement in case of SSD for both Hadoop and Giraph as shown in Figure-\ref{fig:BGHddSsdHdfsWrIops} and -\ref{fig:ECHddSsdHdfsWrIops}. Giraph, which writes data to the HDFS only, shows the similar I/O characteristics  for both IOPS per DataNode (DN) and HDFS I/O throughput because they are related by the equation: $HDFS\_IO\_Throughput = IOPS\_per\_DN \times Bytes\_per\_IO \times \#DN$, where $Bytes\_per\_IO$ is the characteristics of the disk.  However, the HDFS throughput characteristics across all the DN varies significantly from the IOPS per DN in case of shuffle-intensive Hadoop job, which writes lots of data to the local file system.
 
 \subsection {Effect of size of DRAM} \label{EffectOfDRAM}
 The third columns of Figure-\ref{fig:SuperMikeSwatStorageMemory} shows the impact of increasing the amount of memory per node. 
@@ -726,11 +726,11 @@ In this section, we compare different cluster architecture in terms of raw execu
 \subsection {Execution time comparison between SuperMikeII and SwatIII variants (with moderate-size bumble bee genome)} \label{ExecutionTimeDiffArchBumblebee}
 Figure-\ref{fig:DifferentArchitecturesPerf} shows the relative merits of different cluster architectures in terms of raw execution time. Observe that we always keep the total aggregated storage and memory space almost same across all the clusters (Except the SwatIII-Memory). The basic assumption behind this experimental setup is that the total amount of data should be held in its entirety in any of the cluster that cannot be compromise. Furthermore, the choice of the cluster in a cloud scenario is often driven by the sheer volume of the data rather than the performance. The observations are as follows:
 \begin{inparaenum}[\itshape 1\upshape)]
-\item \textbf{SwatIII-Basic:} As discussed earlier in Section-\ref{IndividualImpactofDifferentHardwareConfiguration}, for Hadoop, the SSD variant of this scaled out cluster (32GB-RAM + 1-disk/DN \& 16-DN) shows $2$x speedup over the baseline whereas the HDD variant performs similar to the baseline. For Giraph, both of them perform almost similar to the baseline.
-\item \textbf{SwatIII-FullScaleup:} This scaled up (256GB-RAM + 7-disks/DN) small sized cluster (only 2-DN) takes the maximum time for any workload because of least number of processing cores among all. Observe that for the Hadoop job, both SSD and HDD variants of this scaled up cluster perform similarly, which is in contrast with scaled out cluser (SwatIII-Basic). We discuss it in more detail in Section-\ref{ScaledupClusterAndSSD}.
-\item \textbf{SwatIII-Medium:} The HDD variant of this cluster (64GB-RAM + 2-disks/DN \& 7-DN) perform almost similarly to the baseline for both Hadoop and Giraph even though the total number of cores in the cluster is half of the baseline. It is because 2-HDDs and 64GB RAM per node increase the IOPS and the caching respectively. The SSD variant shows slightly better result than the HDD because of further increase in IOPS.
+\item \textbf{SwatIII-Basic:} As discussed earlier in Section-\ref{IndividualImpactofDifferentHardwareConfiguration}, for Hadoop, the SSD variant of this scaled out cluster (32GB-RAM + 1-disk/DN \& 16-DNs) shows $2$x speedup over the baseline whereas the HDD variant performs similar to the baseline. For Giraph, both of them perform almost similar to the baseline.
+\item \textbf{SwatIII-FullScaleup:} This scaled up (256GB-RAM + 7-disks/DN) small sized cluster (only 2-DNs) takes the maximum time for any workload because of least number of processing cores among all. Observe that for the Hadoop job, both SSD and HDD variants of this scaled up cluster perform similarly, which is in contrast with scaled out cluser (SwatIII-Basic). We discuss it in more detail in Section-\ref{ScaledupClusterAndSSD}.
+\item \textbf{SwatIII-Medium:} The HDD variant of this cluster (64GB-RAM + 2-disks/DN \& 7-DNs) perform almost similarly to the baseline for both Hadoop and Giraph even though the total number of cores in the cluster is half of the baseline. It is because 2-HDDs and 64GB RAM per node increase the IOPS and the caching respectively. The SSD variant shows slightly better result than the HDD because of further increase in IOPS.
 \item \textbf{SwatIII-Memory:} The performace characteristics of this cluster is discussed earlier in Section-\ref{IndividualImpactofDifferentHardwareConfiguration}. 
-It is no surprise that this configuration (256GB-RAM + 1-SSD/DN \& 16DN) shows the lowest execution time among all because of the huge amount of memory available across the cluster.
+It is no surprise that this configuration (256GB-RAM + 1-SSD/DN \& 16DNs) shows the lowest execution time among all because of the huge amount of memory available across the cluster.
 \end{inparaenum}
 
 \subsection {Performance-to-Price comparison between SuperMikeII and SwatIII variants (with the bumble bee genome)} \label{PriceToPerformanceBumbleBee}
@@ -745,6 +745,7 @@ Figure-\ref{fig:DifferentArchitecturesPerfPerDollar} compares the performance/\$
 \end{inparaenum}
 
 \begin{figure}[htb]
+\center
         \begin{subfigure}[b]{0.23\textwidth}
                 \includegraphics[width=\textwidth]{Figure/PerormanceData/Plots/PerfDiffArchHum.pdf}
                 \caption{Execution time (Lower execution time is better).}
@@ -752,7 +753,7 @@ Figure-\ref{fig:DifferentArchitecturesPerfPerDollar} compares the performance/\$
         \end{subfigure}
         \begin{subfigure}[b]{0.23\textwidth}
                 \includegraphics[width=\textwidth]{Figure/PerormanceData/Plots/PerfPerDollarDiffArchHum.pdf}
-                \caption{Performance to price (Higher performance per dollar is better).}
+                \caption{Performance to price (Higher performance/\$ is better).}
                 \label{fig:DifferentArchitecturesPerfPerDollarHum}
         \end{subfigure}
         \caption{Comparison of different types of cluster architecture for human genome assembly pipeline.}
@@ -763,7 +764,7 @@ Figure-\ref{fig:DifferentArchitecturesPerfPerDollar} compares the performance/\$
 %\vspace{-1.9em}
 The large human genome (452GB)  produces huge amount of shuffled data (9.9TB) as well as the graph data (3.2TB). We use 127 DataNodes in SuperMikeII (32GB-RAM + 1-disk/DN) and 15 DataNodes in the SwatIII-Full-Scaleup (256GB-RAM + 7-disks/DN) HDD and SSD. Figure-\ref{fig:DifferentArchitecturesPerfHum} and \ref{fig:DifferentArchitecturesPerfPerDollarHum} shows the execution time and the performance/\$ respectively for the human genome assembly pipeline. The observations are as follows:
 \begin{inparaenum}[\itshape 1\upshape)]
-\item For Hadoop, the 127-DN of SuperMikeII (2032-cores) show only 15-17\% better performance than 15-DN (240 cores) of SwatIII-FullScaleup cluster (any variant) while using almost 9-times more cores. The reasons behind the lower performance in SuperMikeII are both the huge I/O and network bottleneck as discussed earlier in Section-\ref{Bigdata Softwares on Traditional Supercomputers} and -\ref{IndividualHWEffect}. Again, observe that for this large data set also, both the SSD and HDD variants of SwatIII-FullScaleup perform similarly as observed in Section-\ref{ExecutionTimeDiffArchBumblebee}.
+\item For Hadoop, the 127-DNs of SuperMikeII (2032-cores) show only 15-17\% better performance than 15-DNs (240 cores) of SwatIII-FullScaleup cluster (any variant) while using almost 9-times more cores. The reasons behind the lower performance in SuperMikeII are both the huge I/O and network bottleneck as discussed earlier in Section-\ref{Bigdata Softwares on Traditional Supercomputers} and -\ref{IndividualHWEffect}. Again, observe that for this large data set also, both the SSD and HDD variants of SwatIII-FullScaleup perform similarly as observed in Section-\ref{ExecutionTimeDiffArchBumblebee}.
 \item For the Giraph-based graph-simplification stage also, SuperMikeII did not show the expected performance mainly because of the network bottleneck. To analyze the terabyte scale graph, Giraph passes a huge amount of messages across the workers, which experience significant bottleneck by the 2:1 blocking ratio in the InfiniBand network and the lower effective bandwidth between compute nodes of SuperMikeII.  
 \item In terms of performance per dollar the scaled up configuration shows huge benefit over the baseline. For Hadoop, the gain is 3 to 5 times based upon the storage media. For Giraph, the corresponding gain is almost 4 to 5 times.  Again, because of the similar execution time, the HDD variant of SwatIII-FullScaleup shows better performance per dollar than the SSD variant.
 \end{inparaenum}
@@ -787,15 +788,15 @@ The large human genome (452GB)  produces huge amount of shuffled data (9.9TB) as
 \subsection {Performance of SSD in scaled out and scaled up cluster} \label{ScaledupClusterAndSSD}
 Storage optimized, scaled up cloud instances frequently come with 4 to 8-SSDs per instance to improve the performance, consequently incurring high setup-cost as well as service-charge. For example, AWS-i2.8xlarge offers 8-SSDs per instance at a rate of \$6.82/hour, which is one of the high-cost AWS-EC2-instances. But, is it the effective way to deploy the SSDs? The disk controllers saturate after a certain threshold (an observation by Szalay \cite{cluster:AmdahlBalancedBlade}). In this section, we compare the performance characteristics of HDD and SSD from the perspective of scaled out and scaled up configuration.
 
-Figure-\ref{fig:SsdN4Hdd} compares the performance of a single SSD and increasing number of HDDs per node for the Hadoop-based graph-construction stage of the bumble bee genome assembly pipeline while using a total of 15-DN. The performance improves almost linearly by increasing the number of HDDs per DataNode in the cluster. On the other hand, 4-HDDs per node shows similar performance (only 5\% variation) with a single-SSD per node.
+Figure-\ref{fig:SsdN4Hdd} compares the performance of a single SSD and increasing number of HDDs per node for the Hadoop-based graph-construction stage of the bumble bee genome assembly pipeline while using a total of 15-DNs. The performance improves almost linearly by increasing the number of HDDs per DataNode in the cluster. On the other hand, 4-HDDs per node shows similar performance (only 5\% variation) with a single-SSD per node.
 At this point the job is CPU-bound, and adding more disk(s) to the DataNodes does not improve the performance. Consequently, we did not expect any significant performance improvement after this point (that is, more than 4-disks per node). Both Figure-\ref{fig:SsdNHddDiffNodes} as well as Figure-\ref{fig:DifferentArchitecturesPerfHum} substantiate our claim for moderate-size bumble bee and large-size human genome data. It can be clearly observed that for both the data, both the HDD and SSD variant of SwatIII-FullScaleup perform similarly where each DataNode is equipped with 7-disks. However, SSD showed significantly better performance than HDD when we scaled out by adding more compute nodes to the cluster because lower number of HDDs make the job I/O bound as shown in Figure-\ref{fig:SsdNHddDiffNodes}.
 
 \subsection {Performance of CeresII: Samsung MicroBrick with PCIe communication} \label{CeresII:Scaledout-in-a-boxAndSSD}
-In this section, we evaluate a Samsung MicroBrick-based novel architecture, called CeresII. Currently CeresII is in prototype phase. As mentioned before, CeresII uses 2 physical cores, 1-SSD and 16GB memory per compute server and uses a PCIe-based interface to communicate among high-density compute-servers in a chassis. For communication between different chassis it uses 10-Gbps Ethernet.
+In this section, we evaluate a Samsung MicroBrick-based novel architecture, called CeresII. Currently CeresII is in prototype phase. As mentioned before, CeresII uses 2 physical cores, 1-SSD and 16GB memory per compute server and uses a PCIe-based interface to communicate among high-density compute-servers in a chassis. For communication between different chassis it uses 10-Gbps Ethernet. The PCIe based communication enables building highly efficient distributed clusters extremely low communication overhead. At the same time, the SSD based MicroBricks enables highly efficient resource utilization in a significantly lower cost. 
 
 To assemble the 95GB bumble bee genome we use 32 compute-servers of CeresII as Hadoop datanodes. The last columns in Figure-\ref{fig:DifferentArchitecturesPerf} and Figure-\ref{fig:DifferentArchitecturesPerfPerDollar} show the execution-time and performance/\$ respectively for CeresII for different stages of the assembly. CeresII shows the similar execution time to the baseline in every stage of the assembly pipeline while giving almost 2-times improvement in performance/\$.
 
-From the performance-study between SuperMikeII and SwatIII, we noticed a huge trade-off between the execution time and the performance/\$. For example, even though the full scaled up small-sized clusters (2-DNs cases) show extremely low performance, they show a magnitude higher performance/\$. We also concluded that the medium sized clusters (7-DNs) are well balanced considering both performance and cost. On the other hand, CeresII shows similar execution time as the medium sized clusters (which is eventually same as the baseline) and better performance per dollar. Moreover, the Samsung MicroBrick based architecture consumes less power and space \cite{Cluster:ceres1}. Hence, we conclude that CeresII shows the maximum benefit in terms of TCO (total cost of ownership).
+From the performance comparison between SuperMikeII and SwatIII, we noticed a huge trade-off between the execution time and the performance/\$. For example, even though the full scaled up small-sized clusters (2-DNs cases) show extremely low performance, they show a magnitude higher performance/\$. We also concluded that the medium sized clusters (7-DNs) are well balanced considering both performance and cost. On the other hand, CeresII shows similar execution time as the medium sized clusters (which is eventually same as the baseline) and better performance per dollar. Moreover, the Samsung MicroBrick based architecture consumes less power and space \cite{Cluster:ceres1}. Hence, we conclude that CeresII shows the maximum benefit in terms of TCO (total cost of ownership).
 
 \section {Conclusion and Future-work} \label{conclusion}
 %The conclusion goes here.
